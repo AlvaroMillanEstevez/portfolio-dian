@@ -39,5 +39,7 @@ export default defineConfig({
   plugins: [react(), tailwindcss(), contentSecurityPolicy()],
   build: {
     sourcemap: false,
+    // Never inline assets as data: URIs (small font files would break font-src 'self').
+    assetsInlineLimit: 0,
   },
 })
