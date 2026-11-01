@@ -1,10 +1,12 @@
 import { sections, ui } from './data/profile'
 import { DemoBand, Header, VariantPicker } from './components/Chrome'
 import { sectionComponents } from './sections'
+import { useReveal } from './lib/reveal'
 import { useSettings } from './lib/settings'
 
 export default function App() {
   const { t } = useSettings()
+  useReveal()
   const visible = sections.filter((s) => s.enabled)
   const main = visible.filter((s) => s.id !== 'footer')
   const footer = visible.find((s) => s.id === 'footer')

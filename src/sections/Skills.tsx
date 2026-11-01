@@ -7,7 +7,7 @@ export function Skills({ config }: { config: SectionConfig }) {
   const { t } = useSettings()
   return (
     <Section config={config} className="py-20 sm:py-28">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+      <div data-reveal className="mx-auto max-w-6xl px-4 sm:px-6">
         <Heading title={t(ui.skills.title)} />
         <div className="grid gap-4 md:grid-cols-3">
           {skills.groups.map((g, i) => (

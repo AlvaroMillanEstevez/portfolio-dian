@@ -11,7 +11,7 @@ export function Pillars({ config }: { config: SectionConfig }) {
   const { t, lang } = useSettings()
   return (
     <Section config={config} className="py-20 sm:py-28">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+      <div data-reveal className="mx-auto max-w-6xl px-4 sm:px-6">
         <Heading title={t(pillars.title)} />
         <div className="mb-10 flex h-4 gap-0.5 overflow-hidden rounded-full" role="img" aria-label={pillars.items.map((p) => `${t(p.name)} ${percent(p.share, lang)}`).join(', ')}>
           {pillars.items.map((p, i) => (

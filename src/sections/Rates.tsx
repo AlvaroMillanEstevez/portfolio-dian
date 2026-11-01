@@ -8,7 +8,7 @@ export function Rates({ config }: { config: SectionConfig }) {
   const { t, lang } = useSettings()
   return (
     <Section config={config} className="bg-sand/60 py-20 sm:py-28">
-      <div className="mx-auto max-w-3xl px-4 sm:px-6">
+      <div data-reveal className="mx-auto max-w-3xl px-4 sm:px-6">
         <Heading title={t(ui.rates.title)} />
         <div className="card overflow-hidden">
           <table className="w-full text-left text-sm">

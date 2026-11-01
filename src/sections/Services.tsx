@@ -7,7 +7,7 @@ export function Services({ config }: { config: SectionConfig }) {
   const { t } = useSettings()
   return (
     <Section config={config} className="bg-ink py-20 text-paper sm:py-28 invert-surface">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+      <div data-reveal className="mx-auto max-w-6xl px-4 sm:px-6">
         <Heading title={t(ui.services.title)} />
         <ol className="grid gap-px overflow-hidden rounded-[var(--radius-card)] border border-paper/15 bg-paper/15 sm:grid-cols-2 lg:grid-cols-3">
           {services.map((s, i) => (

@@ -16,7 +16,7 @@ export function Stats({ config }: { config: SectionConfig }) {
   ]
   return (
     <Section config={config} className="py-20 sm:py-28">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+      <div data-reveal className="mx-auto max-w-6xl px-4 sm:px-6">
         <Heading eyebrow={t(site.dataAsOf)} title={t(ui.stats.title)} />
         <dl className="grid grid-cols-2 gap-px overflow-hidden rounded-[var(--radius-card)] border border-line bg-line lg:grid-cols-5">
           {items.map((item, i) => (

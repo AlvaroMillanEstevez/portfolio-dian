@@ -205,6 +205,16 @@ export const identity = {
     en: 'Content creator · Travel, beauty & fashion',
     es: 'Creadora de contenido · Viajes, belleza y moda',
   } satisfies Localized,
+  /** Words in the scrolling band under the hero. */
+  keywords: [
+    { en: 'Travel', es: 'Viajes' },
+    { en: 'Beauty', es: 'Belleza' },
+    { en: 'Fashion', es: 'Moda' },
+    { en: 'Málaga', es: 'Málaga' },
+    { en: 'Indonesia', es: 'Indonesia' },
+    { en: 'Costa del Sol', es: 'Costa del Sol' },
+    { en: 'EN · ES · ID', es: 'EN · ES · ID' },
+  ] satisfies Localized[],
   portrait: {
     src: 'images/hero-portrait.svg',
     ratio: '4/5',
@@ -569,7 +579,7 @@ export const videos: Video[] = [
 
 export const caseStudies: CaseStudy[] = [
   {
-    brand: 'Alborán Air',
+    brand: 'Brisalia Air',
     sector: { en: 'Airline', es: 'Aerolínea' },
     campaign: {
       en: 'Launch of a new Málaga route: travel-day vlog and destination guide.',
@@ -581,13 +591,13 @@ export const caseStudies: CaseStudy[] = [
       { en: '6 Instagram Stories with link', es: '6 Stories de Instagram con enlace' },
     ],
     results: [
-      { label: { en: 'Views', es: 'Visualizaciones' }, value: '2.9M' },
-      { label: { en: 'Link clicks', es: 'Clics al enlace' }, value: '41K' },
-      { label: { en: 'Saves', es: 'Guardados' }, value: '88K' },
+      { label: { en: 'Views', es: 'Visualizaciones' }, value: 2_900_000 },
+      { label: { en: 'Link clicks', es: 'Clics al enlace' }, value: 41_000 },
+      { label: { en: 'Saves', es: 'Guardados' }, value: 88_000 },
     ],
   },
   {
-    brand: 'Casa Azahar',
+    brand: 'Hotel Celindra',
     sector: { en: 'Boutique hotel, Ronda', es: 'Hotel boutique, Ronda' },
     campaign: {
       en: 'Off-season weekend stay for Spanish couples.',
@@ -599,8 +609,8 @@ export const caseStudies: CaseStudy[] = [
       { en: '20 photos with usage rights', es: '20 fotos con derechos de uso' },
     ],
     results: [
-      { label: { en: 'Views', es: 'Visualizaciones' }, value: '1.1M' },
-      { label: { en: 'Bookings with code', es: 'Reservas con código' }, value: '126' },
+      { label: { en: 'Views', es: 'Visualizaciones' }, value: 1_100_000 },
+      { label: { en: 'Bookings with code', es: 'Reservas con código' }, value: 126 },
       { label: { en: 'Code', es: 'Código' }, value: 'DIAN10' },
     ],
   },
@@ -616,8 +626,8 @@ export const caseStudies: CaseStudy[] = [
       { en: '3 UGC ads for paid media', es: '3 anuncios UGC para publicidad' },
     ],
     results: [
-      { label: { en: 'Views', es: 'Visualizaciones' }, value: '1.8M' },
-      { label: { en: 'Sales with code', es: 'Ventas con código' }, value: '2,340' },
+      { label: { en: 'Views', es: 'Visualizaciones' }, value: 1_800_000 },
+      { label: { en: 'Sales with code', es: 'Ventas con código' }, value: 2_340 },
       { label: { en: 'Code', es: 'Código' }, value: 'DIANSUN' },
     ],
   },
@@ -759,7 +769,7 @@ export const testimonials: Testimonial[] = [
       es: 'Dian entendió nuestro hotel mejor que parte del equipo. Las reservas con su código pagaron la campaña en tres semanas.',
     },
     role: { en: 'Marketing lead', es: 'Responsable de marketing' },
-    brand: 'Casa Azahar',
+    brand: 'Hotel Celindra',
   },
   {
     quote: {
@@ -829,6 +839,11 @@ export const ui = {
   close: { en: 'Close', es: 'Cerrar' },
   language: { en: 'Language', es: 'Idioma' },
   workWithMe: { en: 'Work with me', es: 'Trabaja conmigo' },
+  heroStats: {
+    followers: { en: 'followers', es: 'seguidores' },
+    views: { en: 'views in 90 days', es: 'views en 90 días' },
+    engagement: { en: 'engagement', es: 'engagement' },
+  },
   downloadKit: { en: 'Download media kit', es: 'Descargar media kit' },
   stats: {
     title: { en: 'The numbers', es: 'Las cifras' },

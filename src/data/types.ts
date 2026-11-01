@@ -88,7 +88,8 @@ export type CaseStudy = {
   sector: Localized
   campaign: Localized
   deliverables: Localized[]
-  results: { label: Localized; value: string }[]
+  /** Numbers are formatted per language; text (e.g. a discount code) is shown as is. */
+  results: { label: Localized; value: number | string }[]
 }
 
 export type Testimonial = {

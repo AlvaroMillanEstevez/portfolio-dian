@@ -32,9 +32,9 @@ function Gender() {
   return (
     <figure className="card p-6">
       <figcaption className="mb-5 font-semibold">{t(ui.audience.gender)}</figcaption>
-      <div className="flex h-10 gap-0.5 overflow-hidden rounded-lg" aria-hidden="true">
+      <div className="flex h-10 gap-0.5 rounded-lg" aria-hidden="true">
         {audience.gender.map((g, i) => (
-          <div key={i} className={tones[i]} style={{ width: `${g.value}%` }} title={`${t(g.label)} · ${percent(g.value, lang)}`} />
+          <div key={i} className={`${tones[i]} first:rounded-l-lg last:rounded-r-lg`} style={{ width: `${g.value}%` }} data-tip={`${t(g.label)} · ${percent(g.value, lang)}`} />
         ))}
       </div>
       <ul className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-sm">
@@ -58,19 +58,19 @@ function Hours() {
         <span className="font-semibold">{t(ui.audience.hours)}</span>
         <span className="text-xs text-muted">{t(audience.activeHoursNote)}</span>
       </figcaption>
-      <div className="flex h-32 items-end gap-[2px]" role="img" aria-label={`${t(ui.audience.hours)}: 13–14 h, 20–22 h`}>
+      <div className="grid h-32 grid-cols-24 items-end gap-[2px]" role="img" aria-label={`${t(ui.audience.hours)}: 13–14 h, 20–22 h`}>
         {audience.activeHours.map((v, h) => (
           <div
             key={h}
-            title={`${h}:00 · ${v}`}
-            className={`flex-1 rounded-t-[3px] ${v >= peak * 0.8 ? 'bg-chart-1' : 'bg-chart-1/35'}`}
+            data-tip={`${h}:00 · ${Math.round((v / peak) * 100)}`}
+            className={`h-full rounded-t-[3px] ${v >= peak * 0.8 ? 'bg-chart-1' : 'bg-chart-1/35'}`}
             style={{ height: `${(v / peak) * 100}%` }}
           />
         ))}
       </div>
-      <div className="mt-2 flex justify-between text-[11px] text-muted tabular-nums" aria-hidden="true">
-        {[0, 6, 12, 18, 23].map((h) => (
-          <span key={h}>{h}h</span>
+      <div className="mt-2 grid grid-cols-24 text-[11px] text-muted tabular-nums" aria-hidden="true">
+        {audience.activeHours.map((_, h) => (
+          <span key={h} className="text-center">{h % 6 === 0 ? `${h}h` : ''}</span>
         ))}
       </div>
     </figure>
@@ -81,7 +81,7 @@ export function Audience({ config }: { config: SectionConfig }) {
   const { t } = useSettings()
   return (
     <Section config={config} className="py-20 sm:py-28">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+      <div data-reveal className="mx-auto max-w-6xl px-4 sm:px-6">
         <Heading eyebrow={t(audience.source)} title={t(ui.audience.title)} />
         <div className="grid gap-4 md:grid-cols-2">
           <Bars title={ui.audience.age} data={audience.age} />

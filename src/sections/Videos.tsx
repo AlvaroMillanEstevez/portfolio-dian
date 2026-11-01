@@ -17,7 +17,7 @@ export function Videos({ config }: { config: SectionConfig }) {
 
   return (
     <Section config={config} className="bg-sand/60 py-20 sm:py-28">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+      <div data-reveal className="mx-auto max-w-6xl px-4 sm:px-6">
         <Heading title={t(ui.videos.title)} />
         <div role="group" aria-label={t(ui.videos.filterLabel)} className="-mx-4 mb-8 flex gap-2 overflow-x-auto px-4 pb-1">
           {filters.map((f) => (

@@ -12,7 +12,7 @@ export function Footer({ config }: { config: SectionConfig }) {
   const { t } = useSettings()
   return (
     <Section as="footer" config={config} className="border-t border-line pt-20 pb-24 sm:pt-24">
-      <div className="mx-auto flex max-w-6xl flex-col gap-8 px-4 sm:flex-row sm:items-end sm:justify-between sm:px-6">
+      <div data-reveal className="mx-auto flex max-w-6xl flex-col gap-8 px-4 sm:flex-row sm:items-end sm:justify-between sm:px-6">
         <div>
           <p className="display text-4xl">
             {identity.firstName} {identity.lastName}

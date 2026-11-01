@@ -15,10 +15,11 @@
   --c-line: #e3d4c1;
   --c-accent: #b0502a;
   --c-accent-soft: #f2a97c;
-  --c-chart-1: #1f5e87;
-  --c-chart-2: #c8643b;
-  --c-chart-3: #d9a23c;
-  --c-chart-4: #5e8c61;
+  /* Chart colours checked for colour-blind separation (dataviz validator). */
+  --c-chart-1: #1b6da8;
+  --c-chart-2: #c75a35;
+  --c-chart-3: #d5961f;
+  --c-chart-4: #3f9659;
   --c-error: #b3261e;
 
   --f-display: 'Fraunces Variable', 'Iowan Old Style', Georgia, serif;
@@ -42,10 +43,10 @@
   --c-line: #d3c8b8;
   --c-accent: #7b4a2a;
   --c-accent-soft: #d6b48a;
-  --c-chart-1: #23324d;
-  --c-chart-2: #9a6a3a;
-  --c-chart-3: #b9975b;
-  --c-chart-4: #6e7f6a;
+  --c-chart-1: #3a5a98;
+  --c-chart-2: #b0602a;
+  --c-chart-3: #c99a2e;
+  --c-chart-4: #3f9160;
 
   --f-display: 'Bodoni Moda Variable', 'Didot', 'Bodoni 72', Georgia, serif;
   --f-body: 'Manrope Variable', system-ui, -apple-system, 'Segoe UI', sans-serif;
@@ -199,6 +200,53 @@
     background: none;
   }
 
+  /* Scrolling band of keywords under the hero. */
+  .marquee {
+    display: flex;
+    width: max-content;
+    animation: marquee 40s linear infinite;
+  }
+  @keyframes marquee {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  /* Small tooltip for chart marks: <div data-tip="..."> */
+  [data-tip] {
+    position: relative;
+  }
+  [data-tip]:hover::after,
+  [data-tip]:focus-visible::after {
+    content: attr(data-tip);
+    position: absolute;
+    bottom: calc(100% + 6px);
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    padding: 0.3rem 0.55rem;
+    border-radius: 6px;
+    background: var(--c-ink);
+    color: var(--c-paper);
+    font-size: 11px;
+    font-weight: 600;
+    pointer-events: none;
+    z-index: 10;
+  }
+
+  /* Gentle fade-up when a section enters the screen (see lib/reveal.ts). */
+  .reveal-ready [data-reveal] {
+    opacity: 0;
+    transform: translateY(18px);
+    transition:
+      opacity 0.7s ease,
+      transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .reveal-ready [data-reveal].is-visible {
+    opacity: 1;
+    transform: none;
+  }
+
   /* Review mode */
   .review-number {
     display: grid;
@@ -214,6 +262,33 @@
   }
 }
 
+/* Unlayered rules below override utilities set inside components. */
+/* Hero portrait: an Andalusian arch in "sol", an offset frame in "editorial". */
+.hero-photo {
+  /* A semicircular top on a 4:5 photo: horizontal radius 50% of width = 40% of height. */
+  border-radius: 50% 50% var(--radius-media) var(--radius-media) / 40% 40% var(--radius-media) var(--radius-media);
+}
+.hero-frame {
+  position: relative;
+}
+.hero-frame::before {
+  content: '';
+  position: absolute;
+  inset: -12px;
+  border: 1px solid var(--c-accent);
+  border-radius: 50% 50% calc(var(--radius-media) + 12px) calc(var(--radius-media) + 12px) / 40% 40% calc(var(--radius-media) + 12px) calc(var(--radius-media) + 12px);
+  opacity: 0.45;
+}
+[data-variant='editorial'] .hero-photo,
+[data-variant='editorial'] .hero-frame::before {
+  border-radius: 0;
+}
+[data-variant='editorial'] .hero-frame::before {
+  inset: 18px -18px -18px 18px;
+  border-color: var(--c-ink);
+  opacity: 0.8;
+}
+
 /* Unlayered so it beats the top-3 utility: the hero starts under the fixed header. */
 #hero .review-tag {
   top: 6.5rem;
@@ -226,7 +301,7 @@
   *,
   *::before,
   *::after {
-    animation-duration: 0.01ms !important;
+    animation: none !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }

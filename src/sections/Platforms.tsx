@@ -12,7 +12,7 @@ export function Platforms({ config }: { config: SectionConfig }) {
   const { t, lang } = useSettings()
   return (
     <Section config={config} className="bg-sand/60 py-20 sm:py-28">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+      <div data-reveal className="mx-auto max-w-6xl px-4 sm:px-6">
         <Heading eyebrow={t(site.dataAsOf)} title={t(ui.platforms.title)} />
         <ul className="grid gap-4 sm:grid-cols-2">
           {platforms.map((p) => {

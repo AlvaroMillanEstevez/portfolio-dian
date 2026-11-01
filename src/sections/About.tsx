@@ -10,7 +10,7 @@ export function About({ config }: { config: SectionConfig }) {
   const eyebrow = sections.find((s) => s.id === 'about')?.nav
   return (
     <Section config={config} className="bg-sand/60 py-20 sm:py-28">
-      <div className="mx-auto grid max-w-6xl gap-12 px-4 sm:px-6 md:grid-cols-2 md:gap-16">
+      <div data-reveal className="mx-auto grid max-w-6xl gap-12 px-4 sm:px-6 md:grid-cols-2 md:gap-16">
         <div>
           <Heading eyebrow={eyebrow && t(eyebrow)} title={t(about.title)} />
           <div className="space-y-5 text-lg leading-relaxed text-ink/85">

@@ -1,13 +1,14 @@
 import { caseStudies, site, ui } from '../data/profile'
 import type { SectionConfig } from '../data/types'
 import { Heading, Section } from '../components/Section'
+import { compact } from '../lib/format'
 import { useSettings } from '../lib/settings'
 
 export function Cases({ config }: { config: SectionConfig }) {
-  const { t } = useSettings()
+  const { t, lang } = useSettings()
   return (
     <Section config={config} className="py-20 sm:py-28">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+      <div data-reveal className="mx-auto max-w-6xl px-4 sm:px-6">
         <Heading title={t(ui.cases.title)} />
         <ul className="grid gap-4 lg:grid-cols-3">
           {caseStudies.map((c) => (
@@ -26,7 +27,7 @@ export function Cases({ config }: { config: SectionConfig }) {
                 {c.results.map((r, i) => (
                   <div key={i} className="flex flex-col-reverse">
                     <dt className="text-[11px] leading-tight text-muted">{t(r.label)}</dt>
-                    <dd className="display text-2xl">{r.value}</dd>
+                    <dd className="display text-2xl">{typeof r.value === 'number' ? compact(r.value, lang) : r.value}</dd>
                   </div>
                 ))}
               </dl>

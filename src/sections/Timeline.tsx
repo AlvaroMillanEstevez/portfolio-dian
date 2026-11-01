@@ -7,7 +7,7 @@ export function Timeline({ config }: { config: SectionConfig }) {
   const { t } = useSettings()
   return (
     <Section config={config} className="bg-sand/60 py-20 sm:py-28">
-      <div className="mx-auto max-w-3xl px-4 sm:px-6">
+      <div data-reveal className="mx-auto max-w-3xl px-4 sm:px-6">
         <Heading title={t(ui.timeline.title)} />
         <ol className="relative border-l border-line pl-8">
           {timeline.map((m, i) => (

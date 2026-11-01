@@ -60,7 +60,7 @@ export function Contact({ config }: { config: SectionConfig }) {
 
   return (
     <Section config={config} className="py-20 sm:py-28">
-      <div className="mx-auto grid max-w-6xl gap-12 px-4 sm:px-6 md:grid-cols-[0.8fr_1.2fr]">
+      <div data-reveal className="mx-auto grid max-w-6xl gap-12 px-4 sm:px-6 md:grid-cols-[0.8fr_1.2fr]">
         <div>
           <Heading title={t(ui.contact.title)} />
           <p className="text-lg leading-relaxed text-ink/85">{t(ui.contact.intro)}</p>
