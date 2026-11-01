@@ -1,0 +1,233 @@
+@import 'tailwindcss';
+
+/*
+ * Design tokens. Two visual variants, chosen with <html data-variant="...">:
+ *   sol       – bright and Mediterranean (sand, terracotta, sea blue)
+ *   editorial – elegant, magazine-like (ivory, ink, batik brown)
+ * Components only use the token names below, so a variant is just a set of values.
+ */
+:root,
+[data-variant='sol'] {
+  --c-paper: #fbf7f1;
+  --c-sand: #f2e7d8;
+  --c-ink: #2b211c;
+  --c-muted: #6c5e55;
+  --c-line: #e3d4c1;
+  --c-accent: #b0502a;
+  --c-accent-soft: #f2a97c;
+  --c-chart-1: #1f5e87;
+  --c-chart-2: #c8643b;
+  --c-chart-3: #d9a23c;
+  --c-chart-4: #5e8c61;
+  --c-error: #b3261e;
+
+  --f-display: 'Fraunces Variable', 'Iowan Old Style', Georgia, serif;
+  --f-body: 'Plus Jakarta Sans Variable', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --display-weight: 480;
+  --display-tracking: -0.02em;
+  --display-variation: normal;
+  --eyebrow-transform: none;
+  --eyebrow-tracking: 0.01em;
+
+  --radius-card: 1.5rem;
+  --radius-media: 1.25rem;
+  --radius-btn: 999px;
+}
+
+[data-variant='editorial'] {
+  --c-paper: #f5f1ea;
+  --c-sand: #e9e1d4;
+  --c-ink: #171412;
+  --c-muted: #5c544c;
+  --c-line: #d3c8b8;
+  --c-accent: #7b4a2a;
+  --c-accent-soft: #d6b48a;
+  --c-chart-1: #23324d;
+  --c-chart-2: #9a6a3a;
+  --c-chart-3: #b9975b;
+  --c-chart-4: #6e7f6a;
+
+  --f-display: 'Bodoni Moda Variable', 'Didot', 'Bodoni 72', Georgia, serif;
+  --f-body: 'Manrope Variable', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --display-weight: 420;
+  --display-tracking: -0.01em;
+  --display-variation: normal;
+  --eyebrow-transform: uppercase;
+  --eyebrow-tracking: 0.18em;
+
+  --radius-card: 2px;
+  --radius-media: 0px;
+  --radius-btn: 2px;
+}
+
+@theme inline {
+  --color-paper: var(--c-paper);
+  --color-sand: var(--c-sand);
+  --color-ink: var(--c-ink);
+  --color-muted: var(--c-muted);
+  --color-line: var(--c-line);
+  --color-accent: var(--c-accent);
+  --color-accent-soft: var(--c-accent-soft);
+  --color-chart-1: var(--c-chart-1);
+  --color-chart-2: var(--c-chart-2);
+  --color-chart-3: var(--c-chart-3);
+  --color-chart-4: var(--c-chart-4);
+  --color-error: var(--c-error);
+  /* Review-mode chrome uses its own colour so it never looks like part of the design. */
+  --color-review: #6d3fc7;
+  --font-display: var(--f-display);
+  --font-body: var(--f-body);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    background: var(--c-paper);
+    color: var(--c-ink);
+    font-family: var(--f-body);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  ::selection {
+    background: var(--c-accent);
+    color: var(--c-paper);
+  }
+  :focus-visible {
+    outline: 2px solid var(--c-accent);
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  .display {
+    font-family: var(--f-display);
+    font-weight: var(--display-weight);
+    letter-spacing: var(--display-tracking);
+    font-variation-settings: var(--display-variation);
+    line-height: 1.02;
+  }
+  .display-quote {
+    font-family: var(--f-display);
+    font-style: italic;
+    font-weight: 400;
+  }
+  .eyebrow {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--c-accent);
+    text-transform: var(--eyebrow-transform);
+    letter-spacing: var(--eyebrow-tracking);
+  }
+  .card {
+    background: var(--c-paper);
+    border: 1px solid var(--c-line);
+    border-radius: var(--radius-card);
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: 3rem;
+    padding-inline: 1.5rem;
+    border-radius: var(--radius-btn);
+    font-weight: 600;
+    transition:
+      background-color 0.2s,
+      color 0.2s,
+      transform 0.2s;
+  }
+  .btn:active {
+    transform: translateY(1px);
+  }
+  .btn-primary {
+    background: var(--c-ink);
+    color: var(--c-paper);
+  }
+  .btn-primary:hover {
+    background: var(--c-accent);
+  }
+  .btn-ghost {
+    border: 1px solid var(--c-ink);
+  }
+  .btn-ghost:hover {
+    background: var(--c-ink);
+    color: var(--c-paper);
+  }
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
+    border: 1px solid var(--c-line);
+    border-radius: var(--radius-btn);
+    padding: 0.4rem 0.9rem;
+    font-size: 0.85rem;
+    background: var(--c-paper);
+  }
+  .chip-on {
+    background: var(--c-ink);
+    border-color: var(--c-ink);
+    color: var(--c-paper);
+  }
+  .input {
+    width: 100%;
+    min-height: 2.9rem;
+    border: 1px solid var(--c-line);
+    border-radius: calc(var(--radius-card) / 2);
+    background: var(--c-paper);
+    padding: 0.65rem 0.9rem;
+    font-size: 1rem; /* 16px avoids zoom on iOS */
+  }
+  .input:focus {
+    outline: 2px solid var(--c-accent);
+    outline-offset: 0;
+    border-color: transparent;
+  }
+  .input[aria-invalid='true'] {
+    border-color: var(--c-error);
+  }
+
+  .hero-bg {
+    background:
+      radial-gradient(60rem 30rem at 85% 0%, color-mix(in oklab, var(--c-chart-3) 22%, transparent), transparent 70%),
+      radial-gradient(40rem 30rem at 0% 100%, color-mix(in oklab, var(--c-chart-1) 10%, transparent), transparent 70%);
+  }
+  [data-variant='editorial'] .hero-bg {
+    background: none;
+  }
+
+  /* Review mode */
+  .review-number {
+    display: grid;
+    place-items: center;
+    min-width: 2.75rem;
+    height: 2.75rem;
+    padding-inline: 0.5rem;
+    border-radius: 999px;
+    background: var(--color-review);
+    color: #fff;
+    font: 700 1.35rem/1 var(--f-body);
+    box-shadow: 0 4px 14px rgb(109 63 199 / 0.35);
+  }
+}
+
+/* Unlayered so it beats the top-3 utility: the hero starts under the fixed header. */
+#hero .review-tag {
+  top: 6.5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
