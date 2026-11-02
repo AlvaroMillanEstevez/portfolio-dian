@@ -188,8 +188,7 @@ export const sections: SectionConfig[] = [
 
 export const identity = {
   firstName: 'Dian',
-  /** Fictional surname for the demo. */
-  lastName: 'Sekarwati',
+  lastName: 'Novitasari',
   handle: '@dian.demo',
   city: { en: 'Málaga, Spain', es: 'Málaga, España' } satisfies Localized,
   /** Hero line under the name: "{role} based in {city}". */
@@ -844,7 +843,7 @@ export const contact = {
 /* ------------------------------------------------------------------ */
 
 export const ui = {
-  demoBand: { en: 'Demo prototype · all data is fictional', es: 'Prototipo demo · todos los datos son ficticios' },
+  demoBand: { en: 'Demo prototype · numbers and brands are fictional', es: 'Prototipo demo · cifras y marcas ficticias' },
   skipToContent: { en: 'Skip to content', es: 'Saltar al contenido' },
   menu: { en: 'Menu', es: 'Menú' },
   close: { en: 'Close', es: 'Cerrar' },

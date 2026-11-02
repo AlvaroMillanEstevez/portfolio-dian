@@ -2,9 +2,9 @@
 
 Web demo · Web demo: https://alvaromillanestevez.github.io/portfolio-dian/
 
-**ES:** Todo lo que ves es inventado: las cifras, las marcas, el apellido y el usuario. Mira la web en el móvil. Cada sección tiene un número morado grande y una nota que explica qué va ahí. Responde aquí abajo por número, por ejemplo "la 7 me encanta, la 11 fuera".
+**ES:** Todo lo que ves es inventado: las cifras, las marcas y el usuario. Tu nombre y la ciudad sí son reales. Mira la web en el móvil. Cada sección tiene un número morado grande y una nota que explica qué va ahí. Responde aquí abajo por número, por ejemplo "la 7 me encanta, la 11 fuera".
 
-**ID:** Semua yang kamu lihat adalah contoh: angka, brand, nama belakang dan username. Lihat web-nya di HP. Setiap bagian punya nomor ungu besar dan catatan yang menjelaskan isinya. Jawab di bawah sesuai nomor, misalnya "nomor 7 suka banget, nomor 11 hapus".
+**ID:** Semua yang kamu lihat adalah contoh: angka, brand dan username. Nama dan kotamu asli. Lihat web-nya di HP. Setiap bagian punya nomor ungu besar dan catatan yang menjelaskan isinya. Jawab di bawah sesuai nomor, misalnya "nomor 7 suka banget, nomor 11 hapus".
 
 ---
 
@@ -48,7 +48,7 @@ Untuk setiap bagian: suka?, mau ubah apa?, dihapus?
 **Preguntas concretas · Pertanyaan khusus**
 
 - **Frase (1):** ¿Te gusta "An Indonesian soul with a Spanish home…"? ¿La cambiarías? · Suka tagline "An Indonesian soul with a Spanish home…"? Mau diganti?
-- **Nombre:** En la demo el apellido es inventado. ¿Ponemos tu nombre completo (como en el tablero de marca), solo "Dian" o un nombre artístico? El logo usa las iniciales. · Di demo nama belakangnya fiktif. Mau pakai nama lengkap (seperti di brand board), hanya "Dian", atau nama panggung? Logonya pakai inisial.
+- **Nombre:** La web usa "Dian Novitasari", como en el tablero de marca. ¿Está bien así? · Web-nya pakai "Dian Novitasari", seperti di brand board. Sudah oke?
 - **Tarifas (13):** ¿Mostramos precios o solo "Tarifas bajo petición"? · Harga ditampilkan atau hanya "Rates on request"?
 - **Servicios (9):** ¿Hay algún servicio que no quieras ofrecer, o falta alguno? · Ada layanan yang tidak mau ditawarkan, atau ada yang kurang?
 - **Idiomas de la web:** inglés y español. ¿Te parece bien? · Bahasa web: Inggris dan Spanyol. Oke?

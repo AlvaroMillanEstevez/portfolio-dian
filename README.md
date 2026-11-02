@@ -1,7 +1,7 @@
 # Dian · media kit (prototipo)
 
 Prototipo del portfolio / media kit web de Dian, creadora de contenido en Málaga.
-**Todos los datos son ficticios** (cifras, marcas, usuario `@dian.demo`, apellido y testimonios). Sirve para que Dian elija qué secciones y qué estilo quiere antes de poner los datos reales.
+**Todos los datos son ficticios** (cifras, marcas, usuario `@dian.demo` y testimonios); solo el nombre completo y la ciudad son reales. Sirve para que Dian elija qué secciones y qué estilo quiere antes de poner los datos reales.
 
 - Web: https://alvaromillanestevez.github.io/portfolio-dian/
 - Feedback de Dian: [FEEDBACK_DIAN.md](FEEDBACK_DIAN.md)
@@ -52,7 +52,7 @@ En `sections`, cada sección tiene `enabled: true/false`. Con `false` desaparece
 En `site`:
 
 - `reviewMode: true` muestra los números de sección, las notas para Dian (en español e indonesio) y las etiquetas de foto.
-- `demo: true` muestra la banda fija "Demo prototype · all data is fictional" y la etiqueta "Marca ficticia".
+- `demo: true` muestra la banda fija "Demo prototype · numbers and brands are fictional" y la etiqueta "Marca ficticia".
 
 Para la versión real, los dos van a `false`.
 
@@ -64,7 +64,7 @@ Para la versión real, los dos van a `false`.
 
 El diseño sigue el tablero de marca de Dian: burdeos `#6B0F2A`, azul cielo `#CDE8FF`, mantequilla `#FFE7A3` y azul marino `#102542` sobre crema. Los colores y tipografías son variables CSS al principio de [`src/index.css`](src/index.css). Las fuentes son Fraunces (titulares), Plus Jakarta Sans (texto) y Ephesis (manuscrita, para el lema y la polaroid). Se sirven desde la propia web con Fontsource, sin peticiones a Google.
 
-Los elementos de marca están en [`src/components/Brand.tsx`](src/components/Brand.tsx): monograma, ruta del avión con corazón, buganvilla y sello redondo. El dibujo de Málaga es [`public/images/malaga-sketch.svg`](public/images/malaga-sketch.svg). El favicon (`public/favicon.svg`) es una "D" fija: si cambia el nombre, hay que retocarlo a mano.
+Los elementos de marca están en [`src/components/Brand.tsx`](src/components/Brand.tsx): monograma, ruta del avión con corazón, buganvilla y sello redondo. El dibujo de Málaga es [`public/images/malaga-sketch.svg`](public/images/malaga-sketch.svg). El favicon (`public/favicon.svg`) es un archivo fijo con "DN": si cambia el nombre, hay que retocarlo a mano.
 
 Los colores de los gráficos (`--c-chart-*`) están comprobados para daltonismo; si se cambian, hay que volver a validarlos.
 

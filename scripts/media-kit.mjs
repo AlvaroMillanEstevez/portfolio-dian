@@ -24,8 +24,8 @@ const totals = {
 }
 
 const L = {
-  en: { followers: 'Followers', views: 'Views · 90 days', avg: 'Avg. views', er: 'Engagement', platforms: 'Platforms', audience: 'Audience', countries: 'Top countries', age: 'Age', women: 'Women', services: 'Services', cases: 'Selected partnerships', contact: 'Contact through the form on my website', demo: 'DEMO · all data and brands are fictional' },
-  es: { followers: 'Seguidores', views: 'Views · 90 días', avg: 'Media de views', er: 'Engagement', platforms: 'Plataformas', audience: 'Audiencia', countries: 'Países principales', age: 'Edad', women: 'Mujeres', services: 'Servicios', cases: 'Colaboraciones destacadas', contact: 'Contacto a través del formulario de mi web', demo: 'DEMO · todos los datos y marcas son ficticios' },
+  en: { followers: 'Followers', views: 'Views · 90 days', avg: 'Avg. views', er: 'Engagement', platforms: 'Platforms', audience: 'Audience', countries: 'Top countries', age: 'Age', women: 'Women', services: 'Services', cases: 'Selected partnerships', contact: 'Contact through the form on my website', demo: 'DEMO · numbers and brands are fictional' },
+  es: { followers: 'Seguidores', views: 'Views · 90 días', avg: 'Media de views', er: 'Engagement', platforms: 'Plataformas', audience: 'Audiencia', countries: 'Países principales', age: 'Edad', women: 'Mujeres', services: 'Servicios', cases: 'Colaboraciones destacadas', contact: 'Contacto a través del formulario de mi web', demo: 'DEMO · cifras y marcas ficticias' },
 }[lang]
 
 const bars = (rows) => {
