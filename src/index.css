@@ -1,83 +1,54 @@
 @import 'tailwindcss';
 
 /*
- * Design tokens. Two visual variants, chosen with <html data-variant="...">:
- *   sol       – bright and Mediterranean (sand, terracotta, sea blue)
- *   editorial – elegant, magazine-like (ivory, ink, batik brown)
- * Components only use the token names below, so a variant is just a set of values.
+ * Design tokens, taken from Dian's brand board:
+ * burgundy #6B0F2A, sky #CDE8FF, butter #FFE7A3 and navy #102542 on a warm cream.
+ * Components only use the token names below.
  */
-:root,
-[data-variant='sol'] {
-  --c-paper: #fbf7f1;
-  --c-sand: #f2e7d8;
-  --c-ink: #2b211c;
-  --c-muted: #6c5e55;
-  --c-line: #e3d4c1;
-  --c-accent: #b0502a;
-  --c-accent-soft: #f2a97c;
-  /* Chart colours checked for colour-blind separation (dataviz validator). */
-  --c-chart-1: #1b6da8;
-  --c-chart-2: #c75a35;
-  --c-chart-3: #d5961f;
-  --c-chart-4: #3f9659;
+:root {
+  --c-paper: #fbf6f1;
+  --c-card: #fffdfa;
+  --c-sand: #f4ebe2;
+  --c-ink: #102542;
+  --c-muted: #55607a;
+  --c-line: #e8dcd0;
+  --c-accent: #6b0f2a;
+  --c-accent-hover: #4f0b1f;
+  --c-sky: #cde8ff;
+  --c-butter: #ffe7a3;
+  /* Chart colours checked for colour-blind separation (dataviz validator, on --c-paper). */
+  --c-chart-1: #2f62a3;
+  --c-chart-2: #a8325a;
+  --c-chart-3: #c8952a;
   --c-error: #b3261e;
 
   --f-display: 'Fraunces Variable', 'Iowan Old Style', Georgia, serif;
   --f-body: 'Plus Jakarta Sans Variable', system-ui, -apple-system, 'Segoe UI', sans-serif;
-  --display-weight: 480;
-  --display-tracking: -0.02em;
-  --display-variation: normal;
-  --eyebrow-transform: none;
-  --eyebrow-tracking: 0.01em;
+  --f-script: 'Ephesis', 'Segoe Script', cursive;
 
-  --radius-card: 1.5rem;
-  --radius-media: 1.25rem;
-  --radius-btn: 999px;
-}
-
-[data-variant='editorial'] {
-  --c-paper: #f5f1ea;
-  --c-sand: #e9e1d4;
-  --c-ink: #171412;
-  --c-muted: #5c544c;
-  --c-line: #d3c8b8;
-  --c-accent: #7b4a2a;
-  --c-accent-soft: #d6b48a;
-  --c-chart-1: #3a5a98;
-  --c-chart-2: #b0602a;
-  --c-chart-3: #c99a2e;
-  --c-chart-4: #3f9160;
-
-  --f-display: 'Bodoni Moda Variable', 'Didot', 'Bodoni 72', Georgia, serif;
-  --f-body: 'Manrope Variable', system-ui, -apple-system, 'Segoe UI', sans-serif;
-  --display-weight: 420;
-  --display-tracking: -0.01em;
-  --display-variation: normal;
-  --eyebrow-transform: uppercase;
-  --eyebrow-tracking: 0.18em;
-
-  --radius-card: 2px;
-  --radius-media: 0px;
-  --radius-btn: 2px;
+  --radius-card: 1.25rem;
+  --radius-media: 1rem;
 }
 
 @theme inline {
   --color-paper: var(--c-paper);
+  --color-card: var(--c-card);
   --color-sand: var(--c-sand);
   --color-ink: var(--c-ink);
   --color-muted: var(--c-muted);
   --color-line: var(--c-line);
   --color-accent: var(--c-accent);
-  --color-accent-soft: var(--c-accent-soft);
+  --color-sky: var(--c-sky);
+  --color-butter: var(--c-butter);
   --color-chart-1: var(--c-chart-1);
   --color-chart-2: var(--c-chart-2);
   --color-chart-3: var(--c-chart-3);
-  --color-chart-4: var(--c-chart-4);
   --color-error: var(--c-error);
   /* Review-mode chrome uses its own colour so it never looks like part of the design. */
   --color-review: #6d3fc7;
   --font-display: var(--f-display);
   --font-body: var(--f-body);
+  --font-script: var(--f-script);
 }
 
 @layer base {
@@ -105,9 +76,8 @@
 @layer components {
   .display {
     font-family: var(--f-display);
-    font-weight: var(--display-weight);
-    letter-spacing: var(--display-tracking);
-    font-variation-settings: var(--display-variation);
+    font-weight: 450;
+    letter-spacing: -0.015em;
     line-height: 1.02;
   }
   .display-quote {
@@ -115,15 +85,33 @@
     font-style: italic;
     font-weight: 400;
   }
+  .script {
+    font-family: var(--f-script);
+    font-weight: 400;
+    line-height: 1;
+  }
+  /* Wide-spaced capitals, as in "TRAVEL · LIFESTYLE · CONTENT CREATOR". */
   .eyebrow {
-    font-size: 0.78rem;
+    font-size: 0.72rem;
     font-weight: 600;
-    color: var(--c-accent);
-    text-transform: var(--eyebrow-transform);
-    letter-spacing: var(--eyebrow-tracking);
+    color: var(--c-ink);
+    text-transform: uppercase;
+    letter-spacing: 0.24em;
+  }
+  .eyebrow-line {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.9rem;
+  }
+  .eyebrow-line::before {
+    content: '';
+    width: 2rem;
+    height: 1px;
+    background: currentColor;
+    opacity: 0.5;
   }
   .card {
-    background: var(--c-paper);
+    background: var(--c-card);
     border: 1px solid var(--c-line);
     border-radius: var(--radius-card);
   }
@@ -133,8 +121,8 @@
     justify-content: center;
     gap: 0.5rem;
     min-height: 3rem;
-    padding-inline: 1.5rem;
-    border-radius: var(--radius-btn);
+    padding-inline: 1.6rem;
+    border-radius: 999px;
     font-weight: 600;
     transition:
       background-color 0.2s,
@@ -145,39 +133,68 @@
     transform: translateY(1px);
   }
   .btn-primary {
-    background: var(--c-ink);
+    background: var(--c-accent);
     color: var(--c-paper);
   }
   .btn-primary:hover {
-    background: var(--c-accent);
+    background: var(--c-accent-hover);
   }
   .btn-ghost {
-    border: 1px solid var(--c-ink);
+    border: 1px solid var(--c-accent);
+    color: var(--c-accent);
   }
   .btn-ghost:hover {
-    background: var(--c-ink);
+    background: var(--c-accent);
     color: var(--c-paper);
+  }
+  /* Outlined location pill: "📍 MÁLAGA, SPAIN". */
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border: 1px solid var(--c-accent);
+    border-radius: 999px;
+    padding: 0.45rem 1.1rem;
+    color: var(--c-accent);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+  }
+  /* Burgundy rounded-square tiles for social links. */
+  .social-tile {
+    display: grid;
+    place-items: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: 0.8rem;
+    background: var(--c-accent);
+    color: var(--c-paper);
+    transition: background-color 0.2s;
+  }
+  a.social-tile:hover {
+    background: var(--c-accent-hover);
   }
   .chip {
     display: inline-flex;
     align-items: center;
     white-space: nowrap;
     border: 1px solid var(--c-line);
-    border-radius: var(--radius-btn);
+    border-radius: 999px;
     padding: 0.4rem 0.9rem;
     font-size: 0.85rem;
-    background: var(--c-paper);
+    background: var(--c-card);
   }
   .chip-on {
-    background: var(--c-ink);
-    border-color: var(--c-ink);
+    background: var(--c-accent);
+    border-color: var(--c-accent);
     color: var(--c-paper);
   }
   .input {
     width: 100%;
     min-height: 2.9rem;
     border: 1px solid var(--c-line);
-    border-radius: calc(var(--radius-card) / 2);
+    border-radius: 0.75rem;
     background: var(--c-paper);
     padding: 0.65rem 0.9rem;
     font-size: 1rem; /* 16px avoids zoom on iOS */
@@ -191,25 +208,26 @@
     border-color: var(--c-error);
   }
 
+  /* Soft sun (butter) and sea (sky) glows behind the hero. */
   .hero-bg {
     background:
-      radial-gradient(60rem 30rem at 85% 0%, color-mix(in oklab, var(--c-chart-3) 22%, transparent), transparent 70%),
-      radial-gradient(40rem 30rem at 0% 100%, color-mix(in oklab, var(--c-chart-1) 10%, transparent), transparent 70%);
-  }
-  [data-variant='editorial'] .hero-bg {
-    background: none;
+      radial-gradient(38rem 26rem at 92% 4%, color-mix(in oklab, var(--c-butter) 70%, transparent), transparent 70%),
+      radial-gradient(40rem 30rem at -5% 100%, color-mix(in oklab, var(--c-sky) 60%, transparent), transparent 70%);
   }
 
-  /* Scrolling band of keywords under the hero. */
-  .marquee {
-    display: flex;
-    width: max-content;
-    animation: marquee 40s linear infinite;
+  /* Soft colour blob behind the content-focus icons. */
+  .blob {
+    border-radius: 58% 42% 55% 45% / 48% 58% 42% 52%;
   }
-  @keyframes marquee {
-    to {
-      transform: translateX(-50%);
-    }
+
+  /* Instant-camera frame with a handwritten caption. */
+  .polaroid {
+    background: #fff;
+    padding: 0.6rem 0.6rem 0;
+    box-shadow:
+      0 1px 2px rgb(16 37 66 / 0.08),
+      0 14px 34px rgb(16 37 66 / 0.14);
+    transform: rotate(-2.5deg);
   }
 
   /* Small tooltip for chart marks: <div data-tip="..."> */
@@ -263,30 +281,25 @@
 }
 
 /* Unlayered rules below override utilities set inside components. */
-/* Hero portrait: an Andalusian arch in "sol", an offset frame in "editorial". */
+/* Hero portrait melts into the page: downwards on phones, to the left on wide screens. */
 .hero-photo {
-  /* A semicircular top on a 4:5 photo: horizontal radius 50% of width = 40% of height. */
-  border-radius: 50% 50% var(--radius-media) var(--radius-media) / 40% 40% var(--radius-media) var(--radius-media);
+  border-radius: 0;
+  background: transparent;
 }
-.hero-frame {
-  position: relative;
-}
-.hero-frame::before {
+.hero-photo::after {
   content: '';
   position: absolute;
-  inset: -12px;
-  border: 1px solid var(--c-accent);
-  border-radius: 50% 50% calc(var(--radius-media) + 12px) calc(var(--radius-media) + 12px) / 40% 40% calc(var(--radius-media) + 12px) calc(var(--radius-media) + 12px);
-  opacity: 0.45;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 62%, var(--c-paper));
+  pointer-events: none;
 }
-[data-variant='editorial'] .hero-photo,
-[data-variant='editorial'] .hero-frame::before {
-  border-radius: 0;
-}
-[data-variant='editorial'] .hero-frame::before {
-  inset: 18px -18px -18px 18px;
-  border-color: var(--c-ink);
-  opacity: 0.8;
+@media (min-width: 768px) {
+  .hero-photo {
+    border-radius: var(--radius-media);
+  }
+  .hero-photo::after {
+    background: linear-gradient(to right, var(--c-paper), transparent 30%), linear-gradient(to bottom, transparent 75%, var(--c-paper));
+  }
 }
 
 /* Unlayered so it beats the top-3 utility: the hero starts under the fixed header. */

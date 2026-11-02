@@ -25,11 +25,11 @@ Todo el contenido vive en **un único archivo: [`src/data/profile.ts`](src/data/
 
 | Quiero cambiar…                         | Dónde, dentro de `profile.ts`                         |
 | --------------------------------------- | ----------------------------------------------------- |
-| Nombre, frase, ciudad, usuario          | `identity`                                            |
+| Nombre, frase, ciudad, usuario, lema    | `identity` (el monograma y el sello usan las iniciales de `firstName` y `lastName`) |
 | Cifras por red (seguidores, views…)     | `platforms`                                           |
 | Cifras clave (sección 2)                | Se calculan solas a partir de `platforms`; solo `growth6m` se escribe a mano |
 | Texto "Sobre mí" y sus fotos            | `about`                                               |
-| Pilares y porcentajes                   | `pillars` (los porcentajes deben sumar 100)            |
+| Temas ("Content focus") y porcentajes   | `pillars` (los porcentajes deben sumar 100; `icon` elige el dibujo) |
 | Audiencia                               | `audience`                                            |
 | Mejores vídeos                          | `videos` (y `categories` para los filtros)             |
 | Colaboraciones, testimonios             | `caseStudies`, `testimonials`                          |
@@ -51,7 +51,7 @@ En `sections`, cada sección tiene `enabled: true/false`. Con `false` desaparece
 
 En `site`:
 
-- `reviewMode: true` muestra los números de sección, las notas para Dian (en español e indonesio), las etiquetas de foto y el selector de estilo.
+- `reviewMode: true` muestra los números de sección, las notas para Dian (en español e indonesio) y las etiquetas de foto.
 - `demo: true` muestra la banda fija "Demo prototype · all data is fictional" y la etiqueta "Marca ficticia".
 
 Para la versión real, los dos van a `false`.
@@ -60,11 +60,13 @@ Para la versión real, los dos van a `false`.
 
 `site.defaultLang` (`'en'` o `'es'`). El visitante puede cambiarlo con el selector EN/ES (se recuerda en su navegador). También funciona con `?lang=es` en la URL.
 
-### Variante de diseño
+### Diseño y marca
 
-Hay dos variantes: `sol` (luminosa, mediterránea) y `editorial` (elegante). Se elige con `site.defaultVariant`. En modo revisión aparece abajo un selector para compararlas.
+El diseño sigue el tablero de marca de Dian: burdeos `#6B0F2A`, azul cielo `#CDE8FF`, mantequilla `#FFE7A3` y azul marino `#102542` sobre crema. Los colores y tipografías son variables CSS al principio de [`src/index.css`](src/index.css). Las fuentes son Fraunces (titulares), Plus Jakarta Sans (texto) y Ephesis (manuscrita, para el lema y la polaroid). Se sirven desde la propia web con Fontsource, sin peticiones a Google.
 
-Los colores y las tipografías son variables CSS en [`src/index.css`](src/index.css) (`[data-variant='sol']` y `[data-variant='editorial']`). Las fuentes (Fraunces, Plus Jakarta Sans, Bodoni Moda, Manrope) son de Google Fonts, pero se sirven desde la propia web con Fontsource, así que no se hacen peticiones a Google.
+Los elementos de marca están en [`src/components/Brand.tsx`](src/components/Brand.tsx): monograma, ruta del avión con corazón, buganvilla y sello redondo. El dibujo de Málaga es [`public/images/malaga-sketch.svg`](public/images/malaga-sketch.svg). El favicon (`public/favicon.svg`) es una "D" fija: si cambia el nombre, hay que retocarlo a mano.
+
+Los colores de los gráficos (`--c-chart-*`) están comprobados para daltonismo; si se cambian, hay que volver a validarlos.
 
 ## Fotos
 

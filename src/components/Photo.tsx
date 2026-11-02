@@ -24,7 +24,7 @@ export function Photo({ photo, className = '', eager = false }: Props) {
         />
       )}
       {site.reviewMode && (
-        <figcaption className="absolute inset-x-2 bottom-2 rounded-md bg-ink/75 px-2.5 py-1.5 text-[11px] leading-snug text-paper backdrop-blur-sm">
+        <figcaption className="absolute inset-x-2 bottom-2 z-10 rounded-md bg-ink/75 px-2.5 py-1.5 text-[11px] leading-snug text-paper backdrop-blur-sm">
           <span className="font-semibold">📷 {photo.ratio.replace('/', ':')}</span> · {photo.brief.es}
           <span className="block opacity-75">{photo.brief.id}</span>
         </figcaption>

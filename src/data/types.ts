@@ -1,7 +1,6 @@
 // Shapes of the content in profile.ts. Components only read these types.
 
 export type Lang = 'en' | 'es'
-export type Variant = 'sol' | 'editorial'
 
 /** Text shown on the website, in every site language. */
 export type Localized = Record<Lang, string>
@@ -10,7 +9,7 @@ export type Localized = Record<Lang, string>
 export type ReviewNote = { es: string; id: string }
 
 export type PlatformId = 'tiktok' | 'instagram' | 'youtube' | 'facebook'
-export type Category = 'travel' | 'beauty' | 'fashion'
+export type Category = 'travel' | 'food' | 'lifestyle'
 
 export type SectionId =
   | 'hero'

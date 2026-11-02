@@ -9,7 +9,7 @@ export function ExternalLink({ href, className, children, label }: Props) {
   const { t } = useSettings()
   if (!href) {
     return (
-      <span className={`${className ?? ''} cursor-not-allowed opacity-60`} title={t(ui.review.demoLink)} aria-label={label}>
+      <span className={`${className ?? ''} cursor-not-allowed opacity-80`} title={t(ui.review.demoLink)} aria-label={label}>
         {children}
       </span>
     )

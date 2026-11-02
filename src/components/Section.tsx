@@ -45,8 +45,8 @@ function ReviewTag({ config }: { config: SectionConfig }) {
 export function Heading({ eyebrow, title }: { eyebrow?: string; title: string }) {
   return (
     <header className="mb-8 sm:mb-12">
-      {eyebrow && <p className="eyebrow mb-3">{eyebrow}</p>}
-      <h2 className="display text-3xl sm:text-5xl">{title}</h2>
+      {eyebrow && <p className="eyebrow eyebrow-line mb-4">{eyebrow}</p>}
+      <h2 className="display text-4xl text-accent sm:text-5xl">{title}</h2>
     </header>
   )
 }

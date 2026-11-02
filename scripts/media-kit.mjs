@@ -10,7 +10,10 @@ const fmt = (n) => new Intl.NumberFormat(lang === 'en' ? 'en-US' : 'es-ES', { no
 const pct = (n) => `${new Intl.NumberFormat(lang === 'en' ? 'en-US' : 'es-ES', { maximumFractionDigits: 1 }).format(n)}%`
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c])
 
-const font = (pkg, file) => readFileSync(new URL(`../node_modules/@fontsource-variable/${pkg}/files/${file}`, import.meta.url)).toString('base64')
+const read = (path) => readFileSync(new URL(`../${path}`, import.meta.url))
+const font = (pkg, file) => read(`node_modules/@fontsource-variable/${pkg}/files/${file}`).toString('base64')
+const script = read('node_modules/@fontsource/ephesis/files/ephesis-latin-400-normal.woff2').toString('base64')
+const sketch = read('public/images/malaga-sketch.svg').toString('base64')
 const sum = (pick) => platforms.reduce((a, p) => a + pick(p), 0)
 const views = sum((p) => p.views90d)
 const totals = {
@@ -37,36 +40,40 @@ const html = `<!doctype html><html lang="${lang}"><head><meta charset="utf-8"><t
 @font-face{font-family:Fraunces;src:url(data:font/woff2;base64,${font('fraunces', 'fraunces-latin-opsz-normal.woff2')}) format('woff2');font-weight:100 900}
 @font-face{font-family:Fraunces;font-style:italic;src:url(data:font/woff2;base64,${font('fraunces', 'fraunces-latin-opsz-italic.woff2')}) format('woff2');font-weight:100 900}
 @font-face{font-family:Jakarta;src:url(data:font/woff2;base64,${font('plus-jakarta-sans', 'plus-jakarta-sans-latin-wght-normal.woff2')}) format('woff2');font-weight:200 800}
+@font-face{font-family:Ephesis;src:url(data:font/woff2;base64,${script}) format('woff2')}
 @page{size:A4;margin:0}
 *{box-sizing:border-box;margin:0}
-body{font:10pt/1.5 Jakarta,sans-serif;color:#2b211c;background:#fbf7f1}
+body{font:10pt/1.5 Jakarta,sans-serif;color:#102542;background:#fbf6f1}
 .page{width:210mm;height:297mm;padding:16mm;position:relative;overflow:hidden;page-break-after:always}
-.demo{position:absolute;top:0;left:0;right:0;background:#2b211c;color:#fbf7f1;text-align:center;font-size:8pt;padding:2mm;letter-spacing:.08em}
-h1{font:400 64pt/1 Fraunces,serif;letter-spacing:-.02em;margin-top:8mm}
-h2{font:400 20pt/1.1 Fraunces,serif;margin-bottom:5mm}
+.demo{position:absolute;top:0;left:0;right:0;background:#102542;color:#fbf6f1;text-align:center;font-size:8pt;padding:2mm;letter-spacing:.08em}
+h1{font:400 58pt/1 Fraunces,serif;color:#6b0f2a;letter-spacing:-.02em;margin-top:8mm}
+h2{font:400 20pt/1.1 Fraunces,serif;color:#6b0f2a;margin-bottom:5mm}
 .tag{font:italic 400 16pt/1.35 Fraunces,serif;max-width:120mm;margin-top:5mm}
-.muted{color:#6c5e55}.accent{color:#b0502a}
-.arch{position:absolute;right:16mm;top:24mm;width:62mm;height:78mm;border-radius:50% 50% 4mm 4mm/40% 40% 4mm 4mm;background:linear-gradient(#f6d7b0,#e89a6b 60%,#b0502a)}
-.kpis{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid #e3d4c1;border-radius:4mm;margin:14mm 0 10mm;background:#fff8}
-.kpis div{padding:5mm;border-left:1px solid #e3d4c1}.kpis div:first-child{border:0}
-.kpis b{display:block;font:400 22pt/1.1 Fraunces,serif}.kpis span{font-size:8pt;color:#6c5e55}
-table{width:100%;border-collapse:collapse}td,th{padding:2.6mm 0;border-bottom:1px solid #e3d4c1;text-align:left}th{font-size:8pt;color:#6c5e55;font-weight:500}td.n,th.n{text-align:right}
+.muted{color:#55607a}.accent{color:#6b0f2a}
+.sketch{position:absolute;right:14mm;top:20mm;width:78mm}
+.roles{font-size:7.5pt;font-weight:600;letter-spacing:.22em;text-transform:uppercase;margin-top:4mm}
+.motto{font:26pt/1 Ephesis,cursive;margin-top:6mm}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid #e8dcd0;border-radius:4mm;margin:14mm 0 10mm;background:#fff8}
+.kpis div{padding:5mm;border-left:1px solid #e8dcd0}.kpis div:first-child{border:0}
+.kpis b{display:block;font:400 22pt/1.1 Fraunces,serif}.kpis span{font-size:8pt;color:#55607a}
+table{width:100%;border-collapse:collapse}td,th{padding:2.6mm 0;border-bottom:1px solid #e8dcd0;text-align:left}th{font-size:8pt;color:#55607a;font-weight:500}td.n,th.n{text-align:right}
 .cols{display:grid;grid-template-columns:1fr 1fr;gap:10mm}
 .bar{display:grid;grid-template-columns:28mm 1fr 12mm;gap:3mm;align-items:center;margin:1.6mm 0;font-size:9pt}
-.bar i{height:2.2mm;border-radius:2mm;background:linear-gradient(90deg,#1b6da8 var(--w),#f2e7d8 var(--w))}.bar b{text-align:right;font-weight:500}
-.svc{display:grid;grid-template-columns:1fr 1fr;gap:2mm 8mm;font-size:8.5pt;line-height:1.4}.svc div{border-top:1px solid #e3d4c1;padding-top:2mm}.svc b{display:block}
-.case{border:1px solid #e3d4c1;border-radius:3mm;padding:3mm 4mm;margin-bottom:2.5mm;font-size:9pt}.case b{font:400 13pt Fraunces,serif}
-.foot{position:absolute;left:16mm;right:16mm;bottom:12mm;display:flex;justify-content:space-between;font-size:8pt;color:#6c5e55}
+.bar i{height:2.2mm;border-radius:2mm;background:linear-gradient(90deg,#2f62a3 var(--w),#f4ebe2 var(--w))}.bar b{text-align:right;font-weight:500}
+.svc{display:grid;grid-template-columns:1fr 1fr;gap:2mm 8mm;font-size:8.5pt;line-height:1.4}.svc div{border-top:1px solid #e8dcd0;padding-top:2mm}.svc b{display:block}
+.case{border:1px solid #e8dcd0;border-radius:3mm;padding:3mm 4mm;margin-bottom:2.5mm;font-size:9pt}.case b{font:400 13pt Fraunces,serif}
+.foot{position:absolute;left:16mm;right:16mm;bottom:12mm;display:flex;justify-content:space-between;font-size:8pt;color:#55607a}
 </style></head><body>
 <section class="page">
   <div class="demo">${L.demo}</div>
-  <div class="arch"></div>
-  <p class="accent" style="margin-top:10mm">${esc(t(identity.city))}</p>
-  <h1>${esc(identity.firstName)}</h1>
-  <p class="muted">${esc(identity.firstName)} ${esc(identity.lastName)} · ${esc(identity.handle)}</p>
-  <p class="tag">${esc(t(identity.tagline))}</p>
-  <p class="muted" style="margin-top:3mm">${esc(t(identity.roles))}</p>
-  <div class="kpis" style="margin-top:34mm">
+  <img class="sketch" src="data:image/svg+xml;base64,${sketch}" alt="">
+  <p class="roles" style="margin-top:12mm">Media kit · ${esc(identity.handle)}</p>
+  <h1>${esc(identity.firstName)}<br>${esc(identity.lastName)}</h1>
+  <p class="tag">${esc(t(identity.role))} · ${esc(t(identity.city))}</p>
+  <p class="muted" style="max-width:110mm;margin-top:2mm">${esc(t(identity.tagline))}</p>
+  <p class="roles">${esc(t(identity.roles))}</p>
+  <p class="motto">${esc(t(identity.motto))} <span class="accent">♡</span></p>
+  <div class="kpis" style="margin-top:12mm">
     <div><b>${fmt(totals.followers)}</b><span>${L.followers}</span></div>
     <div><b>${fmt(totals.views)}</b><span>${L.views}</span></div>
     <div><b>${fmt(totals.avg)}</b><span>${L.avg}</span></div>

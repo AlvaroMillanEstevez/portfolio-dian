@@ -1,5 +1,5 @@
 import { sections, ui } from './data/profile'
-import { DemoBand, Header, VariantPicker } from './components/Chrome'
+import { DemoBand, Header } from './components/Chrome'
 import { sectionComponents } from './sections'
 import { useReveal } from './lib/reveal'
 import { useSettings } from './lib/settings'
@@ -26,7 +26,6 @@ export default function App() {
         })}
       </main>
       {footer && <FooterSection config={footer} />}
-      <VariantPicker />
     </>
   )
 }

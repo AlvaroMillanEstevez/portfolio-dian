@@ -68,7 +68,7 @@ export function Contact({ config }: { config: SectionConfig }) {
           <ul className="mt-3 flex gap-2">
             {platforms.map((p) => (
               <li key={p.id}>
-                <ExternalLink href={p.url} label={p.name} className="grid size-11 place-items-center rounded-full border border-line hover:bg-ink hover:text-paper">
+                <ExternalLink href={p.url} label={p.name} className="social-tile">
                   <SocialIcon id={p.id} className="size-[18px]" />
                 </ExternalLink>
               </li>

@@ -1,11 +1,11 @@
+import { Clapperboard, CupSoda, Flower2, Luggage, MapPinned, ShoppingBag } from 'lucide-react'
 import { pillars } from '../data/profile'
 import type { SectionConfig } from '../data/types'
 import { Heading, Section } from '../components/Section'
 import { percent } from '../lib/format'
 import { useSettings } from '../lib/settings'
 
-/** Fixed colour per pillar (categorical order). */
-const swatch = ['bg-chart-1', 'bg-chart-2', 'bg-chart-3', 'bg-chart-4']
+const icons = { travel: Luggage, lifestyle: Flower2, vlog: Clapperboard, place: MapPinned, food: CupSoda, product: ShoppingBag }
 
 export function Pillars({ config }: { config: SectionConfig }) {
   const { t, lang } = useSettings()
@@ -13,22 +13,21 @@ export function Pillars({ config }: { config: SectionConfig }) {
     <Section config={config} className="py-20 sm:py-28">
       <div data-reveal className="mx-auto max-w-6xl px-4 sm:px-6">
         <Heading title={t(pillars.title)} />
-        <div className="mb-10 flex h-4 gap-0.5 overflow-hidden rounded-full" role="img" aria-label={pillars.items.map((p) => `${t(p.name)} ${percent(p.share, lang)}`).join(', ')}>
-          {pillars.items.map((p, i) => (
-            <div key={p.key} className={`${swatch[i]} h-full`} style={{ width: `${p.share}%` }} title={`${t(p.name)} · ${percent(p.share, lang)}`} />
-          ))}
-        </div>
-        <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {pillars.items.map((p, i) => (
-            <li key={p.key} className="card p-6">
-              <div className="flex items-center justify-between">
-                <span className={`size-3 rounded-full ${swatch[i]}`} aria-hidden="true" />
-                <span className="display text-3xl">{percent(p.share, lang)}</span>
-              </div>
-              <h3 className="mt-6 text-lg font-semibold">{t(p.name)}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted">{t(p.text)}</p>
-            </li>
-          ))}
+        <ul className="grid grid-cols-2 gap-x-4 gap-y-10 sm:grid-cols-3 lg:grid-cols-6">
+          {pillars.items.map((p, i) => {
+            const Icon = icons[p.icon]
+            return (
+              <li key={p.icon} className="text-center">
+                <div className="relative mx-auto grid size-20 place-items-center">
+                  <span className={`blob absolute inset-1 ${i % 2 ? 'bg-butter' : 'bg-sky'}`} style={{ rotate: `${i * 50}deg` }} aria-hidden="true" />
+                  <Icon className="relative size-10 text-accent" strokeWidth={1.4} aria-hidden="true" />
+                </div>
+                <h3 className="mt-4 font-semibold">{t(p.name)}</h3>
+                <p className="mt-1 text-xs font-semibold text-accent tabular-nums">{percent(p.share, lang)}</p>
+                <p className="mt-2 text-sm leading-relaxed text-muted">{t(p.text)}</p>
+              </li>
+            )
+          })}
         </ul>
       </div>
     </Section>

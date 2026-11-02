@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 200" fill="none" stroke="#102542" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Line drawing of Málaga: the cathedral with its unfinished tower, palms and the sun. -->
+  <circle cx="214" cy="66" r="36" fill="#ffe7a3" stroke="none"/>
+  <path d="M8 164c40-16 78-10 112-18m170 6c24-6 44-4 62 2" opacity=".45"/>
+  <!-- Main tower -->
+  <path d="M126 182V108h40v74" fill="#eaf4ff"/>
+  <path d="M131 108V72h30v36M135 72V52h22v20" fill="#eaf4ff"/>
+  <path d="M135 52a11 11 0 0 1 22 0M146 41v-13m-3 4h6"/>
+  <path d="M126 108h40M131 72h30M135 52h22"/>
+  <path d="M140 102v-10a6 6 0 0 1 12 0v10M139 66v-6a3.5 3.5 0 0 1 7 0v6M146 66v-6a3.5 3.5 0 0 1 7 0v6M141 90h10"/>
+  <path d="M134 128v-8a3 3 0 0 1 6 0v8M152 128v-8a3 3 0 0 1 6 0v8M134 150v-8a3 3 0 0 1 6 0v8M152 150v-8a3 3 0 0 1 6 0v8"/>
+  <!-- Nave and façade -->
+  <path d="M166 182v-64h104v64" fill="#eaf4ff"/>
+  <path d="M166 118h104M166 112h104v6M170 112v-4m10 4v-4m10 4v-4m10 4v-4m10 4v-4m10 4v-4m10 4v-4m10 4v-4m10 4v-4m10 4v-4"/>
+  <path d="M176 182v-26a10 10 0 0 1 20 0v26M208 182v-32a12 12 0 0 1 24 0v32M244 182v-26a10 10 0 0 1 20 0v26"/>
+  <path d="M182 138v-8a4 4 0 0 1 8 0v8M216 132v-8a4 4 0 0 1 8 0v8M250 138v-8a4 4 0 0 1 8 0v8"/>
+  <path d="M220 118v-10a10 10 0 0 1 20 0"/>
+  <!-- The unfinished tower ("La Manquita") -->
+  <path d="M270 182V96h34v86" fill="#eaf4ff"/>
+  <path d="M270 96l4-6 4 4 5-5 4 4 5-4 4 5 4-3v5"/>
+  <path d="M280 124v-12a7 7 0 0 1 14 0v12M280 154v-12a7 7 0 0 1 14 0v12M270 132h34"/>
+  <!-- Palms -->
+  <path d="M100 182c-4-28-2-54 6-76"/>
+  <path d="M106 106c-12-8-28-6-38 6m38-6c-6-14-20-20-32-16m32 16c2-14-4-26-12-30m12 30c10-10 24-12 34-4m-34 4c14-2 26 6 30 16"/>
+  <path d="M326 182c3-26 1-48-6-68"/>
+  <path d="M320 114c10-8 24-8 32 2m-32-2c4-12 16-18 26-14m-26 14c-2-12 2-22 10-26m-10 26c-10-8-22-8-30 0m30 0c-12 0-22 6-24 14"/>
+  <!-- Houses -->
+  <path d="M20 182v-26h28v26M48 182v-34h26v34M14 156l20-12 20 12" opacity=".7"/>
+  <path d="M26 172h6v10M56 160h8M56 170h8" opacity=".7"/>
+  <path d="M308 182v-20" opacity=".7"/>
+  <path d="M4 182h352"/>
+</svg>

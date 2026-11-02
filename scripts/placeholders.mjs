@@ -5,12 +5,13 @@ import { writeFileSync } from 'node:fs'
 
 const sizes = { '4/5': [800, 1000], '9/16': [720, 1280], '3/2': [1200, 800], '1/1': [900, 900] }
 
+// Brand board colours: cream, sky, butter, burgundy and navy.
 const palettes = {
-  sunset: ['#f6d7b0', '#e89a6b', '#b0502a'],
-  sea: ['#f3e6d3', '#9cc3d5', '#1f5e87'],
-  saffron: ['#fbf0dc', '#ecc070', '#c8643b'],
-  olive: ['#efe9dc', '#b9c4a1', '#5e8c61'],
-  night: ['#e9dccb', '#9a6a3a', '#23324d'],
+  sunset: ['#ffe7a3', '#f2b9a0', '#6b0f2a'],
+  sea: ['#fbf6f1', '#cde8ff', '#2f62a3'],
+  butter: ['#fff6dc', '#ffe7a3', '#c8952a'],
+  bloom: ['#fbeef2', '#f1c4d3', '#a8325a'],
+  night: ['#e6eef8', '#9fb3cf', '#102542'],
 }
 
 // Simple motifs: the sun over the sea (Málaga), terraces (Java), arches (Andalusia), a batik-like kawung pattern.
@@ -41,16 +42,16 @@ const motifs = {
 }
 
 const images = [
-  ['hero-portrait', '4/5', 'sunset', 'sun'],
-  ['about-malaga-old-town', '4/5', 'saffron', 'arches'],
+  ['hero-portrait', '4/5', 'sea', 'sun'],
+  ['about-malaga-old-town', '4/5', 'butter', 'arches'],
   ['about-beach-golden-hour', '3/2', 'sunset', 'sun'],
-  ['about-morning-ritual', '1/1', 'olive', 'kawung'],
+  ['about-morning-ritual', '1/1', 'bloom', 'kawung'],
   ['video-travel-nerja-sunrise', '9/16', 'sea', 'sun'],
-  ['video-beauty-skincare-routine', '9/16', 'saffron', 'kawung'],
-  ['video-fashion-capsule-wardrobe', '9/16', 'night', 'kawung'],
-  ['video-fashion-batik-outfits', '9/16', 'olive', 'terraces'],
-  ['video-beauty-sunscreen-test', '9/16', 'sunset', 'arches'],
-  ['video-travel-malaga-48h', '9/16', 'sea', 'arches'],
+  ['video-food-churros-review', '9/16', 'butter', 'arches'],
+  ['video-lifestyle-skincare-routine', '9/16', 'bloom', 'kawung'],
+  ['video-food-breakfast', '9/16', 'butter', 'kawung'],
+  ['video-lifestyle-sunday-vlog', '9/16', 'bloom', 'terraces'],
+  ['video-travel-malaga-48h', '9/16', 'night', 'arches'],
 ]
 
 for (const [name, ratio, palette, motif] of images) {

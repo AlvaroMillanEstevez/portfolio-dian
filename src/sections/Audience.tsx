@@ -28,7 +28,7 @@ function Bars({ title, data }: { title: Localized; data: Share[] }) {
 
 function Gender() {
   const { t, lang } = useSettings()
-  const tones = ['bg-chart-1', 'bg-chart-2', 'bg-chart-4']
+  const tones = ['bg-chart-1', 'bg-chart-2', 'bg-chart-3']
   return (
     <figure className="card p-6">
       <figcaption className="mb-5 font-semibold">{t(ui.audience.gender)}</figcaption>

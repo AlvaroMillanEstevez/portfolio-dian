@@ -24,12 +24,10 @@ import type {
 export const site = {
   /** Shows the fixed "Demo prototype" band. Turn off when the data is real. */
   demo: true,
-  /** Section numbers, notes for Dian and the style picker. */
+  /** Section numbers and notes for Dian. */
   reviewMode: true,
   /** 'en' or 'es'. The visitor can switch; the choice is remembered. */
   defaultLang: 'en',
-  /** 'sol' (bright, Mediterranean) or 'editorial' (elegant). */
-  defaultVariant: 'sol',
   dataAsOf: {
     en: 'Data as of October 2026 (demo)',
     es: 'Datos a octubre de 2026 (demo)',
@@ -46,16 +44,16 @@ export const sections: SectionConfig[] = [
     id: 'hero',
     number: 1,
     enabled: true,
+    nav: { en: 'Home', es: 'Inicio' },
     note: {
-      es: 'Primera impresión: retrato vertical, nombre, frase y botones. Necesitamos: un retrato vertical 4:5 con luz natural y tu frase definitiva.',
-      id: 'Kesan pertama: foto potret vertikal, nama, tagline dan tombol. Yang dibutuhkan: foto potret vertikal 4:5 dengan cahaya alami dan tagline final.',
+      es: 'Primera impresión: foto, nombre, frase y botones. La foto se funde con el fondo, así que queda mejor con cielo o mar a la izquierda. Necesitamos: un retrato vertical 4:5 con fondo de Málaga y tu frase definitiva.',
+      id: 'Kesan pertama: foto, nama, tagline dan tombol. Fotonya menyatu dengan latar, jadi lebih bagus kalau ada langit atau laut di sebelah kiri. Yang dibutuhkan: potret vertikal 4:5 berlatar Málaga dan tagline final.',
     },
   },
   {
     id: 'stats',
     number: 2,
     enabled: true,
-    nav: { en: 'Numbers', es: 'Cifras' },
     note: {
       es: 'Cifras clave para marcas. Se calculan solas a partir de la sección 5. Necesitamos: crecimiento de seguidores de los últimos 6 meses.',
       id: 'Angka utama untuk brand. Dihitung otomatis dari bagian 5. Yang dibutuhkan: pertumbuhan followers 6 bulan terakhir.',
@@ -76,15 +74,14 @@ export const sections: SectionConfig[] = [
     number: 4,
     enabled: true,
     note: {
-      es: 'De qué hablas y en qué proporción. Necesitamos: el % aproximado de tus vídeos de cada tema.',
-      id: 'Topik kontenmu dan proporsinya. Yang dibutuhkan: perkiraan % video untuk tiap topik.',
+      es: 'Los 6 temas de tu tablero de marca, con iconos. Necesitamos: confirmar los temas y el % aproximado de tus vídeos de cada uno.',
+      id: '6 topik dari brand board-mu, dengan ikon. Yang dibutuhkan: konfirmasi topiknya dan perkiraan % video untuk tiap topik.',
     },
   },
   {
     id: 'platforms',
     number: 5,
     enabled: true,
-    nav: { en: 'Platforms', es: 'Plataformas' },
     note: {
       es: 'Una tarjeta por red. Necesitamos: capturas de las estadísticas de los últimos 90 días de cada red (seguidores, vistas, nº de vídeos, interacción).',
       id: 'Satu kartu per platform. Yang dibutuhkan: screenshot statistik 90 hari terakhir tiap platform (followers, views, jumlah video, engagement).',
@@ -94,7 +91,6 @@ export const sections: SectionConfig[] = [
     id: 'audience',
     number: 6,
     enabled: true,
-    nav: { en: 'Audience', es: 'Audiencia' },
     note: {
       es: 'Quién te ve. Necesitamos: capturas de demografía (edad, género, países, ciudades) y horas de actividad de TikTok e Instagram.',
       id: 'Siapa penontonmu. Yang dibutuhkan: screenshot demografi (umur, gender, negara, kota) dan jam aktif dari TikTok dan Instagram.',
@@ -104,7 +100,7 @@ export const sections: SectionConfig[] = [
     id: 'videos',
     number: 7,
     enabled: true,
-    nav: { en: 'Work', es: 'Vídeos' },
+    nav: { en: 'Portfolio', es: 'Portfolio' },
     note: {
       es: 'Tus 6 mejores vídeos. Necesitamos: los enlaces, una captura de portada vertical de cada uno y sus views, likes, guardados y compartidos.',
       id: '6 video terbaikmu. Yang dibutuhkan: link, cover vertikal tiap video, dan jumlah views, likes, simpan dan share.',
@@ -114,7 +110,6 @@ export const sections: SectionConfig[] = [
     id: 'cases',
     number: 8,
     enabled: true,
-    nav: { en: 'Brands', es: 'Marcas' },
     note: {
       es: 'Casos de éxito con marcas (aquí inventadas). Necesitamos: 3 colaboraciones reales que el contrato permita mostrar y sus resultados.',
       id: 'Kolaborasi sukses dengan brand (di sini fiktif). Yang dibutuhkan: 3 kolaborasi asli yang boleh ditampilkan dan hasilnya.',
@@ -124,6 +119,7 @@ export const sections: SectionConfig[] = [
     id: 'services',
     number: 9,
     enabled: true,
+    nav: { en: 'Services', es: 'Servicios' },
     note: {
       es: 'Lo que ofreces a las marcas. Necesitamos: que marques qué servicios quieres ofrecer y cuáles no.',
       id: 'Layanan untuk brand. Yang dibutuhkan: pilih layanan mana yang mau ditawarkan dan mana yang tidak.',
@@ -160,7 +156,6 @@ export const sections: SectionConfig[] = [
     id: 'rates',
     number: 13,
     enabled: true,
-    nav: { en: 'Rates', es: 'Tarifas' },
     note: {
       es: 'Tarifas de ejemplo. Se puede mostrar precio o solo "Tarifas bajo petición". Necesitamos: decidir si mostramos precios y cuáles.',
       id: 'Contoh tarif. Bisa tampilkan harga atau hanya "Rates on request". Yang dibutuhkan: putuskan apakah harga ditampilkan dan berapa.',
@@ -181,8 +176,8 @@ export const sections: SectionConfig[] = [
     number: 15,
     enabled: true,
     note: {
-      es: 'Pie de página con nombre, redes, idioma y año. No necesitamos nada más.',
-      id: 'Footer dengan nama, sosial media, bahasa dan tahun. Tidak perlu apa-apa lagi.',
+      es: 'Tu logo completo: dibujo de Málaga, nombre, sello redondo y redes. No necesitamos nada más.',
+      id: 'Logo lengkapmu: gambar Málaga, nama, stempel bulat dan sosial media. Tidak perlu apa-apa lagi.',
     },
   },
 ]
@@ -197,24 +192,19 @@ export const identity = {
   lastName: 'Sekarwati',
   handle: '@dian.demo',
   city: { en: 'Málaga, Spain', es: 'Málaga, España' } satisfies Localized,
+  /** Hero line under the name: "{role} based in {city}". */
+  role: { en: 'Indonesian content creator', es: 'Creadora de contenido indonesia' } satisfies Localized,
   tagline: {
-    en: 'An Indonesian soul with a Spanish home. Travel, beauty and style from Málaga.',
-    es: 'Alma indonesia, hogar en Málaga. Viajes, belleza y moda.',
+    en: 'Creating travel, lifestyle and story-driven content through mini-vlogs, place features and honest reviews.',
+    es: 'Creo contenido de viajes, lifestyle y storytelling con mini-vlogs, lugares con encanto y reseñas sinceras.',
   } satisfies Localized,
+  /** Spaced capitals under the name in the logo. */
   roles: {
-    en: 'Content creator · Travel, beauty & fashion',
-    es: 'Creadora de contenido · Viajes, belleza y moda',
+    en: 'Travel · Lifestyle · Content creator',
+    es: 'Viajes · Lifestyle · Creadora de contenido',
   } satisfies Localized,
-  /** Words in the scrolling band under the hero. */
-  keywords: [
-    { en: 'Travel', es: 'Viajes' },
-    { en: 'Beauty', es: 'Belleza' },
-    { en: 'Fashion', es: 'Moda' },
-    { en: 'Málaga', es: 'Málaga' },
-    { en: 'Indonesia', es: 'Indonesia' },
-    { en: 'Costa del Sol', es: 'Costa del Sol' },
-    { en: 'EN · ES · ID', es: 'EN · ES · ID' },
-  ] satisfies Localized[],
+  /** Handwritten signature line. */
+  motto: { en: 'Travel · Create · Review · Share', es: 'Viaja · Crea · Opina · Comparte' } satisfies Localized,
   portrait: {
     src: 'images/hero-portrait.svg',
     ratio: '4/5',
@@ -290,14 +280,16 @@ export const growth6m = 18.6
 
 export const about = {
   title: { en: 'Two cultures, one home', es: 'Dos culturas, un hogar' } satisfies Localized,
+  /** Handwritten caption under the first photo, shown as an instant photo. */
+  polaroid: { en: 'Málaga', es: 'Málaga' } satisfies Localized,
   paragraphs: [
     {
       en: 'I’m Dian, a 24-year-old Indonesian creator living in Málaga. I grew up between rice terraces and street markets, and today I wake up to the Mediterranean.',
       es: 'Soy Dian, creadora indonesia de 24 años y vivo en Málaga. Crecí entre arrozales y mercados callejeros, y hoy me despierto frente al Mediterráneo.',
     },
     {
-      en: 'My content lives between those two worlds: hidden corners of Andalusia, skincare that survives the southern sun, and outfits that mix batik with linen. My audience comes for the travel and stays for the honesty.',
-      es: 'Mi contenido vive entre esos dos mundos: rincones escondidos de Andalucía, cuidado de la piel que aguanta el sol del sur y looks que mezclan batik con lino. Mi audiencia llega por los viajes y se queda por la sinceridad.',
+      en: 'My content lives between those two worlds: hidden corners of Andalusia, cafés and restaurants reviewed honestly, and mini-vlogs of a slow life by the sea. My audience comes for the travel and stays for the honesty.',
+      es: 'Mi contenido vive entre esos dos mundos: rincones escondidos de Andalucía, cafés y restaurantes reseñados con sinceridad y mini-vlogs de una vida tranquila junto al mar. Mi audiencia llega por los viajes y se queda por la sinceridad.',
     },
     {
       en: 'I create in English, Spanish and Indonesian, which lets a brand speak to Spain, the rest of Europe and Southeast Asia with one voice.',
@@ -340,45 +332,64 @@ export const about = {
 /* ------------------------------------------------------------------ */
 
 export const pillars = {
-  title: { en: 'What I create', es: 'Qué creo' } satisfies Localized,
+  title: { en: 'Content focus', es: 'Mi contenido' } satisfies Localized,
+  /** icon: travel | lifestyle | vlog | place | food | product (see sections/Pillars.tsx). */
   items: [
     {
-      key: 'travel',
-      share: 35,
+      icon: 'travel',
+      share: 30,
       name: { en: 'Travel', es: 'Viajes' },
       text: {
-        en: 'Andalusian villages, weekend escapes and long-haul trips home to Indonesia.',
+        en: 'Andalusian villages, weekend escapes and long trips home to Indonesia.',
         es: 'Pueblos andaluces, escapadas de fin de semana y viajes largos a Indonesia.',
       },
     },
     {
-      key: 'beauty',
-      share: 25,
-      name: { en: 'Beauty', es: 'Belleza' },
+      icon: 'lifestyle',
+      share: 20,
+      name: { en: 'Lifestyle', es: 'Lifestyle' },
       text: {
-        en: 'Honest skincare and makeup for warm skin tones and strong sun.',
-        es: 'Skincare y maquillaje sinceros para pieles cálidas y mucho sol.',
+        en: 'Slow mornings, skincare for the southern sun and life between two cultures.',
+        es: 'Mañanas tranquilas, skincare para el sol del sur y vida entre dos culturas.',
       },
     },
     {
-      key: 'fashion',
-      share: 22,
-      name: { en: 'Fashion', es: 'Moda' },
+      icon: 'vlog',
+      share: 15,
+      name: { en: 'Mini-vlogs', es: 'Mini-vlogs' },
       text: {
-        en: 'Capsule wardrobes, local labels and batik styled for everyday Spain.',
-        es: 'Armarios cápsula, marcas locales y batik para el día a día en España.',
+        en: 'A day, a trip or a recipe told in under a minute.',
+        es: 'Un día, un viaje o una receta contados en menos de un minuto.',
       },
     },
     {
-      key: 'cultures',
-      share: 18,
-      name: { en: 'Life between two cultures', es: 'Vida entre dos culturas' },
+      icon: 'place',
+      share: 12,
+      name: { en: 'Promote a place', es: 'Lugares con encanto' },
       text: {
-        en: 'Food, language mix-ups and traditions from Java to the Costa del Sol.',
-        es: 'Comida, líos con los idiomas y tradiciones de Java a la Costa del Sol.',
+        en: 'Hotels, shops and hidden spots, filmed so people want to go.',
+        es: 'Hoteles, tiendas y rincones escondidos, grabados para que den ganas de ir.',
       },
     },
-  ],
+    {
+      icon: 'food',
+      share: 13,
+      name: { en: 'Food & drink reviews', es: 'Reseñas gastronómicas' },
+      text: {
+        en: 'Honest reviews of cafés, restaurants and Indonesian flavours in Spain.',
+        es: 'Reseñas sinceras de cafés, restaurantes y sabores indonesios en España.',
+      },
+    },
+    {
+      icon: 'product',
+      share: 10,
+      name: { en: 'Product & UGC', es: 'Producto y UGC' },
+      text: {
+        en: 'Unboxings, tests and ads made for your own channels.',
+        es: 'Unboxings, pruebas y anuncios para tus propios canales.',
+      },
+    },
+  ] as const,
 }
 
 /* ------------------------------------------------------------------ */
@@ -439,8 +450,8 @@ export const audience = {
 
 export const categories: { key: Category; label: Localized }[] = [
   { key: 'travel', label: { en: 'Travel', es: 'Viajes' } },
-  { key: 'beauty', label: { en: 'Beauty', es: 'Belleza' } },
-  { key: 'fashion', label: { en: 'Fashion', es: 'Moda' } },
+  { key: 'food', label: { en: 'Food & drink', es: 'Gastronomía' } },
+  { key: 'lifestyle', label: { en: 'Lifestyle', es: 'Lifestyle' } },
 ]
 
 const videoThumb = (file: string, es: string, id: string, alt: Localized): Photo => ({
@@ -472,18 +483,18 @@ export const videos: Video[] = [
     url: '',
   },
   {
-    id: 'glass-skin-humidity',
-    category: 'beauty',
+    id: 'churros-review',
+    category: 'food',
     platform: 'tiktok',
     title: {
-      en: 'My Indonesian skincare routine for the Andalusian sun',
-      es: 'Mi rutina de skincare indonesia para el sol andaluz',
+      en: 'Honest review: I tried 5 churrerías in Málaga',
+      es: 'Reseña sincera: probé 5 churrerías de Málaga',
     },
     thumbnail: videoThumb(
-      'video-beauty-skincare-routine.svg',
-      'Portada 9:16 del vídeo de belleza',
-      'Cover 9:16 video beauty',
-      { en: 'Skincare products on a sunny table', es: 'Productos de skincare en una mesa al sol' },
+      'video-food-churros-review.svg',
+      'Portada 9:16 de la reseña gastronómica',
+      'Cover 9:16 review kuliner',
+      { en: 'Churros and hot chocolate on a café table', es: 'Churros con chocolate en la mesa de un café' },
     ),
     views: 2_100_000,
     likes: 268_000,
@@ -492,18 +503,18 @@ export const videos: Video[] = [
     url: '',
   },
   {
-    id: 'bali-malaga-capsule',
-    category: 'fashion',
+    id: 'skincare-sun',
+    category: 'lifestyle',
     platform: 'tiktok',
     title: {
-      en: 'What I pack: a Bali → Málaga capsule wardrobe',
-      es: 'Qué meto en la maleta: armario cápsula Bali → Málaga',
+      en: 'My Indonesian skincare routine for the Andalusian sun',
+      es: 'Mi rutina de skincare indonesia para el sol andaluz',
     },
     thumbnail: videoThumb(
-      'video-fashion-capsule-wardrobe.svg',
-      'Portada 9:16 del vídeo de moda',
-      'Cover 9:16 video fashion',
-      { en: 'Folded linen and batik clothes', es: 'Ropa de lino y batik doblada' },
+      'video-lifestyle-skincare-routine.svg',
+      'Portada 9:16 del vídeo de lifestyle',
+      'Cover 9:16 video lifestyle',
+      { en: 'Skincare products on a sunny table', es: 'Productos de skincare en una mesa al sol' },
     ),
     views: 1_600_000,
     likes: 174_000,
@@ -512,18 +523,18 @@ export const videos: Video[] = [
     url: '',
   },
   {
-    id: 'batik-mediterranean',
-    category: 'fashion',
+    id: 'breakfast-two-cultures',
+    category: 'food',
     platform: 'instagram',
     title: {
-      en: 'Batik meets the Mediterranean: 3 summer outfits',
-      es: 'El batik conoce el Mediterráneo: 3 looks de verano',
+      en: 'Indonesian vs Spanish breakfast: which one wins?',
+      es: 'Desayuno indonesio contra desayuno español: ¿cuál gana?',
     },
     thumbnail: videoThumb(
-      'video-fashion-batik-outfits.svg',
-      'Portada 9:16 del Reel de moda',
-      'Cover 9:16 Reel fashion',
-      { en: 'Batik fabric against a white wall', es: 'Tela batik sobre una pared blanca' },
+      'video-food-breakfast.svg',
+      'Portada 9:16 del Reel de gastronomía',
+      'Cover 9:16 Reel kuliner',
+      { en: 'Two breakfasts side by side', es: 'Dos desayunos uno al lado del otro' },
     ),
     views: 1_200_000,
     likes: 96_000,
@@ -532,18 +543,18 @@ export const videos: Video[] = [
     url: '',
   },
   {
-    id: 'spf-test',
-    category: 'beauty',
+    id: 'slow-sunday',
+    category: 'lifestyle',
     platform: 'instagram',
     title: {
-      en: 'I tested 5 sunscreens for a week in Málaga',
-      es: 'Probé 5 protectores solares durante una semana en Málaga',
+      en: 'A slow Sunday in Málaga · mini-vlog',
+      es: 'Un domingo tranquilo en Málaga · mini-vlog',
     },
     thumbnail: videoThumb(
-      'video-beauty-sunscreen-test.svg',
-      'Portada 9:16 del Reel de belleza',
-      'Cover 9:16 Reel beauty',
-      { en: 'Five sunscreen bottles in a row', es: 'Cinco protectores solares en fila' },
+      'video-lifestyle-sunday-vlog.svg',
+      'Portada 9:16 del mini-vlog',
+      'Cover 9:16 mini-vlog',
+      { en: 'Coffee on a balcony in the morning', es: 'Café en un balcón por la mañana' },
     ),
     views: 980_000,
     likes: 71_000,
@@ -667,10 +678,10 @@ export const services: { title: Localized; text: Localized }[] = [
     },
   },
   {
-    title: { en: 'Travel & event coverage', es: 'Cobertura de viajes y eventos' },
+    title: { en: 'Place features', es: 'Lugares y experiencias' },
     text: {
-      en: 'On-site content from hotels, destinations, launches and events.',
-      es: 'Contenido en el lugar: hoteles, destinos, lanzamientos y eventos.',
+      en: 'A mini-vlog from your hotel, restaurant or destination, filmed on site.',
+      es: 'Un mini-vlog de tu hotel, restaurante o destino, grabado allí.',
     },
   },
   {
@@ -802,7 +813,7 @@ export const rates = {
     { service: { en: 'Reel + 3 Stories', es: 'Reel + 3 Stories' }, detail: { en: 'Instagram, with link sticker', es: 'Instagram, con enlace' }, price: 1400 },
     { service: { en: 'YouTube integration', es: 'Integración en YouTube' }, detail: { en: '60–90 s segment', es: 'Bloque de 60–90 s' }, price: 2200 },
     { service: { en: 'UGC pack', es: 'Pack UGC' }, detail: { en: '3 videos, 6 months of usage rights', es: '3 vídeos, 6 meses de derechos' }, price: 950 },
-    { service: { en: 'Travel or event coverage', es: 'Cobertura de viaje o evento' }, detail: { en: '2 days on site', es: '2 días en el lugar' }, price: 3500, from: true },
+    { service: { en: 'Place feature', es: 'Lugar o experiencia' }, detail: { en: '2 days on site', es: '2 días en el lugar' }, price: 3500, from: true },
     { service: { en: 'Brand ambassador', es: 'Embajadora de marca' }, detail: { en: 'Monthly plan, 3+ months', es: 'Plan mensual, 3+ meses' }, price: 4500, from: true },
   ] satisfies Rate[],
 }
@@ -839,6 +850,11 @@ export const ui = {
   close: { en: 'Close', es: 'Cerrar' },
   language: { en: 'Language', es: 'Idioma' },
   workWithMe: { en: 'Work with me', es: 'Trabaja conmigo' },
+  hero: {
+    hello: { en: 'Hello, I’m', es: 'Hola, soy' },
+    basedIn: { en: 'based in', es: 'en' },
+    viewPortfolio: { en: 'View portfolio', es: 'Ver portfolio' },
+  },
   heroStats: {
     followers: { en: 'followers', es: 'seguidores' },
     views: { en: 'views in 90 days', es: 'views en 90 días' },
@@ -927,14 +943,10 @@ export const ui = {
   },
   footer: {
     rights: { en: 'All rights reserved.', es: 'Todos los derechos reservados.' },
+    badge: { en: 'Content creator', es: 'Creadora de contenido' },
   },
   review: {
     note: { es: 'Nota para Dian', id: 'Catatan untuk Dian' },
-    style: { es: 'Estilo', id: 'Gaya' },
-    variants: {
-      sol: { es: 'A · Sol mediterráneo', id: 'A · Matahari Mediterania' },
-      editorial: { es: 'B · Editorial', id: 'B · Editorial' },
-    },
     photo: { es: 'Foto', id: 'Foto' },
     demoLink: { en: 'Link added with real data', es: 'Enlace cuando haya datos reales' },
   },

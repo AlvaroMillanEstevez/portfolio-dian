@@ -1,12 +1,10 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from 'react'
 import { site } from '../data/profile'
-import type { Lang, Localized, Variant } from '../data/types'
+import type { Lang, Localized } from '../data/types'
 
 type Settings = {
   lang: Lang
   setLang: (lang: Lang) => void
-  variant: Variant
-  setVariant: (variant: Variant) => void
   /** Picks the current language from a Localized text. */
   t: (text: Localized) => string
 }
@@ -37,36 +35,21 @@ function initialLang(): Lang {
   return readStored('lang', ['en', 'es'] as const) ?? site.defaultLang
 }
 
-function initialVariant(): Variant {
-  if (!site.reviewMode) return site.defaultVariant
-  return readStored('variant', ['sol', 'editorial'] as const) ?? site.defaultVariant
-}
-
 export function SettingsProvider({ children }: { children: ReactNode }) {
   const [lang, setLangState] = useState<Lang>(initialLang)
-  const [variant, setVariantState] = useState<Variant>(initialVariant)
 
   useEffect(() => {
     document.documentElement.lang = lang
   }, [lang])
-
-  useEffect(() => {
-    document.documentElement.dataset.variant = variant
-  }, [variant])
 
   const setLang = useCallback((next: Lang) => {
     setLangState(next)
     store('lang', next)
   }, [])
 
-  const setVariant = useCallback((next: Variant) => {
-    setVariantState(next)
-    store('variant', next)
-  }, [])
-
   const value = useMemo<Settings>(
-    () => ({ lang, setLang, variant, setVariant, t: (text) => text[lang] }),
-    [lang, setLang, variant, setVariant],
+    () => ({ lang, setLang, t: (text) => text[lang] }),
+    [lang, setLang],
   )
 
   return <SettingsContext.Provider value={value}>{children}</SettingsContext.Provider>

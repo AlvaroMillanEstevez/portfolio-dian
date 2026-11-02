@@ -10,14 +10,13 @@ Web demo · Web demo: https://alvaromillanestevez.github.io/portfolio-dian/
 
 ## 1. Estilo visual · Gaya visual
 
-**ES:** Abajo en la web hay un botón "Estilo" para cambiar entre dos diseños. ¿Cuál prefieres?
-**ID:** Di bagian bawah web ada tombol "Estilo" untuk ganti antara dua desain. Kamu lebih suka yang mana?
+**ES:** La web ya usa tu tablero de marca: burdeos, azul cielo, amarillo mantequilla y azul marino, con el monograma, el dibujo de Málaga, la buganvilla y la letra manuscrita. ¿Qué te parece?
+**ID:** Web-nya sudah pakai brand board-mu: merah marun, biru langit, kuning mentega dan biru navy, dengan monogram, gambar Málaga, bunga bugenvil dan tulisan tangan. Bagaimana menurutmu?
 
-- [ ] **A · Sol mediterráneo**: luminoso y cálido, con arena, terracota y azul mar, y una foto en forma de arco andaluz. · Cerah dan hangat, warna pasir, terakota dan biru laut, foto berbentuk lengkungan Andalusia.
-- [ ] **B · Editorial**: elegante, tipo revista, en marfil, negro y marrón batik. · Elegan seperti majalah, warna gading, hitam dan cokelat batik.
-- [ ] Una mezcla · Campuran: ________________________________
+- [ ] Me encanta así · Suka banget begini
+- [ ] Cambiaría algo · Mau ubah sesuatu: ________________________________
 
-¿Colores, tipografías o webs de otras creadoras que te gusten? · Ada warna, font, atau web kreator lain yang kamu suka?
+¿Algo del tablero que eches de menos en la web o que sobre? · Ada yang dari brand board kurang atau terlalu banyak di web?
 
 > 
 
@@ -49,7 +48,7 @@ Untuk setiap bagian: suka?, mau ubah apa?, dihapus?
 **Preguntas concretas · Pertanyaan khusus**
 
 - **Frase (1):** ¿Te gusta "An Indonesian soul with a Spanish home…"? ¿La cambiarías? · Suka tagline "An Indonesian soul with a Spanish home…"? Mau diganti?
-- **Nombre:** ¿Quieres usar tu nombre completo, solo "Dian" o un nombre artístico? · Mau pakai nama lengkap, hanya "Dian", atau nama panggung?
+- **Nombre:** En la demo el apellido es inventado. ¿Ponemos tu nombre completo (como en el tablero de marca), solo "Dian" o un nombre artístico? El logo usa las iniciales. · Di demo nama belakangnya fiktif. Mau pakai nama lengkap (seperti di brand board), hanya "Dian", atau nama panggung? Logonya pakai inisial.
 - **Tarifas (13):** ¿Mostramos precios o solo "Tarifas bajo petición"? · Harga ditampilkan atau hanya "Rates on request"?
 - **Servicios (9):** ¿Hay algún servicio que no quieras ofrecer, o falta alguno? · Ada layanan yang tidak mau ditawarkan, atau ada yang kurang?
 - **Idiomas de la web:** inglés y español. ¿Te parece bien? · Bahasa web: Inggris dan Spanyol. Oke?
@@ -72,17 +71,18 @@ Untuk setiap bagian: suka?, mau ubah apa?, dihapus?
 **ES:** Sin GPS, en buena calidad y sin cosas que muestren dónde vives (portal, vistas de casa, matrículas).
 **ID:** Tanpa GPS, kualitas bagus, dan tanpa hal yang menunjukkan tempat tinggal (pintu gedung, pemandangan dari rumah, plat nomor).
 
-- [ ] **1 ·** Retrato vertical 4:5, luz natural, fondo de Málaga · Potret vertikal 4:5, cahaya alami, latar Málaga
+- [ ] **1 ·** Retrato vertical 4:5, luz natural, fondo de Málaga. Mejor con cielo o mar a la izquierda, porque ese lado se funde con la web · Potret vertikal 4:5, cahaya alami, latar Málaga. Lebih bagus ada langit atau laut di kiri, karena sisi itu menyatu dengan web
 - [ ] **3 ·** Foto vertical 4:5 paseando por el centro histórico · Foto vertikal 4:5 jalan-jalan di kota tua
 - [ ] **3 ·** Foto horizontal 3:2 de playa al atardecer, sin gente de fondo · Foto horizontal 3:2 pantai saat senja, tanpa orang di latar
 - [ ] **3 ·** Foto cuadrada 1:1 de un detalle (café, skincare) · Foto persegi 1:1 detail (kopi, skincare)
+- [ ] **3 ·** La foto vertical del centro sale como polaroid con "Málaga ♡" escrito a mano · Foto vertikal kota tua tampil sebagai polaroid dengan tulisan tangan "Málaga ♡"
 - [ ] **7 ·** Portada vertical 9:16 de cada uno de tus 6 mejores vídeos · Cover vertikal 9:16 dari 6 video terbaikmu
 
 ### Datos por sección · Data per bagian
 
 - [ ] **2 ·** Crecimiento de seguidores de los últimos 6 meses (aproximado) · Pertumbuhan followers 6 bulan terakhir (perkiraan)
 - [ ] **3 ·** Tu texto "Sobre mí" con tus palabras, o correcciones al de ejemplo · Teks "Tentang aku" dengan kata-katamu, atau koreksi contohnya
-- [ ] **4 ·** % aproximado de tus vídeos de viajes, belleza, moda y vida entre dos culturas · Perkiraan % video travel, beauty, fashion dan kehidupan dua budaya
+- [ ] **4 ·** % aproximado de tus vídeos de cada tema: viajes, lifestyle, mini-vlogs, lugares, gastronomía y producto/UGC · Perkiraan % video tiap topik: travel, lifestyle, mini-vlog, tempat, kuliner dan produk/UGC
 - [ ] **5 ·** Por cada red (TikTok, Instagram, YouTube, Facebook): usuario, enlace, seguidores y capturas de estadísticas de los **últimos 90 días** (views, nº de vídeos, interacción) · Untuk tiap platform: username, link, followers dan screenshot statistik **90 hari terakhir** (views, jumlah video, engagement)
 - [ ] **6 ·** Capturas de audiencia: edad, género, países, ciudades y horas de actividad (TikTok e Instagram) · Screenshot audiens: umur, gender, negara, kota dan jam aktif (TikTok dan Instagram)
 - [ ] **7 ·** Enlaces a tus 6 mejores vídeos, con views, likes, guardados y compartidos de cada uno · Link 6 video terbaik, dengan views, likes, simpan dan share

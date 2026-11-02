@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react'
 import { Menu, X } from 'lucide-react'
 import { identity, sections, site, ui } from '../data/profile'
-import type { Lang, Variant } from '../data/types'
+import type { Lang } from '../data/types'
+import { Monogram } from './Brand'
 import { useSettings } from '../lib/settings'
 
 /** Fixed band that marks the whole site as a demo. */
@@ -25,7 +26,7 @@ export function LangSwitch({ className = '' }: { className?: string }) {
           type="button"
           onClick={() => setLang(code)}
           aria-pressed={lang === code}
-          className={`rounded-full px-2.5 py-1 uppercase transition-colors ${lang === code ? 'bg-ink text-paper' : 'text-muted hover:text-ink'}`}
+          className={`rounded-full px-2.5 py-1 uppercase transition-colors ${lang === code ? 'bg-accent text-paper' : 'text-muted hover:text-accent'}`}
         >
           {code}
         </button>
@@ -39,6 +40,7 @@ export function Header() {
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const links = sections.filter((s) => s.enabled && s.nav)
+  const active = useActiveSection(links.map((s) => s.id))
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40)
@@ -61,25 +63,29 @@ export function Header() {
       }`}
     >
       <div className="mx-auto flex h-14 max-w-6xl items-center justify-between gap-4 px-4 sm:px-6">
-        <a href="#hero" className="display text-xl">
-          {identity.firstName}
-          <span className="text-accent">.</span>
+        <a href="#hero" className="flex items-center gap-2.5" aria-label={`${identity.firstName} ${identity.lastName}`}>
+          <Monogram tile className="size-9" />
+          <span className="display text-xl text-accent">
+            {identity.firstName} {identity.lastName}
+          </span>
         </a>
-        <nav className="hidden items-center gap-6 text-sm lg:flex" aria-label="Main">
+        <nav className="hidden items-center gap-7 text-sm md:flex" aria-label="Main">
           {links.map((s) => (
-            <a key={s.id} href={`#${s.id}`} className="text-muted transition-colors hover:text-ink">
+            <a
+              key={s.id}
+              href={`#${s.id}`}
+              aria-current={active === s.id ? 'true' : undefined}
+              className={`border-b-2 py-1 transition-colors ${active === s.id ? 'border-accent font-semibold text-accent' : 'border-transparent text-ink/75 hover:text-accent'}`}
+            >
               {t(s.nav!)}
             </a>
           ))}
         </nav>
         <div className="flex items-center gap-2">
           <LangSwitch />
-          <a href="#contact" className="btn btn-primary hidden h-9 px-4 text-sm sm:inline-flex">
-            {t(ui.workWithMe)}
-          </a>
           <button
             type="button"
-            className="grid size-9 place-items-center rounded-full border border-line lg:hidden"
+            className="grid size-9 place-items-center rounded-full border border-line md:hidden"
             aria-expanded={open}
             aria-controls="mobile-menu"
             aria-label={t(open ? ui.close : ui.menu)}
@@ -90,11 +96,11 @@ export function Header() {
         </div>
       </div>
       {open && (
-        <nav id="mobile-menu" className="border-t border-line px-4 pb-6 lg:hidden" aria-label="Mobile">
+        <nav id="mobile-menu" className="border-t border-line px-4 pb-6 md:hidden" aria-label="Mobile">
           <ul className="grid gap-1 pt-3">
             {links.map((s) => (
               <li key={s.id}>
-                <a href={`#${s.id}`} onClick={() => setOpen(false)} className="display block py-2 text-2xl">
+                <a href={`#${s.id}`} onClick={() => setOpen(false)} className="display block py-2 text-2xl text-accent">
                   {t(s.nav!)}
                 </a>
               </li>
@@ -109,28 +115,24 @@ export function Header() {
   )
 }
 
-/** Style picker, only in review mode, so Dian can compare the two designs. */
-export function VariantPicker() {
-  const { variant, setVariant } = useSettings()
-  if (!site.reviewMode) return null
-  return (
-    <div
-      role="group"
-      aria-label={`${ui.review.style.es} · ${ui.review.style.id}`}
-      className="fixed bottom-4 left-1/2 z-50 flex -translate-x-1/2 items-center gap-1 rounded-full border border-review/40 bg-paper/95 p-1 text-xs shadow-lg backdrop-blur"
-    >
-      <span className="px-2 font-semibold text-review">{ui.review.style.es}</span>
-      {(Object.keys(ui.review.variants) as Variant[]).map((key) => (
-        <button
-          key={key}
-          type="button"
-          onClick={() => setVariant(key)}
-          aria-pressed={variant === key}
-          className={`rounded-full px-3 py-1.5 font-medium whitespace-nowrap ${variant === key ? 'bg-review text-white' : 'text-ink hover:bg-sand'}`}
-        >
-          {ui.review.variants[key].es}
-        </button>
-      ))}
-    </div>
-  )
+/** Id of the menu section currently in view, for the underline in the menu. */
+function useActiveSection(ids: string[]) {
+  const [active, setActive] = useState(ids[0])
+  const key = ids.join(' ')
+  useEffect(() => {
+    const list = key.split(' ')
+    const onScroll = () => {
+      // The last section whose top has passed the upper third of the screen.
+      let current = list[0]
+      for (const id of list) {
+        const el = document.getElementById(id)
+        if (el && el.getBoundingClientRect().top < window.innerHeight / 3) current = id
+      }
+      setActive(current)
+    }
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [key])
+  return active
 }
