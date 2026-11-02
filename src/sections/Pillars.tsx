@@ -1,11 +1,11 @@
-import { Clapperboard, CupSoda, Flower2, Luggage, MapPinned, ShoppingBag } from 'lucide-react'
+import { Clapperboard, CupSoda, Luggage, MapPinned, Shirt, ShoppingBag } from 'lucide-react'
 import { pillars } from '../data/profile'
 import type { SectionConfig } from '../data/types'
 import { Heading, Section } from '../components/Section'
 import { percent } from '../lib/format'
 import { useSettings } from '../lib/settings'
 
-const icons = { travel: Luggage, lifestyle: Flower2, vlog: Clapperboard, place: MapPinned, food: CupSoda, product: ShoppingBag }
+const icons = { travel: Luggage, place: MapPinned, food: CupSoda, product: ShoppingBag, vlog: Clapperboard, fashion: Shirt }
 
 export function Pillars({ config }: { config: SectionConfig }) {
   const { t, lang } = useSettings()

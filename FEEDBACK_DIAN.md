@@ -47,7 +47,7 @@ Untuk setiap bagian: suka?, mau ubah apa?, dihapus?
 
 **Preguntas concretas · Pertanyaan khusus**
 
-- **Frase (1):** ¿Te gusta "An Indonesian soul with a Spanish home…"? ¿La cambiarías? · Suka tagline "An Indonesian soul with a Spanish home…"? Mau diganti?
+- **Frase (1):** ¿Te gusta "Sharing travel, food and fashion through mini-vlogs, hidden gems and honest reviews"? · Suka tagline "Sharing travel, food and fashion through mini-vlogs, hidden gems and honest reviews"?
 - **Nombre:** La web usa "Dian Novitasari", como en el tablero de marca. ¿Está bien así? · Web-nya pakai "Dian Novitasari", seperti di brand board. Sudah oke?
 - **Tarifas (13):** ¿Mostramos precios o solo "Tarifas bajo petición"? · Harga ditampilkan atau hanya "Rates on request"?
 - **Servicios (9):** ¿Hay algún servicio que no quieras ofrecer, o falta alguno? · Ada layanan yang tidak mau ditawarkan, atau ada yang kurang?
@@ -81,15 +81,15 @@ Untuk setiap bagian: suka?, mau ubah apa?, dihapus?
 ### Datos por sección · Data per bagian
 
 - [ ] **2 ·** Crecimiento de seguidores de los últimos 6 meses (aproximado) · Pertumbuhan followers 6 bulan terakhir (perkiraan)
-- [ ] **3 ·** Tu texto "Sobre mí" con tus palabras, o correcciones al de ejemplo · Teks "Tentang aku" dengan kata-katamu, atau koreksi contohnya
-- [ ] **4 ·** % aproximado de tus vídeos de cada tema: viajes, lifestyle, mini-vlogs, lugares, gastronomía y producto/UGC · Perkiraan % video tiap topik: travel, lifestyle, mini-vlog, tempat, kuliner dan produk/UGC
+- [x] **3 ·** Tu texto "Sobre mí" con tus palabras, o correcciones al de ejemplo · Teks "Tentang aku" dengan kata-katamu, atau koreksi contohnya
+- [ ] **4 ·** % aproximado de tus vídeos de cada tema: viajes, lugares, gastronomía, UGC/producto, mini-vlogs y moda · Perkiraan % video tiap topik: travel, tempat, kuliner, UGC/produk, mini-vlog dan fashion
 - [ ] **5 ·** Por cada red (TikTok, Instagram, YouTube, Facebook): usuario, enlace, seguidores y capturas de estadísticas de los **últimos 90 días** (views, nº de vídeos, interacción) · Untuk tiap platform: username, link, followers dan screenshot statistik **90 hari terakhir** (views, jumlah video, engagement)
 - [ ] **6 ·** Capturas de audiencia: edad, género, países, ciudades y horas de actividad (TikTok e Instagram) · Screenshot audiens: umur, gender, negara, kota dan jam aktif (TikTok dan Instagram)
 - [ ] **7 ·** Enlaces a tus 6 mejores vídeos, con views, likes, guardados y compartidos de cada uno · Link 6 video terbaik, dengan views, likes, simpan dan share
 - [ ] **8 ·** 3 colaboraciones que el contrato permita mostrar: marca, qué hiciste y resultados (views, clics, código, ventas) · 3 kolaborasi yang boleh ditampilkan: brand, apa yang dibuat dan hasilnya (views, klik, kode, penjualan)
 - [ ] **9 ·** Lista de servicios que quieres ofrecer · Daftar layanan yang mau ditawarkan
 - [ ] **10 ·** Apps y equipo que usas para grabar y editar · Aplikasi dan alat untuk rekam dan edit
-- [ ] **11 ·** Año de cada hito: inicio, primer viral, 100K, 1M, primera marca, mudanza a España · Tahun tiap pencapaian: mulai, viral pertama, 100K, 1M, brand pertama, pindah ke Spanyol
+- [ ] **11 ·** Año de cada hito: inicio, primer viral, 100K, 1M, primera marca (sin fecha de mudanza) · Tahun tiap pencapaian: mulai, viral pertama, 100K, 1M, brand pertama (tanpa tahun pindah)
 - [ ] **12 ·** 2–3 frases de marcas, con su permiso para publicarlas · 2–3 kutipan dari brand, dengan izin untuk dipublikasikan
 - [ ] **13 ·** Tus tarifas, si decides mostrarlas · Tarifmu, kalau mau ditampilkan
 - [ ] **14 ·** Un email profesional nuevo para recibir mensajes de marcas (no el personal) · Email profesional baru untuk pesan dari brand (bukan email pribadi)

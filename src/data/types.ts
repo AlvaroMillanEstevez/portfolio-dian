@@ -9,7 +9,7 @@ export type Localized = Record<Lang, string>
 export type ReviewNote = { es: string; id: string }
 
 export type PlatformId = 'tiktok' | 'instagram' | 'youtube' | 'facebook'
-export type Category = 'travel' | 'food' | 'lifestyle'
+export type Category = 'travel' | 'food' | 'vlog'
 
 export type SectionId =
   | 'hero'

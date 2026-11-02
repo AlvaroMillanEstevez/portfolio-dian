@@ -139,8 +139,8 @@ export const sections: SectionConfig[] = [
     number: 11,
     enabled: true,
     note: {
-      es: 'Tu trayectoria. Necesitamos: los años reales de cada hito (inicio, primer viral, 100K, 1M, primera marca, mudanza).',
-      id: 'Perjalananmu. Yang dibutuhkan: tahun asli tiap pencapaian (mulai, viral pertama, 100K, 1M, brand pertama, pindah).',
+      es: 'Tu trayectoria. Necesitamos: los años reales de cada hito (inicio, primer viral, 100K, 1M, primera marca). Sin fecha de mudanza a España.',
+      id: 'Perjalananmu. Yang dibutuhkan: tahun asli tiap pencapaian (mulai, viral pertama, 100K, 1M, brand pertama). Tanpa tahun pindah ke Spanyol.',
     },
   },
   {
@@ -194,8 +194,8 @@ export const identity = {
   /** Hero line under the name: "{role} based in {city}". */
   role: { en: 'Indonesian content creator', es: 'Creadora de contenido indonesia' } satisfies Localized,
   tagline: {
-    en: 'Creating travel, lifestyle and story-driven content through mini-vlogs, place features and honest reviews.',
-    es: 'Creo contenido de viajes, lifestyle y storytelling con mini-vlogs, lugares con encanto y reseñas sinceras.',
+    en: 'Sharing travel, food and fashion through mini-vlogs, hidden gems and honest reviews.',
+    es: 'Comparto viajes, gastronomía y moda con mini-vlogs, rincones escondidos y reseñas sinceras.',
   } satisfies Localized,
   /** Spaced capitals under the name in the logo. */
   roles: {
@@ -278,21 +278,21 @@ export const growth6m = 18.6
 /* ------------------------------------------------------------------ */
 
 export const about = {
-  title: { en: 'Two cultures, one home', es: 'Dos culturas, un hogar' } satisfies Localized,
+  title: { en: 'Two cultures, one story', es: 'Dos culturas, una historia' } satisfies Localized,
   /** Handwritten caption under the first photo, shown as an instant photo. */
   polaroid: { en: 'Málaga', es: 'Málaga' } satisfies Localized,
   paragraphs: [
     {
-      en: 'I’m Dian, a 24-year-old Indonesian creator living in Málaga. I grew up between rice terraces and street markets, and today I wake up to the Mediterranean.',
-      es: 'Soy Dian, creadora indonesia de 24 años y vivo en Málaga. Crecí entre arrozales y mercados callejeros, y hoy me despierto frente al Mediterráneo.',
+      en: 'I’m Dian, a content creator from Indonesia, now calling Málaga home. I create for two simple reasons: to share my experiences so others can enjoy them too, and to capture the moments worth remembering.',
+      es: 'Soy Dian, creadora de contenido de Indonesia y ahora Málaga es mi hogar. Creo por dos razones muy sencillas: compartir mis experiencias para que otros también las disfruten y guardar los momentos que merecen recordarse.',
     },
     {
-      en: 'My content lives between those two worlds: hidden corners of Andalusia, cafés and restaurants reviewed honestly, and mini-vlogs of a slow life by the sea. My audience comes for the travel and stays for the honesty.',
-      es: 'Mi contenido vive entre esos dos mundos: rincones escondidos de Andalucía, cafés y restaurantes reseñados con sinceridad y mini-vlogs de una vida tranquila junto al mar. Mi audiencia llega por los viajes y se queda por la sinceridad.',
+      en: 'You’ll find me exploring famous spots and hidden gems, reviewing food honestly, testing products, styling outfits and turning ordinary days into mini-vlogs. Every place becomes a story, told the way I’d tell a friend.',
+      es: 'Me encontrarás descubriendo lugares famosos y rincones escondidos, reseñando comida con sinceridad, probando productos, combinando looks y convirtiendo días normales en mini-vlogs. Cada lugar se convierte en una historia, contada como se la contaría a una amiga.',
     },
     {
-      en: 'I create in English, Spanish and Indonesian, which lets a brand speak to Spain, the rest of Europe and Southeast Asia with one voice.',
-      es: 'Creo en inglés, español e indonesio, así que una marca puede hablarle a España, al resto de Europa y al Sudeste Asiático con una sola voz.',
+      en: 'I create in English and Indonesian, and I’m learning Spanish one conversation at a time. That mix lets brands reach Europe and Southeast Asia with a voice that feels genuine.',
+      es: 'Creo en inglés e indonesio, y estoy aprendiendo español conversación a conversación. Esa mezcla permite a las marcas llegar a Europa y al Sudeste Asiático con una voz que se siente auténtica.',
     },
   ] satisfies Localized[],
   photos: [
@@ -332,60 +332,60 @@ export const about = {
 
 export const pillars = {
   title: { en: 'Content focus', es: 'Mi contenido' } satisfies Localized,
-  /** icon: travel | lifestyle | vlog | place | food | product (see sections/Pillars.tsx). */
+  /** icon: travel | place | food | product | vlog | fashion (see sections/Pillars.tsx). */
   items: [
     {
       icon: 'travel',
-      share: 30,
+      share: 28,
       name: { en: 'Travel', es: 'Viajes' },
       text: {
-        en: 'Andalusian villages, weekend escapes and long trips home to Indonesia.',
-        es: 'Pueblos andaluces, escapadas de fin de semana y viajes largos a Indonesia.',
-      },
-    },
-    {
-      icon: 'lifestyle',
-      share: 20,
-      name: { en: 'Lifestyle', es: 'Lifestyle' },
-      text: {
-        en: 'Slow mornings, skincare for the southern sun and life between two cultures.',
-        es: 'Mañanas tranquilas, skincare para el sol del sur y vida entre dos culturas.',
-      },
-    },
-    {
-      icon: 'vlog',
-      share: 15,
-      name: { en: 'Mini-vlogs', es: 'Mini-vlogs' },
-      text: {
-        en: 'A day, a trip or a recipe told in under a minute.',
-        es: 'Un día, un viaje o una receta contados en menos de un minuto.',
+        en: 'Weekend escapes, Andalusian villages and trips home to Indonesia.',
+        es: 'Escapadas de fin de semana, pueblos andaluces y viajes a Indonesia.',
       },
     },
     {
       icon: 'place',
-      share: 12,
-      name: { en: 'Promote a place', es: 'Lugares con encanto' },
+      share: 18,
+      name: { en: 'Popular spots & hidden gems', es: 'Lugares famosos y rincones escondidos' },
       text: {
-        en: 'Hotels, shops and hidden spots, filmed so people want to go.',
-        es: 'Hoteles, tiendas y rincones escondidos, grabados para que den ganas de ir.',
+        en: 'The places everyone talks about, and the ones nobody has found yet.',
+        es: 'Los sitios de los que todos hablan y los que nadie ha descubierto todavía.',
       },
     },
     {
       icon: 'food',
-      share: 13,
-      name: { en: 'Food & drink reviews', es: 'Reseñas gastronómicas' },
+      share: 16,
+      name: { en: 'Food reviews', es: 'Reseñas gastronómicas' },
       text: {
-        en: 'Honest reviews of cafés, restaurants and Indonesian flavours in Spain.',
-        es: 'Reseñas sinceras de cafés, restaurantes y sabores indonesios en España.',
+        en: 'Honest reviews of cafés, restaurants and street food.',
+        es: 'Reseñas sinceras de cafés, restaurantes y comida callejera.',
       },
     },
     {
       icon: 'product',
-      share: 10,
-      name: { en: 'Product & UGC', es: 'Producto y UGC' },
+      share: 14,
+      name: { en: 'UGC & product reviews', es: 'UGC y reseñas de producto' },
       text: {
-        en: 'Unboxings, tests and ads made for your own channels.',
-        es: 'Unboxings, pruebas y anuncios para tus propios canales.',
+        en: 'Unboxings, real tests and ads made for your own channels.',
+        es: 'Unboxings, pruebas reales y anuncios para tus propios canales.',
+      },
+    },
+    {
+      icon: 'vlog',
+      share: 12,
+      name: { en: 'Mini-vlogs', es: 'Mini-vlogs' },
+      text: {
+        en: 'A day, a trip or a small moment told in under a minute.',
+        es: 'Un día, un viaje o un pequeño momento contados en menos de un minuto.',
+      },
+    },
+    {
+      icon: 'fashion',
+      share: 12,
+      name: { en: 'Fashion', es: 'Moda' },
+      text: {
+        en: 'Outfits for travel days, city walks and everything in between.',
+        es: 'Looks para viajar, pasear por la ciudad y todo lo demás.',
       },
     },
   ] as const,
@@ -450,7 +450,7 @@ export const audience = {
 export const categories: { key: Category; label: Localized }[] = [
   { key: 'travel', label: { en: 'Travel', es: 'Viajes' } },
   { key: 'food', label: { en: 'Food & drink', es: 'Gastronomía' } },
-  { key: 'lifestyle', label: { en: 'Lifestyle', es: 'Lifestyle' } },
+  { key: 'vlog', label: { en: 'Mini-vlogs & UGC', es: 'Mini-vlogs y UGC' } },
 ]
 
 const videoThumb = (file: string, es: string, id: string, alt: Localized): Photo => ({
@@ -503,7 +503,7 @@ export const videos: Video[] = [
   },
   {
     id: 'skincare-sun',
-    category: 'lifestyle',
+    category: 'vlog',
     platform: 'tiktok',
     title: {
       en: 'My Indonesian skincare routine for the Andalusian sun',
@@ -543,7 +543,7 @@ export const videos: Video[] = [
   },
   {
     id: 'slow-sunday',
-    category: 'lifestyle',
+    category: 'vlog',
     platform: 'instagram',
     title: {
       en: 'A slow Sunday in Málaga · mini-vlog',
@@ -691,10 +691,10 @@ export const services: { title: Localized; text: Localized }[] = [
     },
   },
   {
-    title: { en: 'Content in 3 languages', es: 'Contenido en 3 idiomas' },
+    title: { en: 'English & Indonesian', es: 'Inglés e indonesio' },
     text: {
-      en: 'English, Spanish and Indonesian: one creator for Europe and Southeast Asia.',
-      es: 'Inglés, español e indonesio: una creadora para Europa y el Sudeste Asiático.',
+      en: 'Content in two languages: one creator for Europe and Southeast Asia.',
+      es: 'Contenido en dos idiomas: una creadora para Europa y el Sudeste Asiático.',
     },
   },
 ]
@@ -715,14 +715,13 @@ export const skills = {
       items: [
         { en: 'Spain & Southern Europe', es: 'España y sur de Europa' },
         { en: 'Southeast Asia (Indonesia, Malaysia)', es: 'Sudeste Asiático (Indonesia, Malasia)' },
-        { en: 'Spanish-speaking Latin America', es: 'Latinoamérica hispanohablante' },
       ],
     },
   ],
   languages: [
     { name: { en: 'Indonesian', es: 'Indonesio' }, level: { en: 'Native', es: 'Nativo' }, value: 100 },
     { name: { en: 'English', es: 'Inglés' }, level: { en: 'Fluent', es: 'Fluido' }, value: 90 },
-    { name: { en: 'Spanish', es: 'Español' }, level: { en: 'Advanced', es: 'Avanzado' }, value: 75 },
+    { name: { en: 'Spanish', es: 'Español' }, level: { en: 'Learning', es: 'Aprendiendo' }, value: 35 },
   ],
 }
 
@@ -750,11 +749,6 @@ export const timeline: { year: string; title: Localized; text: Localized }[] = [
     year: '2022',
     title: { en: 'First brand partnership', es: 'Primera colaboración' },
     text: { en: 'A travel campaign with a regional tourism board.', es: 'Una campaña de viajes con una oficina de turismo regional.' },
-  },
-  {
-    year: '2023',
-    title: { en: 'New home in Málaga', es: 'Nuevo hogar en Málaga' },
-    text: { en: 'Moved to Spain and started creating in Spanish.', es: 'Me mudé a España y empecé a crear en español.' },
   },
   {
     year: '2024',
