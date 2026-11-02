@@ -283,16 +283,16 @@ export const about = {
   polaroid: { en: 'Málaga', es: 'Málaga' } satisfies Localized,
   paragraphs: [
     {
-      en: 'I’m Dian, a content creator from Indonesia, now calling Málaga home. I create for two simple reasons: to share my experiences so others can enjoy them too, and to capture the moments worth remembering.',
-      es: 'Soy Dian, creadora de contenido de Indonesia y ahora Málaga es mi hogar. Creo por dos razones muy sencillas: compartir mis experiencias para que otros también las disfruten y guardar los momentos que merecen recordarse.',
+      en: 'I’m Dian, a content creator from Indonesia who now calls Málaga home. I started creating because I love sharing what I experience so others can enjoy it too, and because some moments are simply too good not to keep.',
+      es: 'Soy Dian, creadora de contenido de Indonesia y ahora Málaga es mi casa. Empecé a crear porque me encanta compartir lo que vivo para que otros también lo disfruten, y porque hay momentos demasiado bonitos para no guardarlos.',
     },
     {
-      en: 'You’ll find me exploring famous spots and hidden gems, reviewing food honestly, testing products, styling outfits and turning ordinary days into mini-vlogs. Every place becomes a story, told the way I’d tell a friend.',
-      es: 'Me encontrarás descubriendo lugares famosos y rincones escondidos, reseñando comida con sinceridad, probando productos, combinando looks y convirtiendo días normales en mini-vlogs. Cada lugar se convierte en una historia, contada como se la contaría a una amiga.',
+      en: 'That’s why my camera comes everywhere with me: to famous spots and hidden gems, to the café I can’t stop thinking about, to the outfit I planned for the trip and the product I’ve actually tried. Some days become a mini-vlog, others a review, but every story is told the way I’d tell a friend.',
+      es: 'Por eso mi cámara va conmigo a todas partes: a lugares famosos y rincones escondidos, a ese café que no me quito de la cabeza, al look que preparé para el viaje y al producto que he probado de verdad. Algunos días se convierten en un mini-vlog y otros en una reseña, pero siempre lo cuento como se lo contaría a una amiga.',
     },
     {
-      en: 'I create in English and Indonesian, and I’m learning Spanish one conversation at a time. That mix lets brands reach Europe and Southeast Asia with a voice that feels genuine.',
-      es: 'Creo en inglés e indonesio, y estoy aprendiendo español conversación a conversación. Esa mezcla permite a las marcas llegar a Europa y al Sudeste Asiático con una voz que se siente auténtica.',
+      en: 'I share these stories in English and Indonesian, and I’m learning Spanish along the way. For brands, that means one honest voice that reaches people in Europe and Southeast Asia.',
+      es: 'Comparto estas historias en inglés e indonesio, y voy aprendiendo español por el camino. Para las marcas, eso significa una voz sincera que llega a Europa y al Sudeste Asiático.',
     },
   ] satisfies Localized[],
   photos: [
