@@ -3,7 +3,7 @@
 Prototipo del portfolio / media kit web de Dian, creadora de contenido en Málaga.
 Las cifras, la audiencia, los perfiles y el portfolio son **reales** (analíticas de TikTok e Instagram de octubre de 2026). Las fotos son de Dian y los precios se dan por privado. El modo revisión sigue activo para que Dian comente por número de sección.
 
-- Web: https://alvaromillanestevez.github.io/portfolio-dian/
+- Web: https://dian-novitasari.github.io/
 - Feedback de Dian: [FEEDBACK_DIAN.md](FEEDBACK_DIAN.md)
 
 Stack: Vite + React + TypeScript + Tailwind CSS 4. Despliegue en GitHub Pages con GitHub Actions.
@@ -12,7 +12,7 @@ Stack: Vite + React + TypeScript + Tailwind CSS 4. Despliegue en GitHub Pages co
 
 ```bash
 npm ci
-npm run dev        # http://localhost:5173/portfolio-dian/
+npm run dev        # http://localhost:5173/
 npm run build      # genera dist/ (con CSP y sin source maps)
 npm run preview    # sirve dist/ para probar la build
 ```
@@ -121,7 +121,7 @@ Antes de publicarlo, comprobar con `pdftotext` y `exiftool` que no lleva datos p
 
 ## Privacidad y seguridad
 
-- `noindex, nofollow` en `index.html`. El `robots.txt` está incluido, pero los buscadores solo lo leen en la raíz del dominio, así que lo que de verdad bloquea la indexación es la meta.
+- `noindex, nofollow` en `index.html` y `robots.txt` con `Disallow: /`. Ahora que la web está en la raíz del dominio, los dos funcionan. Para indexarla: quitar la meta y cambiar el `robots.txt`.
 - Content Security Policy en una `<meta>`, añadida solo en la build (`vite.config.ts`). Todo es del propio dominio; la única excepción es `connect-src` para el formulario (Web3Forms).
 - Sin source maps en producción.
 - Enlaces externos con `rel="noopener noreferrer"`.

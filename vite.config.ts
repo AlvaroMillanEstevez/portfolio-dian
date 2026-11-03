@@ -33,9 +33,9 @@ const contentSecurityPolicy = (): Plugin => ({
   ],
 })
 
-// Served from https://alvaromillanestevez.github.io/portfolio-dian/
+// Served from https://dian-novitasari.github.io/ (user/organization site: root path)
 export default defineConfig({
-  base: '/portfolio-dian/',
+  base: '/',
   plugins: [react(), tailwindcss(), contentSecurityPolicy()],
   build: {
     sourcemap: false,
