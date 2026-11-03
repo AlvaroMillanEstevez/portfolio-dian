@@ -78,13 +78,13 @@ Las portadas del portfolio (`public/images/portfolio/*.webp`) salen de sus publi
 
 Cada hueco de foto es un placeholder SVG en `public/images/` con la proporción exacta que tendrá la foto real:
 
-| Archivo                               | Proporción | Qué foto va                                  |
-| ------------------------------------- | ---------- | -------------------------------------------- |
-| `hero-portrait.webp` ✅               | 4:5        | Retrato (jardín de El Retiro)                 |
-| `about-malaga-marina.webp` ✅         | 4:5        | Polaroid de "Sobre mí" (Puerto Marina)        |
-| `about-beach-golden-hour.svg`         | 3:2        | Playa al atardecer, sin personas de fondo     |
-| `about-morning-ritual.svg`            | 1:1        | Detalle de café o skincare                    |
-| `video-*.svg` (6)                     | 9:16       | Portada de cada vídeo destacado               |
+| Archivo                       | Proporción | Foto                                   |
+| ----------------------------- | ---------- | -------------------------------------- |
+| `hero-portrait.webp`          | 4:5        | Portada: playa al atardecer            |
+| `about-malaga-marina.webp`    | 4:5        | Polaroid de "Sobre mí": Puerto Marina  |
+| `about-beach-sunset.webp`     | 3:2        | "Sobre mí": playa al atardecer         |
+| `about-retiro.webp`           | 1:1        | "Sobre mí": jardín de El Retiro        |
+| `portfolio/*.webp`            | 4:5        | Portadas del portfolio (sección 7)     |
 
 Si una foto se recorta mal, `focus` (por ejemplo `'50% 80%'`) elige qué parte queda a la vista.
 
@@ -100,7 +100,6 @@ Para poner una foto real:
 
 Revisar cada foto antes: reflejos, pantallas, matrículas, portal o vistas reconocibles de casa, personas de fondo.
 
-`npm run placeholders` vuelve a generar los SVG.
 
 ## Media kit en PDF
 

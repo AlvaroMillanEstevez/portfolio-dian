@@ -51,8 +51,8 @@ export const sections: SectionConfig[] = [
     enabled: true,
     nav: { en: 'About', es: 'Sobre mí' },
     note: {
-      es: 'Tu texto y la polaroid. Faltan: una foto horizontal 3:2 (playa o paisaje) y una cuadrada 1:1 (detalle: café, comida, producto).',
-      id: 'Teksmu dan polaroid. Yang kurang: satu foto horizontal 3:2 (pantai atau pemandangan) dan satu persegi 1:1 (detail: kopi, makanan, produk).',
+      es: 'Tu texto y tus fotos. Si más adelante tienes una foto de café o comida, puede sustituir a cualquiera de estas.',
+      id: 'Teksmu dan foto-fotomu. Kalau nanti ada foto kopi atau makanan, bisa menggantikan salah satunya.',
     },
   },
   {
@@ -198,8 +198,8 @@ export const identity = {
   portrait: {
     src: 'images/hero-portrait.webp',
     ratio: '4/5',
-    focus: '50% 80%',
-    alt: { en: 'Dian in a flower garden in Madrid', es: 'Dian en un jardín de flores en Madrid' },
+    focus: '50% 72%',
+    alt: { en: 'Dian on the beach at sunset', es: 'Dian en la playa al atardecer' },
     brief: {
       es: 'Retrato vertical 4:5, luz natural, fondo de Málaga',
       id: 'Potret vertikal 4:5, cahaya alami, latar Málaga',
@@ -268,22 +268,18 @@ export const about = {
       },
     },
     {
-      src: 'images/about-beach-golden-hour.svg',
+      src: 'images/about-beach-sunset.webp',
       ratio: '3/2',
-      alt: { en: 'Mediterranean beach at golden hour', es: 'Playa mediterránea al atardecer' },
-      brief: {
-        es: 'Horizontal 3:2, playa al atardecer, sin personas de fondo',
-        id: 'Horizontal 3:2, pantai saat senja, tanpa orang di latar',
-      },
+      focus: '50% 38%',
+      alt: { en: 'Dian by the sea at sunset', es: 'Dian junto al mar al atardecer' },
+      brief: { es: 'Playa al atardecer', id: 'Pantai saat senja' },
     },
     {
-      src: 'images/about-morning-ritual.svg',
+      src: 'images/about-retiro.webp',
       ratio: '1/1',
-      alt: { en: 'Morning coffee and skincare ritual', es: 'Ritual de café y skincare por la mañana' },
-      brief: {
-        es: 'Cuadrada 1:1, detalle de café o skincare, sin ventanas de casa',
-        id: 'Persegi 1:1, detail kopi atau skincare, tanpa jendela rumah',
-      },
+      focus: '50% 78%',
+      alt: { en: 'Dian in a flower garden in Madrid', es: 'Dian en un jardín de flores en Madrid' },
+      brief: { es: 'Jardín de El Retiro', id: 'Taman El Retiro' },
     },
   ] satisfies Photo[],
 }
