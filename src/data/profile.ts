@@ -14,7 +14,7 @@ export const site = {
   /** Shows the fixed "Demo prototype" band. */
   demo: false,
   /** Section numbers and notes for Dian. */
-  reviewMode: true,
+  reviewMode: false,
   /** 'en' or 'es'. The visitor can switch; the choice is remembered. */
   defaultLang: 'en',
   dataAsOf: { en: 'Data from October 2026', es: 'Datos de octubre de 2026' } satisfies Localized,
