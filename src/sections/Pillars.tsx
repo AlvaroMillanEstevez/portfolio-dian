@@ -2,13 +2,12 @@ import { Clapperboard, CupSoda, Luggage, MapPinned, Shirt, ShoppingBag } from 'l
 import { pillars } from '../data/profile'
 import type { SectionConfig } from '../data/types'
 import { Heading, Section } from '../components/Section'
-import { percent } from '../lib/format'
 import { useSettings } from '../lib/settings'
 
 const icons = { travel: Luggage, place: MapPinned, food: CupSoda, product: ShoppingBag, vlog: Clapperboard, fashion: Shirt }
 
 export function Pillars({ config }: { config: SectionConfig }) {
-  const { t, lang } = useSettings()
+  const { t } = useSettings()
   return (
     <Section config={config} className="py-20 sm:py-28">
       <div data-reveal className="mx-auto max-w-6xl px-4 sm:px-6">
@@ -23,7 +22,6 @@ export function Pillars({ config }: { config: SectionConfig }) {
                   <Icon className="relative size-10 text-accent" strokeWidth={1.4} aria-hidden="true" />
                 </div>
                 <h3 className="mt-4 font-semibold">{t(p.name)}</h3>
-                <p className="mt-1 text-xs font-semibold text-accent tabular-nums">{percent(p.share, lang)}</p>
                 <p className="mt-2 text-sm leading-relaxed text-muted">{t(p.text)}</p>
               </li>
             )

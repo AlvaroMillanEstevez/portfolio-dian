@@ -1,15 +1,22 @@
-import { growth6m, platforms } from '../data/profile'
+import { platforms } from '../data/profile'
+import type { Platform } from '../data/types'
+
+/** (likes + comments + shares) / views, in %. */
+export const engagementRate = (p: Pick<Platform, 'likes' | 'comments' | 'shares' | 'viewsMonth'>) =>
+  ((p.likes + p.comments + p.shares) / p.viewsMonth) * 100
 
 // Section 2 is derived from section 5, so the totals always match the per-platform numbers.
-const sum = (pick: (p: (typeof platforms)[number]) => number) => platforms.reduce((acc, p) => acc + pick(p), 0)
+const sum = (pick: (p: Platform) => number) => platforms.reduce((acc, p) => acc + pick(p), 0)
 
-const views90d = sum((p) => p.views90d)
+const month = {
+  viewsMonth: sum((p) => p.viewsMonth),
+  likes: sum((p) => p.likes),
+  comments: sum((p) => p.comments),
+  shares: sum((p) => p.shares),
+}
 
 export const totals = {
   followers: sum((p) => p.followers),
-  views90d,
-  avgViews: Math.round(views90d / sum((p) => p.videos90d)),
-  /** Engagement weighted by views, so a small platform does not skew the average. */
-  engagementRate: sum((p) => p.engagementRate * p.views90d) / views90d,
-  growth6m,
+  ...month,
+  engagementRate: engagementRate(month),
 }

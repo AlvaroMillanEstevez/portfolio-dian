@@ -1,8 +1,10 @@
-// Builds public/media-kit-demo.pdf from src/data/profile.ts, so the PDF never drifts from the website.
+// Builds the media kit PDF in public/ from src/data/profile.ts, so the PDF never drifts from the website.
 // Usage: npm run media-kit   (needs the Playwright Chromium: npx playwright-core install chromium)
 import { readFileSync } from 'node:fs'
 import { chromium } from 'playwright-core'
-import { audience, caseStudies, identity, platforms, services, site } from '../src/data/profile.ts'
+import { audience, caseStudies, identity, platforms, services, site, why } from '../src/data/profile.ts'
+
+const insights = audience.find((a) => a.age) ?? audience[0]
 
 const lang = process.argv[2] === 'es' ? 'es' : 'en'
 const t = (text) => text[lang]
@@ -15,17 +17,17 @@ const font = (pkg, file) => read(`node_modules/@fontsource-variable/${pkg}/files
 const script = read('node_modules/@fontsource/ephesis/files/ephesis-latin-400-normal.woff2').toString('base64')
 const sketch = read('public/images/malaga-sketch.svg').toString('base64')
 const sum = (pick) => platforms.reduce((a, p) => a + pick(p), 0)
-const views = sum((p) => p.views90d)
+const er = (p) => ((p.likes + p.comments + p.shares) / p.viewsMonth) * 100
 const totals = {
   followers: sum((p) => p.followers),
-  views,
-  avg: views / sum((p) => p.videos90d),
-  er: sum((p) => p.engagementRate * p.views90d) / views,
+  views: sum((p) => p.viewsMonth),
+  likes: sum((p) => p.likes),
+  er: er({ likes: sum((p) => p.likes), comments: sum((p) => p.comments), shares: sum((p) => p.shares), viewsMonth: sum((p) => p.viewsMonth) }),
 }
 
 const L = {
-  en: { followers: 'Followers', views: 'Views · 90 days', avg: 'Avg. views', er: 'Engagement', platforms: 'Platforms', audience: 'Audience', countries: 'Top countries', age: 'Age', women: 'Women', services: 'Services', cases: 'Selected partnerships', contact: 'Contact through the form on my website', demo: 'DEMO · numbers and brands are fictional' },
-  es: { followers: 'Seguidores', views: 'Views · 90 días', avg: 'Media de views', er: 'Engagement', platforms: 'Plataformas', audience: 'Audiencia', countries: 'Países principales', age: 'Edad', women: 'Mujeres', services: 'Servicios', cases: 'Colaboraciones destacadas', contact: 'Contacto a través del formulario de mi web', demo: 'DEMO · cifras y marcas ficticias' },
+  en: { followers: 'Followers', views: 'Views · October', likes: 'Likes · October', er: 'Engagement', platforms: 'Platforms', audience: 'Instagram audience', countries: 'Top countries', age: 'Age', women: 'Women', services: 'Services', cases: 'Selected partnerships', contact: 'Let’s create something together', demo: 'DEMO' },
+  es: { followers: 'Seguidores', views: 'Views · octubre', likes: 'Likes · octubre', er: 'Engagement', platforms: 'Plataformas', audience: 'Audiencia en Instagram', countries: 'Países principales', age: 'Edad', women: 'Mujeres', services: 'Servicios', cases: 'Colaboraciones destacadas', contact: 'Creemos algo juntos', demo: 'DEMO' },
 }[lang]
 
 const bars = (rows) => {
@@ -35,7 +37,7 @@ const bars = (rows) => {
     .join('')
 }
 
-const html = `<!doctype html><html lang="${lang}"><head><meta charset="utf-8"><title>${esc(identity.firstName)} · Media kit (demo)</title>
+const html = `<!doctype html><html lang="${lang}"><head><meta charset="utf-8"><title>${esc(identity.firstName)} ${esc(identity.lastName)} · Media kit</title>
 <style>
 @font-face{font-family:Fraunces;src:url(data:font/woff2;base64,${font('fraunces', 'fraunces-latin-opsz-normal.woff2')}) format('woff2');font-weight:100 900}
 @font-face{font-family:Fraunces;font-style:italic;src:url(data:font/woff2;base64,${font('fraunces', 'fraunces-latin-opsz-italic.woff2')}) format('woff2');font-weight:100 900}
@@ -65,7 +67,7 @@ table{width:100%;border-collapse:collapse}td,th{padding:2.6mm 0;border-bottom:1p
 .foot{position:absolute;left:16mm;right:16mm;bottom:12mm;display:flex;justify-content:space-between;font-size:8pt;color:#55607a}
 </style></head><body>
 <section class="page">
-  <div class="demo">${L.demo}</div>
+  ${site.demo ? `<div class="demo">${L.demo}</div>` : ''}
   <img class="sketch" src="data:image/svg+xml;base64,${sketch}" alt="">
   <p class="roles" style="margin-top:12mm">Media kit · ${esc(identity.handle)}</p>
   <h1>${esc(identity.firstName)}<br>${esc(identity.lastName)}</h1>
@@ -76,24 +78,24 @@ table{width:100%;border-collapse:collapse}td,th{padding:2.6mm 0;border-bottom:1p
   <div class="kpis" style="margin-top:12mm">
     <div><b>${fmt(totals.followers)}</b><span>${L.followers}</span></div>
     <div><b>${fmt(totals.views)}</b><span>${L.views}</span></div>
-    <div><b>${fmt(totals.avg)}</b><span>${L.avg}</span></div>
+    <div><b>${fmt(totals.likes)}</b><span>${L.likes}</span></div>
     <div><b>${pct(totals.er)}</b><span>${L.er}</span></div>
   </div>
   <h2>${L.platforms}</h2>
-  <table><tr><th></th><th class="n">${L.followers}</th><th class="n">${L.avg}</th><th class="n">${L.er}</th></tr>
-  ${platforms.map((p) => `<tr><td><b>${p.name}</b> <span class="muted">${esc(p.handle)}</span></td><td class="n">${fmt(p.followers)}</td><td class="n">${fmt(p.views90d / p.videos90d)}</td><td class="n">${pct(p.engagementRate)}</td></tr>`).join('')}
+  <table><tr><th></th><th class="n">${L.followers}</th><th class="n">${L.views}</th><th class="n">${L.er}</th></tr>
+  ${platforms.map((p) => `<tr><td><b>${p.name}</b> <span class="muted">${esc(p.handle)}</span></td><td class="n">${fmt(p.followers)}</td><td class="n">${fmt(p.viewsMonth)}</td><td class="n">${pct(er(p))}</td></tr>`).join('')}
   </table>
   <div class="foot"><span>${esc(t(site.dataAsOf))}</span><span>1 / 2</span></div>
 </section>
 <section class="page">
-  <div class="demo">${L.demo}</div>
+  ${site.demo ? `<div class="demo">${L.demo}</div>` : ''}
   <h2 style="margin-top:8mm">${L.audience}</h2>
   <div class="cols">
-    <div><p class="muted" style="margin-bottom:2mm">${L.countries}</p>${bars(audience.countries.slice(0, 6))}</div>
-    <div><p class="muted" style="margin-bottom:2mm">${L.age}</p>${bars(audience.age)}
-      <p style="margin-top:4mm"><b class="accent">${pct(audience.gender[0].value)}</b> ${L.women}</p></div>
+    <div><p class="muted" style="margin-bottom:2mm">${L.countries}</p>${bars(insights.countries)}</div>
+    <div><p class="muted" style="margin-bottom:2mm">${L.age}</p>${bars(insights.age ?? [])}
+      <p style="margin-top:4mm"><b class="accent">${pct(insights.gender[0].value)}</b> ${L.women}</p></div>
   </div>
-  <h2 style="margin-top:7mm">${L.cases}</h2>
+  ${caseStudies.length ? `<h2 style="margin-top:7mm">${L.cases}</h2>` : `<h2 style="margin-top:7mm">${esc(t(why.title))}</h2>${why.items.map((w) => `<div class="case"><b>${esc(t(w.title))}</b><p class="muted">${esc(t(w.text))}</p></div>`).join('')}`}
   ${caseStudies.map((c) => `<div class="case"><b>${esc(c.brand)}</b> <span class="muted">· ${esc(t(c.sector))}</span><p>${esc(t(c.campaign))}</p><p class="muted">${c.results.map((r) => `${esc(t(r.label))}: <b>${esc(typeof r.value === 'number' ? fmt(r.value) : r.value)}</b>`).join(' · ')}</p></div>`).join('')}
   <h2 style="margin-top:6mm">${L.services}</h2>
   <div class="svc">${services.map((s) => `<div><b>${esc(t(s.title))}</b><span class="muted">${esc(t(s.text))}</span></div>`).join('')}</div>

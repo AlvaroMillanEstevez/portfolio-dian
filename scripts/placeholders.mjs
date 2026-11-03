@@ -46,12 +46,7 @@ const images = [
   ['about-malaga-old-town', '4/5', 'butter', 'arches'],
   ['about-beach-golden-hour', '3/2', 'sunset', 'sun'],
   ['about-morning-ritual', '1/1', 'bloom', 'kawung'],
-  ['video-travel-nerja-sunrise', '9/16', 'sea', 'sun'],
-  ['video-food-churros-review', '9/16', 'butter', 'arches'],
-  ['video-lifestyle-skincare-routine', '9/16', 'bloom', 'kawung'],
-  ['video-food-breakfast', '9/16', 'butter', 'kawung'],
-  ['video-lifestyle-sunday-vlog', '9/16', 'bloom', 'terraces'],
-  ['video-travel-malaga-48h', '9/16', 'night', 'arches'],
+  ['portfolio-placeholder', '4/5', 'sea', 'sun'],
 ]
 
 for (const [name, ratio, palette, motif] of images) {

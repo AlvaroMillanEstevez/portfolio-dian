@@ -11,9 +11,9 @@ import { Rates } from './Rates'
 import { Services } from './Services'
 import { Skills } from './Skills'
 import { Stats } from './Stats'
-import { Testimonials } from './Testimonials'
 import { Timeline } from './Timeline'
 import { Videos } from './Videos'
+import { Why } from './Why'
 
 /** Maps each section id in profile.ts to its component. */
 export const sectionComponents: Record<SectionId, (props: { config: SectionConfig }) => React.JSX.Element> = {
@@ -28,7 +28,7 @@ export const sectionComponents: Record<SectionId, (props: { config: SectionConfi
   services: Services,
   skills: Skills,
   timeline: Timeline,
-  testimonials: Testimonials,
+  why: Why,
   rates: Rates,
   contact: Contact,
   footer: Footer,

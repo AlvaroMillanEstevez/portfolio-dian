@@ -6,7 +6,7 @@ import { Heading, Section } from '../components/Section'
 import { SocialIcon } from '../components/SocialIcon'
 import { compact, percent } from '../lib/format'
 import { useSettings } from '../lib/settings'
-import { totals } from '../lib/totals'
+import { engagementRate, totals } from '../lib/totals'
 
 export function Platforms({ config }: { config: SectionConfig }) {
   const { t, lang } = useSettings()
@@ -18,9 +18,11 @@ export function Platforms({ config }: { config: SectionConfig }) {
           {platforms.map((p) => {
             const share = (p.followers / totals.followers) * 100
             const metrics = [
-              { label: ui.platforms.avgViews, value: compact(Math.round(p.views90d / p.videos90d), lang) },
-              { label: ui.platforms.engagement, value: percent(p.engagementRate, lang) },
-              { label: ui.platforms.growth, value: percent(p.growth90d, lang, true) },
+              { label: ui.platforms.views, value: compact(p.viewsMonth, lang) },
+              { label: ui.platforms.likes, value: compact(p.likes, lang) },
+              { label: ui.platforms.engagement, value: percent(engagementRate(p), lang) },
+              { label: ui.platforms.comments, value: compact(p.comments, lang) },
+              { label: ui.platforms.shares, value: compact(p.shares, lang) },
             ]
             return (
               <li key={p.id} className="card flex flex-col p-6">
@@ -41,7 +43,8 @@ export function Platforms({ config }: { config: SectionConfig }) {
                 <p className="mt-1.5 text-xs text-muted">
                   {percent(share, lang)} {t(ui.platforms.share)}
                 </p>
-                <dl className="mt-6 grid grid-cols-3 gap-3 border-t border-line pt-4">
+                <p className="mt-6 border-t border-line pt-4 text-[11px] font-semibold tracking-wider text-muted uppercase">{t(ui.platforms.month)}</p>
+                <dl className="mt-3 grid grid-cols-3 gap-3">
                   {metrics.map((m, i) => (
                     <div key={i}>
                       <dt className="text-[11px] text-muted">{t(m.label)}</dt>

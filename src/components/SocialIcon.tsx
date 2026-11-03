@@ -1,8 +1,8 @@
-import { siFacebook, siInstagram, siTiktok, siYoutube } from 'simple-icons'
+import { siInstagram, siTiktok } from 'simple-icons'
 import type { PlatformId } from '../data/types'
 
 // Brand glyphs from Simple Icons (CC0), drawn in the current text colour.
-const icons = { tiktok: siTiktok, instagram: siInstagram, youtube: siYoutube, facebook: siFacebook }
+const icons = { tiktok: siTiktok, instagram: siInstagram }
 
 export function SocialIcon({ id, className = 'size-5' }: { id: PlatformId; className?: string }) {
   return (

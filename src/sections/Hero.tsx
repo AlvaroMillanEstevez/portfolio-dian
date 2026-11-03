@@ -14,7 +14,7 @@ export function Hero({ config }: { config: SectionConfig }) {
   const { t, lang } = useSettings()
   const quick = [
     { value: compact(totals.followers, lang), label: ui.heroStats.followers },
-    { value: compact(totals.views90d, lang), label: ui.heroStats.views },
+    { value: compact(totals.viewsMonth, lang), label: ui.heroStats.views },
     { value: percent(totals.engagementRate, lang), label: ui.heroStats.engagement },
   ]
 
@@ -30,10 +30,11 @@ export function Hero({ config }: { config: SectionConfig }) {
             </span>
             <span className="block">{identity.lastName}</span>
           </h1>
-          <p className="mt-5 text-lg">
+          <p className="display-quote mt-5 text-xl text-accent sm:text-2xl">{t(identity.tagline)}</p>
+          <p className="mt-4 text-lg">
             {t(identity.role)} {t(ui.hero.basedIn)} <em className="display-quote text-accent">{t(identity.city)}</em>
           </p>
-          <p className="mt-3 max-w-md leading-relaxed text-muted">{t(identity.tagline)}</p>
+          <p className="mt-3 max-w-md leading-relaxed text-muted">{t(identity.intro)}</p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <a href="#videos" className="btn btn-primary">
               {t(ui.hero.viewPortfolio)} <ArrowRight className="size-4" aria-hidden="true" />

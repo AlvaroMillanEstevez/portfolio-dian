@@ -23,7 +23,8 @@ export function Photo({ photo, className = '', eager = false }: Props) {
           className="absolute inset-0 size-full object-cover"
         />
       )}
-      {site.reviewMode && (
+      {/* Only placeholders say which photo goes there; real photos stay clean. */}
+      {site.reviewMode && photo.src.endsWith('.svg') && (
         <figcaption className="absolute inset-x-2 bottom-2 z-10 rounded-md bg-ink/75 px-2.5 py-1.5 text-[11px] leading-snug text-paper backdrop-blur-sm">
           <span className="font-semibold">📷 {photo.ratio.replace('/', ':')}</span> · {photo.brief.es}
           <span className="block opacity-75">{photo.brief.id}</span>

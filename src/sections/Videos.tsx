@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Bookmark, Eye, Heart, Play, Share2 } from 'lucide-react'
+import { Bookmark, Eye, Heart, Image, Play, Share2 } from 'lucide-react'
 import { categories, platforms, ui, videos } from '../data/profile'
 import type { Category, SectionConfig } from '../data/types'
 import { ExternalLink } from '../components/ExternalLink'
@@ -35,12 +35,13 @@ export function Videos({ config }: { config: SectionConfig }) {
         <ul className="grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-3">
           {shown.map((v) => {
             const platform = platforms.find((p) => p.id === v.platform)
-            const stats = [
-              { icon: Eye, label: ui.videos.views, value: v.views },
-              { icon: Heart, label: ui.videos.likes, value: v.likes },
-              { icon: Bookmark, label: ui.videos.saves, value: v.saves },
-              { icon: Share2, label: ui.videos.shares, value: v.shares },
+            const stats = v.stats && [
+              { icon: Eye, label: ui.videos.views, value: v.stats.views },
+              { icon: Heart, label: ui.videos.likes, value: v.stats.likes },
+              { icon: Bookmark, label: ui.videos.saves, value: v.stats.saves },
+              { icon: Share2, label: ui.videos.shares, value: v.stats.shares },
             ]
+            const Kind = v.kind === 'photo' ? Image : Play
             return (
               <li key={v.id} className="card overflow-hidden">
                 <div className="relative">
@@ -51,6 +52,7 @@ export function Videos({ config }: { config: SectionConfig }) {
                 </div>
                 <div className="p-3 sm:p-4">
                   <h3 className="text-sm leading-snug font-semibold sm:text-base">{t(v.title)}</h3>
+                  {stats && (
                   <dl className="mt-3 grid grid-cols-2 gap-x-2 gap-y-1.5 text-xs text-muted sm:grid-cols-4">
                     {stats.map(({ icon: Icon, label, value }, i) => (
                       <div key={i} className="flex items-center gap-1" title={t(label)}>
@@ -62,8 +64,9 @@ export function Videos({ config }: { config: SectionConfig }) {
                       </div>
                     ))}
                   </dl>
+                  )}
                   <ExternalLink href={v.url} className="mt-3 inline-flex items-center gap-1 text-xs font-semibold text-accent">
-                    <Play className="size-3.5" aria-hidden="true" /> {t(ui.videos.watch)}
+                    <Kind className="size-3.5" aria-hidden="true" /> {t(v.kind === 'photo' ? ui.videos.view : ui.videos.watch)}
                   </ExternalLink>
                 </div>
               </li>

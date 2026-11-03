@@ -1,6 +1,8 @@
-import { audience, ui } from '../data/profile'
-import type { Localized, SectionConfig, Share } from '../data/types'
+import { useState } from 'react'
+import { audience, platforms, ui } from '../data/profile'
+import type { AudienceSet, Localized, SectionConfig, Share } from '../data/types'
 import { Heading, Section } from '../components/Section'
+import { SocialIcon } from '../components/SocialIcon'
 import { percent } from '../lib/format'
 import { useSettings } from '../lib/settings'
 
@@ -26,19 +28,19 @@ function Bars({ title, data }: { title: Localized; data: Share[] }) {
   )
 }
 
-function Gender() {
+function Gender({ data }: { data: Share[] }) {
   const { t, lang } = useSettings()
   const tones = ['bg-chart-1', 'bg-chart-2', 'bg-chart-3']
   return (
     <figure className="card p-6">
       <figcaption className="mb-5 font-semibold">{t(ui.audience.gender)}</figcaption>
       <div className="flex h-10 gap-0.5 rounded-lg" aria-hidden="true">
-        {audience.gender.map((g, i) => (
+        {data.map((g, i) => (
           <div key={i} className={`${tones[i]} first:rounded-l-lg last:rounded-r-lg`} style={{ width: `${g.value}%` }} data-tip={`${t(g.label)} · ${percent(g.value, lang)}`} />
         ))}
       </div>
       <ul className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-sm">
-        {audience.gender.map((g, i) => (
+        {data.map((g, i) => (
           <li key={i} className="flex items-center gap-2">
             <span className={`size-2.5 rounded-full ${tones[i]}`} aria-hidden="true" />
             {t(g.label)} <span className="font-semibold tabular-nums">{percent(g.value, lang)}</span>
@@ -49,47 +51,60 @@ function Gender() {
   )
 }
 
-function Hours() {
+function Hours({ set }: { set: AudienceSet }) {
   const { t } = useSettings()
-  const peak = Math.max(...audience.activeHours)
+  const hours = set.activeHours
   return (
     <figure className="card p-6 md:col-span-2">
       <figcaption className="mb-5 flex flex-wrap items-baseline justify-between gap-2">
         <span className="font-semibold">{t(ui.audience.hours)}</span>
-        <span className="text-xs text-muted">{t(audience.activeHoursNote)}</span>
+        {hours && (
+          <span className="text-xs text-muted">
+            {t(hours.day)} · {t(ui.audience.spanishTime)}
+          </span>
+        )}
       </figcaption>
-      <div className="grid h-32 grid-cols-24 items-end gap-[2px]" role="img" aria-label={`${t(ui.audience.hours)}: 13–14 h, 20–22 h`}>
-        {audience.activeHours.map((v, h) => (
-          <div
-            key={h}
-            data-tip={`${h}:00 · ${Math.round((v / peak) * 100)}`}
-            className={`h-full rounded-t-[3px] ${v >= peak * 0.8 ? 'bg-chart-1' : 'bg-chart-1/35'}`}
-            style={{ height: `${(v / peak) * 100}%` }}
-          />
-        ))}
-      </div>
-      <div className="mt-2 grid grid-cols-24 text-[11px] text-muted tabular-nums" aria-hidden="true">
-        {audience.activeHours.map((_, h) => (
-          <span key={h} className="text-center">{h % 6 === 0 ? `${h}h` : ''}</span>
-        ))}
-      </div>
+      {hours && (
+        <>
+          <div className="grid h-32 items-end gap-1" style={{ gridTemplateColumns: `repeat(${hours.slots.length}, 1fr)` }} role="img" aria-label={t(set.peak)}>
+            {hours.slots.map((s) => (
+              <div key={s.label} data-tip={`${s.label} · ${s.value}`} className={`rounded-t-[4px] ${s.value >= 85 ? 'bg-chart-1' : 'bg-chart-1/35'}`} style={{ height: `${s.value}%` }} />
+            ))}
+          </div>
+          <div className="mt-2 grid text-center text-[11px] text-muted tabular-nums" style={{ gridTemplateColumns: `repeat(${hours.slots.length}, 1fr)` }} aria-hidden="true">
+            {hours.slots.map((s) => (
+              <span key={s.label}>{s.label}</span>
+            ))}
+          </div>
+        </>
+      )}
+      <p className={`text-sm ${hours ? 'mt-5' : ''}`}>{t(set.peak)}</p>
     </figure>
   )
 }
 
 export function Audience({ config }: { config: SectionConfig }) {
   const { t } = useSettings()
+  const [active, setActive] = useState(audience[0].platform)
+  const set = audience.find((a) => a.platform === active) ?? audience[0]
   return (
     <Section config={config} className="py-20 sm:py-28">
       <div data-reveal className="mx-auto max-w-6xl px-4 sm:px-6">
-        <Heading eyebrow={t(audience.source)} title={t(ui.audience.title)} />
+        <Heading eyebrow={t(set.period)} title={t(ui.audience.title)} />
+        <div role="group" aria-label={t(ui.audience.choose)} className="mb-8 flex gap-2">
+          {audience.map((a) => (
+            <button key={a.platform} type="button" onClick={() => setActive(a.platform)} aria-pressed={a.platform === active} className={`chip gap-2 ${a.platform === active ? 'chip-on' : ''}`}>
+              <SocialIcon id={a.platform} className="size-3.5" />
+              {platforms.find((p) => p.id === a.platform)?.name}
+            </button>
+          ))}
+        </div>
         <div className="grid gap-4 md:grid-cols-2">
-          <Bars title={ui.audience.age} data={audience.age} />
-          <Gender />
-          <Bars title={ui.audience.countries} data={audience.countries} />
-          <Bars title={ui.audience.cities} data={audience.cities} />
-          <Bars title={ui.audience.languages} data={audience.languages} />
-          <Hours />
+          <Bars title={ui.audience.countries} data={set.countries} />
+          <Gender data={set.gender} />
+          {set.age && <Bars title={ui.audience.age} data={set.age} />}
+          {set.languages && <Bars title={ui.audience.languages} data={set.languages} />}
+          <Hours set={set} />
         </div>
       </div>
     </Section>

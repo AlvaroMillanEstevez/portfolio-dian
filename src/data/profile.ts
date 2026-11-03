@@ -1,38 +1,24 @@
 /*
  * ALL the content of the website lives in this file.
- * To change a real value later, edit it here: components never contain text or numbers.
+ * To change a value later, edit it here: components never contain text or numbers.
  *
- * DEMO: every number, brand, handle and quote below is fictional.
+ * Numbers come from Dian's TikTok and Instagram analytics (October 2026).
  */
-import type {
-  CaseStudy,
-  Category,
-  Localized,
-  Photo,
-  Platform,
-  Rate,
-  SectionConfig,
-  Share,
-  Testimonial,
-  Video,
-} from './types'
+import type { AudienceSet, CaseStudy, Category, Localized, Photo, Platform, Rate, SectionConfig, Video } from './types'
 
 /* ------------------------------------------------------------------ */
 /* Site switches                                                       */
 /* ------------------------------------------------------------------ */
 
 export const site = {
-  /** Shows the fixed "Demo prototype" band. Turn off when the data is real. */
-  demo: true,
+  /** Shows the fixed "Demo prototype" band. */
+  demo: false,
   /** Section numbers and notes for Dian. */
   reviewMode: true,
   /** 'en' or 'es'. The visitor can switch; the choice is remembered. */
   defaultLang: 'en',
-  dataAsOf: {
-    en: 'Data as of October 2026 (demo)',
-    es: 'Datos a octubre de 2026 (demo)',
-  } satisfies Localized,
-  mediaKitPdf: 'media-kit-demo.pdf',
+  dataAsOf: { en: 'Data from October 2026', es: 'Datos de octubre de 2026' } satisfies Localized,
+  mediaKitPdf: 'media-kit.pdf',
 } as const
 
 /* ------------------------------------------------------------------ */
@@ -46,8 +32,8 @@ export const sections: SectionConfig[] = [
     enabled: true,
     nav: { en: 'Home', es: 'Inicio' },
     note: {
-      es: 'Primera impresión: foto, nombre, frase y botones. La foto se funde con el fondo, así que queda mejor con cielo o mar a la izquierda. Necesitamos: un retrato vertical 4:5 con fondo de Málaga y tu frase definitiva.',
-      id: 'Kesan pertama: foto, nama, tagline dan tombol. Fotonya menyatu dengan latar, jadi lebih bagus kalau ada langit atau laut di sebelah kiri. Yang dibutuhkan: potret vertikal 4:5 berlatar Málaga dan tagline final.',
+      es: 'Nombre, tu frase y botones. Falta: un retrato vertical 4:5 con fondo de Málaga. La foto se funde con el fondo, así que queda mejor con cielo o mar a la izquierda.',
+      id: 'Nama, tagline dan tombol. Yang kurang: potret vertikal 4:5 berlatar Málaga. Fotonya menyatu dengan latar, jadi lebih bagus kalau ada langit atau laut di sebelah kiri.',
     },
   },
   {
@@ -55,8 +41,8 @@ export const sections: SectionConfig[] = [
     number: 2,
     enabled: true,
     note: {
-      es: 'Cifras clave para marcas. Se calculan solas a partir de la sección 5. Necesitamos: crecimiento de seguidores de los últimos 6 meses.',
-      id: 'Angka utama untuk brand. Dihitung otomatis dari bagian 5. Yang dibutuhkan: pertumbuhan followers 6 bulan terakhir.',
+      es: 'Cifras reales de octubre de TikTok + Instagram, calculadas a partir de la sección 5.',
+      id: 'Angka asli bulan Oktober dari TikTok + Instagram, dihitung dari bagian 5.',
     },
   },
   {
@@ -65,8 +51,8 @@ export const sections: SectionConfig[] = [
     enabled: true,
     nav: { en: 'About', es: 'Sobre mí' },
     note: {
-      es: 'Tu historia en primera persona. Necesitamos: que revises el texto con tus palabras y 2–3 fotos de estilo de vida.',
-      id: 'Ceritamu dengan kata-katamu sendiri. Yang dibutuhkan: cek teksnya dan 2–3 foto lifestyle.',
+      es: 'Tu texto. Faltan: 2–3 fotos de estilo de vida (vertical 4:5, horizontal 3:2 y cuadrada 1:1).',
+      id: 'Teksmu. Yang kurang: 2–3 foto lifestyle (vertikal 4:5, horizontal 3:2 dan persegi 1:1).',
     },
   },
   {
@@ -74,8 +60,8 @@ export const sections: SectionConfig[] = [
     number: 4,
     enabled: true,
     note: {
-      es: 'Los 6 temas de tu tablero de marca, con iconos. Necesitamos: confirmar los temas y el % aproximado de tus vídeos de cada uno.',
-      id: '6 topik dari brand board-mu, dengan ikon. Yang dibutuhkan: konfirmasi topiknya dan perkiraan % video untuk tiap topik.',
+      es: 'Tus 6 temas, sin porcentajes.',
+      id: '6 topik kontenmu, tanpa persentase.',
     },
   },
   {
@@ -83,8 +69,8 @@ export const sections: SectionConfig[] = [
     number: 5,
     enabled: true,
     note: {
-      es: 'Una tarjeta por red. Necesitamos: capturas de las estadísticas de los últimos 90 días de cada red (seguidores, vistas, nº de vídeos, interacción).',
-      id: 'Satu kartu per platform. Yang dibutuhkan: screenshot statistik 90 hari terakhir tiap platform (followers, views, jumlah video, engagement).',
+      es: 'TikTok e Instagram con las cifras de octubre. El engagement se calcula como (likes + comentarios + compartidos) / views.',
+      id: 'TikTok dan Instagram dengan angka bulan Oktober. Engagement dihitung dari (like + komen + share) / views.',
     },
   },
   {
@@ -92,8 +78,8 @@ export const sections: SectionConfig[] = [
     number: 6,
     enabled: true,
     note: {
-      es: 'Quién te ve. Necesitamos: capturas de demografía (edad, género, países, ciudades) y horas de actividad de TikTok e Instagram.',
-      id: 'Siapa penontonmu. Yang dibutuhkan: screenshot demografi (umur, gender, negara, kota) dan jam aktif dari TikTok dan Instagram.',
+      es: 'Datos de tus capturas, separados por red. TikTok no mostraba edad ni idiomas, así que ahí solo salen género y países.',
+      id: 'Data dari screenshot-mu, dipisah per platform. TikTok tidak menampilkan umur dan bahasa, jadi di sana hanya gender dan negara.',
     },
   },
   {
@@ -102,17 +88,17 @@ export const sections: SectionConfig[] = [
     enabled: true,
     nav: { en: 'Portfolio', es: 'Portfolio' },
     note: {
-      es: 'Tus 6 mejores vídeos. Necesitamos: los enlaces, una captura de portada vertical de cada uno y sus views, likes, guardados y compartidos.',
-      id: '6 video terbaikmu. Yang dibutuhkan: link, cover vertikal tiap video, dan jumlah views, likes, simpan dan share.',
+      es: 'Tus enlaces, con portada y cifras públicas de TikTok. Instagram no muestra las cifras sin iniciar sesión. Los títulos los he escrito a partir de tus textos: cámbialos si quieres.',
+      id: 'Link-mu, dengan cover dan angka publik dari TikTok. Instagram tidak menampilkan angka tanpa login. Judulnya aku tulis dari caption-mu: ganti saja kalau mau.',
     },
   },
   {
     id: 'cases',
     number: 8,
-    enabled: true,
+    enabled: false,
     note: {
-      es: 'Casos de éxito con marcas (aquí inventadas). Necesitamos: 3 colaboraciones reales que el contrato permita mostrar y sus resultados.',
-      id: 'Kolaborasi sukses dengan brand (di sini fiktif). Yang dibutuhkan: 3 kolaborasi asli yang boleh ditampilkan dan hasilnya.',
+      es: 'Oculta hasta que tengas tu primera colaboración.',
+      id: 'Disembunyikan sampai ada kolaborasi pertama.',
     },
   },
   {
@@ -121,8 +107,8 @@ export const sections: SectionConfig[] = [
     enabled: true,
     nav: { en: 'Services', es: 'Servicios' },
     note: {
-      es: 'Lo que ofreces a las marcas. Necesitamos: que marques qué servicios quieres ofrecer y cuáles no.',
-      id: 'Layanan untuk brand. Yang dibutuhkan: pilih layanan mana yang mau ditawarkan dan mana yang tidak.',
+      es: 'Sin YouTube y con contenido en 2 idiomas.',
+      id: 'Tanpa YouTube dan konten dalam 2 bahasa.',
     },
   },
   {
@@ -130,26 +116,26 @@ export const sections: SectionConfig[] = [
     number: 10,
     enabled: true,
     note: {
-      es: 'Herramientas e idiomas. Necesitamos: las apps que usas de verdad para grabar y editar.',
-      id: 'Alat dan bahasa. Yang dibutuhkan: aplikasi yang benar-benar kamu pakai untuk rekam dan edit.',
+      es: 'Español en nivel principiante. Falta: confirmar las apps y el equipo que usas para grabar y editar.',
+      id: 'Bahasa Spanyol level pemula. Yang kurang: konfirmasi aplikasi dan alat untuk rekam dan edit.',
     },
   },
   {
     id: 'timeline',
     number: 11,
-    enabled: true,
+    enabled: false,
     note: {
-      es: 'Tu trayectoria. Necesitamos: los años reales de cada hito (inicio, primer viral, 100K, 1M, primera marca). Sin fecha de mudanza a España.',
-      id: 'Perjalananmu. Yang dibutuhkan: tahun asli tiap pencapaian (mulai, viral pertama, 100K, 1M, brand pertama). Tanpa tahun pindah ke Spanyol.',
+      es: 'Oculta, como pediste.',
+      id: 'Disembunyikan, sesuai permintaanmu.',
     },
   },
   {
-    id: 'testimonials',
+    id: 'why',
     number: 12,
     enabled: true,
     note: {
-      es: 'Opiniones de marcas. Necesitamos: 2–3 frases reales de marcas, con permiso para publicarlas.',
-      id: 'Testimoni dari brand. Yang dibutuhkan: 2–3 kutipan asli dari brand, dengan izin untuk dipublikasikan.',
+      es: 'En lugar de opiniones de marcas: lo que ofreces. Cuando tengas opiniones reales, las ponemos aquí.',
+      id: 'Pengganti testimoni brand: apa yang kamu tawarkan. Kalau sudah ada testimoni asli, kita taruh di sini.',
     },
   },
   {
@@ -157,8 +143,8 @@ export const sections: SectionConfig[] = [
     number: 13,
     enabled: true,
     note: {
-      es: 'Tarifas de ejemplo. Se puede mostrar precio o solo "Tarifas bajo petición". Necesitamos: decidir si mostramos precios y cuáles.',
-      id: 'Contoh tarif. Bisa tampilkan harga atau hanya "Rates on request". Yang dibutuhkan: putuskan apakah harga ditampilkan dan berapa.',
+      es: 'Con tu nota de colaboraciones en el lugar. Sin precios hasta que nos los digas ("bajo petición").',
+      id: 'Dengan catatan kolaborasi di lokasi. Tanpa harga sampai kamu kasih tahu ("on request").',
     },
   },
   {
@@ -167,8 +153,8 @@ export const sections: SectionConfig[] = [
     enabled: true,
     nav: { en: 'Contact', es: 'Contacto' },
     note: {
-      es: 'Formulario para marcas. En la demo no envía nada. Necesitamos: un email profesional nuevo (no el personal) para recibir los mensajes.',
-      id: 'Formulir untuk brand. Di demo tidak mengirim apa pun. Yang dibutuhkan: email profesional baru (bukan pribadi) untuk menerima pesan.',
+      es: 'Tu texto. El formulario aún no envía nada. Falta: un email profesional nuevo (no el personal) para recibir los mensajes.',
+      id: 'Teksmu. Formulirnya belum mengirim apa pun. Yang kurang: email profesional baru (bukan pribadi) untuk menerima pesan.',
     },
   },
   {
@@ -176,8 +162,8 @@ export const sections: SectionConfig[] = [
     number: 15,
     enabled: true,
     note: {
-      es: 'Tu logo completo: dibujo de Málaga, nombre, sello redondo y redes. No necesitamos nada más.',
-      id: 'Logo lengkapmu: gambar Málaga, nama, stempel bulat dan sosial media. Tidak perlu apa-apa lagi.',
+      es: 'Tu logo completo, sello y redes.',
+      id: 'Logo lengkapmu, stempel dan sosial media.',
     },
   },
 ]
@@ -189,13 +175,18 @@ export const sections: SectionConfig[] = [
 export const identity = {
   firstName: 'Dian',
   lastName: 'Novitasari',
-  handle: '@dian.demo',
+  handle: '@diannvtsrrr_',
   city: { en: 'Málaga, Spain', es: 'Málaga, España' } satisfies Localized,
-  /** Hero line under the name: "{role} based in {city}". */
-  role: { en: 'Indonesian content creator', es: 'Creadora de contenido indonesia' } satisfies Localized,
+  /** Line under the name. */
   tagline: {
-    en: 'Sharing travel, food and fashion through mini-vlogs, hidden gems and honest reviews.',
-    es: 'Comparto viajes, gastronomía y moda con mini-vlogs, rincones escondidos y reseñas sinceras.',
+    en: 'Discovering places. Capturing moments. Inspiring journeys.',
+    es: 'Descubrir lugares. Capturar momentos. Inspirar viajes.',
+  } satisfies Localized,
+  /** "{role} based in {city}". */
+  role: { en: 'Indonesian content creator', es: 'Creadora de contenido indonesia' } satisfies Localized,
+  intro: {
+    en: 'Creating authentic, visually engaging content that brings brands, destinations and experiences to life while connecting with a global audience.',
+    es: 'Creo contenido auténtico y muy visual que da vida a marcas, destinos y experiencias, conectando con una audiencia global.',
   } satisfies Localized,
   /** Spaced capitals under the name in the logo. */
   roles: {
@@ -223,59 +214,28 @@ export const platforms: Platform[] = [
   {
     id: 'tiktok',
     name: 'TikTok',
-    handle: '@dian.demo',
-    url: '',
-    followers: 1_240_000,
-    videos90d: 64,
-    views90d: 11_840_000,
-    engagementRate: 7.8,
-    growth90d: 9.4,
-    label: { en: 'Main platform', es: 'Red principal' },
+    handle: '@matchabluberry8',
+    url: 'https://www.tiktok.com/@matchabluberry8',
+    followers: 22_300,
+    viewsMonth: 2_100_000,
+    likes: 171_400,
+    comments: 5_900,
+    shares: 31_400,
+    label: { en: 'Mini-vlogs & food', es: 'Mini-vlogs y comida' },
   },
   {
     id: 'instagram',
     name: 'Instagram',
-    handle: '@dian.demo',
-    url: '',
-    followers: 486_000,
-    videos90d: 50,
-    views90d: 3_100_000,
-    engagementRate: 4.9,
-    growth90d: 6.1,
-    label: { en: 'Reels & Stories', es: 'Reels y Stories' },
-  },
-  {
-    id: 'youtube',
-    name: 'YouTube',
-    handle: '@dian.demo',
-    url: '',
-    followers: 168_000,
-    videos90d: 38,
-    views90d: 1_558_000,
-    engagementRate: 5.6,
-    growth90d: 7.8,
-    label: { en: 'Vlogs & Shorts', es: 'Vlogs y Shorts' },
-  },
-  {
-    id: 'facebook',
-    name: 'Facebook',
-    handle: 'Dian Demo',
-    url: '',
-    followers: 112_000,
-    videos90d: 40,
-    views90d: 740_000,
-    engagementRate: 2.7,
-    growth90d: 3.2,
-    label: { en: 'Reels', es: 'Reels' },
+    handle: '@diannvtsrrr_',
+    url: 'https://www.instagram.com/diannvtsrrr_/',
+    followers: 3_800,
+    viewsMonth: 3_500_000,
+    likes: 296_000,
+    comments: 2_000,
+    shares: 18_000,
+    label: { en: 'Reels & fashion', es: 'Reels y moda' },
   },
 ]
-
-/** Follower growth over the last 6 months, in % (not derivable from the 90-day data). */
-export const growth6m = 18.6
-
-/* ------------------------------------------------------------------ */
-/* About (section 3)                                                   */
-/* ------------------------------------------------------------------ */
 
 export const about = {
   title: { en: 'Two cultures, one story', es: 'Dos culturas, una historia' } satisfies Localized,
@@ -327,7 +287,7 @@ export const about = {
 }
 
 /* ------------------------------------------------------------------ */
-/* Content pillars (section 4). Percentages must add up to 100.         */
+/* Content focus (section 4)                                           */
 /* ------------------------------------------------------------------ */
 
 export const pillars = {
@@ -336,16 +296,14 @@ export const pillars = {
   items: [
     {
       icon: 'travel',
-      share: 28,
       name: { en: 'Travel', es: 'Viajes' },
       text: {
-        en: 'Weekend escapes, Andalusian villages and trips home to Indonesia.',
-        es: 'Escapadas de fin de semana, pueblos andaluces y viajes a Indonesia.',
+        en: 'City breaks, day trips and festivals across Spain.',
+        es: 'Escapadas, excursiones de un día y fiestas por toda España.',
       },
     },
     {
       icon: 'place',
-      share: 18,
       name: { en: 'Popular spots & hidden gems', es: 'Lugares famosos y rincones escondidos' },
       text: {
         en: 'The places everyone talks about, and the ones nobody has found yet.',
@@ -354,25 +312,22 @@ export const pillars = {
     },
     {
       icon: 'food',
-      share: 16,
       name: { en: 'Food reviews', es: 'Reseñas gastronómicas' },
       text: {
-        en: 'Honest reviews of cafés, restaurants and street food.',
-        es: 'Reseñas sinceras de cafés, restaurantes y comida callejera.',
+        en: 'Honest reviews of cafés, restaurants and Indonesian food in Spain.',
+        es: 'Reseñas sinceras de cafés, restaurantes y comida indonesia en España.',
       },
     },
     {
       icon: 'product',
-      share: 14,
       name: { en: 'UGC & product reviews', es: 'UGC y reseñas de producto' },
       text: {
-        en: 'Unboxings, real tests and ads made for your own channels.',
-        es: 'Unboxings, pruebas reales y anuncios para tus propios canales.',
+        en: 'Real tests and ready-to-use videos for your own channels.',
+        es: 'Pruebas reales y vídeos listos para tus propios canales.',
       },
     },
     {
       icon: 'vlog',
-      share: 12,
       name: { en: 'Mini-vlogs', es: 'Mini-vlogs' },
       text: {
         en: 'A day, a trip or a small moment told in under a minute.',
@@ -381,267 +336,314 @@ export const pillars = {
     },
     {
       icon: 'fashion',
-      share: 12,
       name: { en: 'Fashion', es: 'Moda' },
       text: {
-        en: 'Outfits for travel days, city walks and everything in between.',
-        es: 'Looks para viajar, pasear por la ciudad y todo lo demás.',
+        en: 'Modest outfits for travel days, city walks and the seaside.',
+        es: 'Looks modestos para viajar, pasear por la ciudad y la playa.',
       },
     },
   ] as const,
 }
 
 /* ------------------------------------------------------------------ */
-/* Audience (section 6). Each list adds up to 100 (or less + "other"). */
+/* Audience (section 6), one set per platform, from the app insights.  */
 /* ------------------------------------------------------------------ */
 
-export const audience = {
-  source: {
-    en: 'All platforms combined, weighted by followers.',
-    es: 'Todas las redes juntas, ponderado por seguidores.',
-  } satisfies Localized,
-  age: [
-    { label: { en: '13–17', es: '13–17' }, value: 4 },
-    { label: { en: '18–24', es: '18–24' }, value: 38 },
-    { label: { en: '25–34', es: '25–34' }, value: 34 },
-    { label: { en: '35–44', es: '35–44' }, value: 15 },
-    { label: { en: '45+', es: '45+' }, value: 9 },
-  ] satisfies Share[],
-  gender: [
-    { label: { en: 'Women', es: 'Mujeres' }, value: 71 },
-    { label: { en: 'Men', es: 'Hombres' }, value: 27 },
-    { label: { en: 'Other', es: 'Otro' }, value: 2 },
-  ] satisfies Share[],
-  countries: [
-    { label: { en: 'Spain', es: 'España' }, value: 31 },
-    { label: { en: 'Indonesia', es: 'Indonesia' }, value: 24 },
-    { label: { en: 'Mexico', es: 'México' }, value: 8 },
-    { label: { en: 'United Kingdom', es: 'Reino Unido' }, value: 6 },
-    { label: { en: 'Argentina', es: 'Argentina' }, value: 5 },
-    { label: { en: 'France', es: 'Francia' }, value: 4 },
-    { label: { en: 'Germany', es: 'Alemania' }, value: 4 },
-    { label: { en: 'Other', es: 'Otros' }, value: 18 },
-  ] satisfies Share[],
-  cities: [
-    { label: { en: 'Madrid', es: 'Madrid' }, value: 7.8 },
-    { label: { en: 'Jakarta', es: 'Yakarta' }, value: 7.1 },
-    { label: { en: 'Málaga', es: 'Málaga' }, value: 5.4 },
-    { label: { en: 'Barcelona', es: 'Barcelona' }, value: 4.9 },
-    { label: { en: 'Surabaya', es: 'Surabaya' }, value: 3.2 },
-    { label: { en: 'Mexico City', es: 'Ciudad de México' }, value: 2.6 },
-  ] satisfies Share[],
-  languages: [
-    { label: { en: 'Spanish', es: 'Español' }, value: 46 },
-    { label: { en: 'English', es: 'Inglés' }, value: 27 },
-    { label: { en: 'Indonesian', es: 'Indonesio' }, value: 22 },
-    { label: { en: 'Other', es: 'Otros' }, value: 5 },
-  ] satisfies Share[],
-  /** Relative activity (0–100) per hour of the day, Spanish time (CET), 0h → 23h. */
-  activeHours: [
-    18, 12, 8, 6, 5, 6, 10, 16, 22, 26, 30, 38, 52, 64, 58, 44, 40, 46, 58, 74, 92, 100, 84, 46,
-  ],
-  activeHoursNote: { en: 'Spanish time (CET)', es: 'Hora española (CET)' } satisfies Localized,
-}
+const women = { en: 'Women', es: 'Mujeres' }
+const men = { en: 'Men', es: 'Hombres' }
+const indonesia = { en: 'Indonesia', es: 'Indonesia' }
+const other = { en: 'Other', es: 'Otros' }
+
+export const audience: AudienceSet[] = [
+  {
+    platform: 'instagram',
+    period: { en: 'October 2026', es: 'octubre de 2026' },
+    gender: [
+      { label: women, value: 65.5 },
+      { label: men, value: 34.5 },
+    ],
+    age: [
+      { label: { en: '13–17', es: '13–17' }, value: 6.1 },
+      { label: { en: '18–24', es: '18–24' }, value: 24 },
+      { label: { en: '25–34', es: '25–34' }, value: 48 },
+      { label: { en: '35–44', es: '35–44' }, value: 14.4 },
+      { label: { en: '45–54', es: '45–54' }, value: 5.1 },
+      { label: { en: '55–64', es: '55–64' }, value: 1.8 },
+      { label: { en: '65+', es: '65+' }, value: 0.7 },
+    ],
+    countries: [
+      { label: indonesia, value: 72.7 },
+      { label: { en: 'Morocco', es: 'Marruecos' }, value: 3.6 },
+      { label: { en: 'Brazil', es: 'Brasil' }, value: 3.5 },
+      { label: { en: 'Algeria', es: 'Argelia' }, value: 3.5 },
+      { label: { en: 'India', es: 'India' }, value: 1.3 },
+      { label: other, value: 15.4 },
+    ],
+    languages: [
+      { label: { en: 'Indonesian', es: 'Indonesio' }, value: 73.9 },
+      { label: { en: 'Arabic', es: 'Árabe' }, value: 7.8 },
+      { label: { en: 'English', es: 'Inglés' }, value: 4.3 },
+      { label: { en: 'Spanish', es: 'Español' }, value: 3.6 },
+      { label: { en: 'Portuguese', es: 'Portugués' }, value: 3.6 },
+      { label: other, value: 6.8 },
+    ],
+    // Read off the Sunday chart in Instagram insights (3-hour slots, GMT+1).
+    activeHours: {
+      day: { en: 'Sunday', es: 'Domingo' },
+      slots: [
+        { label: '0h', value: 56 },
+        { label: '3h', value: 79 },
+        { label: '6h', value: 87 },
+        { label: '9h', value: 90 },
+        { label: '12h', value: 100 },
+        { label: '15h', value: 93 },
+        { label: '18h', value: 44 },
+        { label: '21h', value: 24 },
+      ],
+    },
+    peak: {
+      en: 'Most active: Friday 12–15 h and Saturday 12–18 h (Spanish time)',
+      es: 'Más activos: viernes de 12 a 15 h y sábado de 12 a 18 h (hora española)',
+    },
+  },
+  {
+    platform: 'tiktok',
+    period: { en: '5 Oct – 1 Nov 2026', es: '5 oct – 1 nov 2026' },
+    gender: [
+      { label: women, value: 81 },
+      { label: men, value: 19 },
+    ],
+    countries: [
+      { label: indonesia, value: 93.2 },
+      { label: { en: 'Malaysia', es: 'Malasia' }, value: 1.5 },
+      { label: { en: 'Spain', es: 'España' }, value: 1.2 },
+      { label: { en: 'United States', es: 'Estados Unidos' }, value: 0.8 },
+      { label: { en: 'Taiwan', es: 'Taiwán' }, value: 0.7 },
+      { label: other, value: 2.6 },
+    ],
+    peak: {
+      en: 'Most active: Monday 0–1 h (Spanish time)',
+      es: 'Más activos: lunes de 0 a 1 h (hora española)',
+    },
+  },
+]
 
 /* ------------------------------------------------------------------ */
-/* Best videos (section 7)                                             */
+/* Portfolio (section 7): Dian's own picks, in her order.               */
 /* ------------------------------------------------------------------ */
 
 export const categories: { key: Category; label: Localized }[] = [
   { key: 'travel', label: { en: 'Travel', es: 'Viajes' } },
   { key: 'food', label: { en: 'Food & drink', es: 'Gastronomía' } },
-  { key: 'vlog', label: { en: 'Mini-vlogs & UGC', es: 'Mini-vlogs y UGC' } },
+  { key: 'vlog', label: { en: 'Mini-vlogs & lifestyle', es: 'Mini-vlogs y lifestyle' } },
+  { key: 'fashion', label: { en: 'Fashion', es: 'Moda' } },
 ]
 
-const videoThumb = (file: string, es: string, id: string, alt: Localized): Photo => ({
-  src: `images/${file}`,
-  ratio: '9/16',
+const cover = (file: string, alt: Localized): Photo => ({
+  src: `images/portfolio/${file}`,
+  ratio: '4/5',
   alt,
-  brief: { es, id },
+  brief: { es: 'Portada de la publicación', id: 'Cover postingan' },
 })
+
+const tiktok = (videoId: string) => `https://www.tiktok.com/@matchabluberry8/video/${videoId}`
+const instagram = (path: string) => `https://www.instagram.com/${path}/`
 
 export const videos: Video[] = [
   {
-    id: 'nerja-sunrise',
+    id: 'travel-madrid-malaga-2',
     category: 'travel',
     platform: 'tiktok',
-    title: {
-      en: 'Nerja at sunrise: the cove nobody tells you about',
-      es: 'Nerja al amanecer: la cala que nadie te cuenta',
+    kind: 'video',
+    title: { en: 'Málaga to Madrid, part 2: city views', es: 'De Málaga a Madrid, parte 2: vistas de la ciudad' },
+    // Placeholder: the real cover shows another person; waiting for permission.
+    thumbnail: {
+      src: 'images/portfolio-placeholder.svg',
+      ratio: '4/5',
+      alt: { en: 'Madrid city view', es: 'Vista de Madrid' },
+      brief: { es: 'Portada pendiente: sale otra persona', id: 'Cover menunggu: ada orang lain' },
     },
-    thumbnail: videoThumb(
-      'video-travel-nerja-sunrise.svg',
-      'Portada 9:16 del vídeo de viaje',
-      'Cover 9:16 video travel',
-      { en: 'Sunrise over a cove in Nerja', es: 'Amanecer sobre una cala de Nerja' },
-    ),
-    views: 3_400_000,
-    likes: 412_000,
-    saves: 58_000,
-    shares: 21_000,
-    url: '',
+    url: tiktok('7701640748705385746'),
+    stats: { views: 5_825, likes: 175, saves: 11, shares: 5 },
   },
   {
-    id: 'churros-review',
-    category: 'food',
-    platform: 'tiktok',
-    title: {
-      en: 'Honest review: I tried 5 churrerías in Málaga',
-      es: 'Reseña sincera: probé 5 churrerías de Málaga',
-    },
-    thumbnail: videoThumb(
-      'video-food-churros-review.svg',
-      'Portada 9:16 de la reseña gastronómica',
-      'Cover 9:16 review kuliner',
-      { en: 'Churros and hot chocolate on a café table', es: 'Churros con chocolate en la mesa de un café' },
-    ),
-    views: 2_100_000,
-    likes: 268_000,
-    saves: 96_000,
-    shares: 14_000,
-    url: '',
-  },
-  {
-    id: 'skincare-sun',
-    category: 'vlog',
-    platform: 'tiktok',
-    title: {
-      en: 'My Indonesian skincare routine for the Andalusian sun',
-      es: 'Mi rutina de skincare indonesia para el sol andaluz',
-    },
-    thumbnail: videoThumb(
-      'video-lifestyle-skincare-routine.svg',
-      'Portada 9:16 del vídeo de lifestyle',
-      'Cover 9:16 video lifestyle',
-      { en: 'Skincare products on a sunny table', es: 'Productos de skincare en una mesa al sol' },
-    ),
-    views: 1_600_000,
-    likes: 174_000,
-    saves: 61_000,
-    shares: 9_800,
-    url: '',
-  },
-  {
-    id: 'breakfast-two-cultures',
-    category: 'food',
-    platform: 'instagram',
-    title: {
-      en: 'Indonesian vs Spanish breakfast: which one wins?',
-      es: 'Desayuno indonesio contra desayuno español: ¿cuál gana?',
-    },
-    thumbnail: videoThumb(
-      'video-food-breakfast.svg',
-      'Portada 9:16 del Reel de gastronomía',
-      'Cover 9:16 Reel kuliner',
-      { en: 'Two breakfasts side by side', es: 'Dos desayunos uno al lado del otro' },
-    ),
-    views: 1_200_000,
-    likes: 96_000,
-    saves: 33_000,
-    shares: 7_400,
-    url: '',
-  },
-  {
-    id: 'slow-sunday',
-    category: 'vlog',
-    platform: 'instagram',
-    title: {
-      en: 'A slow Sunday in Málaga · mini-vlog',
-      es: 'Un domingo tranquilo en Málaga · mini-vlog',
-    },
-    thumbnail: videoThumb(
-      'video-lifestyle-sunday-vlog.svg',
-      'Portada 9:16 del mini-vlog',
-      'Cover 9:16 mini-vlog',
-      { en: 'Coffee on a balcony in the morning', es: 'Café en un balcón por la mañana' },
-    ),
-    views: 980_000,
-    likes: 71_000,
-    saves: 42_000,
-    shares: 6_100,
-    url: '',
-  },
-  {
-    id: 'malaga-48h',
+    id: 'travel-bernabeu',
     category: 'travel',
-    platform: 'youtube',
-    title: {
-      en: 'Málaga in 48 hours on a budget',
-      es: 'Málaga en 48 horas con poco presupuesto',
-    },
-    thumbnail: videoThumb(
-      'video-travel-malaga-48h.svg',
-      'Portada 9:16 del Short de viaje',
-      'Cover 9:16 Short travel',
-      { en: 'Málaga rooftops and the cathedral', es: 'Tejados de Málaga y la catedral' },
-    ),
-    views: 640_000,
-    likes: 38_000,
-    saves: 12_000,
-    shares: 4_300,
-    url: '',
+    platform: 'tiktok',
+    kind: 'video',
+    title: { en: 'Next stop: the Bernabéu stadium', es: 'Siguiente parada: el estadio Bernabéu' },
+    thumbnail: cover('travel-bernabeu.webp', { en: 'Madrid at sunset', es: 'Madrid al atardecer' }),
+    url: tiktok('7702393670846123272'),
+    stats: { views: 5_438, likes: 201, saves: 15, shares: 3 },
+  },
+  {
+    id: 'travel-not-bali',
+    category: 'travel',
+    platform: 'tiktok',
+    kind: 'video',
+    title: { en: 'Not Bali, not Barcelona, not Madrid…', es: 'Ni Bali, ni Barcelona, ni Madrid…' },
+    thumbnail: cover('travel-not-bali.webp', { en: 'Cable bridge at sunset', es: 'Puente atirantado al atardecer' }),
+    url: tiktok('7686416808135478536'),
+    stats: { views: 36_100, likes: 397, saves: 27, shares: 7 },
+  },
+  {
+    id: 'travel-tag-your-partner',
+    category: 'travel',
+    platform: 'instagram',
+    kind: 'video',
+    title: { en: 'Tag who you’d explore Spain with', es: 'Etiqueta con quién recorrerías España' },
+    thumbnail: cover('travel-tag-your-partner.webp', { en: 'Blue café chairs on a white street', es: 'Sillas azules en una calle blanca' }),
+    url: instagram('reel/DfB6YYQxwPE'),
+  },
+  {
+    id: 'travel-madrid-city-view',
+    category: 'travel',
+    platform: 'instagram',
+    kind: 'video',
+    title: { en: 'Where to get this view of Madrid', es: 'Dónde ver Madrid desde arriba' },
+    thumbnail: cover('travel-madrid-city-view.webp', { en: 'Gran Vía from a rooftop', es: 'La Gran Vía desde una azotea' }),
+    url: instagram('reel/DfMievWRHaM'),
+  },
+  {
+    id: 'travel-castillo-colomares',
+    category: 'travel',
+    platform: 'instagram',
+    kind: 'video',
+    title: { en: 'Castillo de Colomares, 30 min from Málaga', es: 'Castillo de Colomares, a 30 min de Málaga' },
+    thumbnail: cover('travel-castillo-colomares.webp', { en: 'Castillo de Colomares in Benalmádena', es: 'Castillo de Colomares en Benalmádena' }),
+    url: instagram('reel/De_kp04xB0h'),
+  },
+  {
+    id: 'food-indonesian-restaurant',
+    category: 'food',
+    platform: 'tiktok',
+    kind: 'video',
+    title: { en: 'Eating at an Indonesian restaurant in Spain', es: 'Comiendo en un restaurante indonesio en España' },
+    thumbnail: cover('food-indonesian-restaurant.webp', { en: 'Nasi goreng and Indonesian dishes', es: 'Nasi goreng y platos indonesios' }),
+    url: tiktok('7684584212309019922'),
+    stats: { views: 37_300, likes: 590, saves: 152, shares: 75 },
+  },
+  {
+    id: 'food-nescafe-gold',
+    category: 'food',
+    platform: 'tiktok',
+    kind: 'video',
+    title: { en: 'Let’s make coffee with me', es: 'Hagamos café juntas' },
+    thumbnail: cover('food-nescafe-gold.webp', { en: 'Making iced coffee', es: 'Preparando café con hielo' }),
+    url: tiktok('7700548667123469586'),
+    stats: { views: 4_695, likes: 63, saves: 3, shares: 1 },
+  },
+  {
+    id: 'food-noodles-pacifico',
+    category: 'food',
+    platform: 'tiktok',
+    kind: 'video',
+    title: { en: 'Daily vlog: lunch at Noodles Pacífico', es: 'Daily vlog: comida en Noodles Pacífico' },
+    thumbnail: cover('food-noodles-pacifico.webp', { en: 'Noodles Pacífico terrace', es: 'Terraza de Noodles Pacífico' }),
+    url: tiktok('7674181929704443144'),
+    stats: { views: 110_200, likes: 1_600, saves: 117, shares: 35 },
+  },
+  {
+    id: 'vlog-feria-rosario',
+    category: 'vlog',
+    platform: 'tiktok',
+    kind: 'video',
+    title: { en: 'A Spanish feria you have to see once', es: 'Una feria que tienes que vivir una vez' },
+    thumbnail: cover('vlog-feria-rosario.webp', { en: 'Horse carriage at the Feria del Rosario', es: 'Coche de caballos en la Feria del Rosario' }),
+    url: tiktok('7696457009197010184'),
+    stats: { views: 11_200, likes: 325, saves: 26, shares: 9 },
+  },
+  {
+    id: 'vlog-malaga-marina',
+    category: 'vlog',
+    platform: 'tiktok',
+    kind: 'video',
+    title: { en: 'In Málaga? Don’t miss this place', es: '¿Estás en Málaga? No te pierdas este sitio' },
+    thumbnail: cover('vlog-malaga-marina.webp', { en: 'Dian at a marina', es: 'Dian en un puerto deportivo' }),
+    url: tiktok('7695333726120709377'),
+    stats: { views: 10_400, likes: 241, saves: 14, shares: 7 },
+  },
+  {
+    id: 'vlog-starlite-marbella',
+    category: 'vlog',
+    platform: 'tiktok',
+    kind: 'video',
+    title: { en: 'Concert night at Starlite Marbella', es: 'Noche de concierto en Starlite Marbella' },
+    thumbnail: cover('vlog-starlite-marbella.webp', { en: 'Starlite festival stage', es: 'Escenario del festival Starlite' }),
+    url: tiktok('7685344489518468359'),
+    stats: { views: 73_800, likes: 4_105, saves: 415, shares: 108 },
+  },
+  {
+    id: 'vlog-living-in-spain',
+    category: 'vlog',
+    platform: 'tiktok',
+    kind: 'video',
+    title: { en: 'Living in Spain: a random episode', es: 'Vivir en España: episodio random' },
+    thumbnail: cover('vlog-living-in-spain.webp', { en: 'White village street', es: 'Calle de un pueblo blanco' }),
+    url: tiktok('7684179485574335762'),
+    stats: { views: 95_100, likes: 3_842, saves: 286, shares: 80 },
+  },
+  {
+    id: 'fashion-new-chapter',
+    category: 'fashion',
+    platform: 'instagram',
+    kind: 'photo',
+    title: { en: 'A new chapter', es: 'Un nuevo capítulo' },
+    thumbnail: cover('fashion-new-chapter.webp', { en: 'Dian in a beige outfit', es: 'Dian con un look beige' }),
+    url: instagram('p/Da2nHIMiVkb'),
+  },
+  {
+    id: 'fashion-new-years-eve',
+    category: 'fashion',
+    platform: 'instagram',
+    kind: 'photo',
+    title: { en: 'Beach day essentials', es: 'Imprescindibles de playa' },
+    thumbnail: cover('fashion-new-years-eve.webp', { en: 'Straw hat on the sand', es: 'Sombrero de paja en la arena' }),
+    url: instagram('p/DS9KheTEVSE'),
+  },
+  {
+    id: 'fashion-seas-the-day',
+    category: 'fashion',
+    platform: 'instagram',
+    kind: 'photo',
+    title: { en: 'Seas the day', es: 'Seas the day' },
+    thumbnail: cover('fashion-seas-the-day.webp', { en: 'Dian by the sea with a sun hat', es: 'Dian junto al mar con sombrero' }),
+    url: instagram('p/DS7MXf8kYFW'),
+  },
+  {
+    id: 'fashion-sea-sun-serenity',
+    category: 'fashion',
+    platform: 'instagram',
+    kind: 'photo',
+    title: { en: 'Sea, sun & serenity', es: 'Mar, sol y calma' },
+    thumbnail: cover('fashion-sea-sun-serenity.webp', { en: 'Dian at sunset by the sea', es: 'Dian al atardecer junto al mar' }),
+    url: instagram('p/DbAbJEckV79'),
+  },
+  {
+    id: 'fashion-puerto-marina',
+    category: 'fashion',
+    platform: 'instagram',
+    kind: 'photo',
+    title: { en: 'Puerto Marina, Benalmádena', es: 'Puerto Marina, Benalmádena' },
+    thumbnail: cover('fashion-puerto-marina.webp', { en: 'Dian at Puerto Marina', es: 'Dian en Puerto Marina' }),
+    url: instagram('p/Dd0wPzzkcsA'),
+  },
+  {
+    id: 'fashion-el-retiro',
+    category: 'fashion',
+    platform: 'instagram',
+    kind: 'photo',
+    title: { en: 'Parque de El Retiro, Madrid', es: 'Parque de El Retiro, Madrid' },
+    thumbnail: cover('fashion-el-retiro.webp', { en: 'Dian at El Retiro lake', es: 'Dian en el estanque de El Retiro' }),
+    url: instagram('p/DepEqgXCEEv'),
   },
 ]
 
 /* ------------------------------------------------------------------ */
-/* Case studies (section 8). DEMO: brands are invented.                */
+/* Case studies (section 8): hidden until the first collaboration.     */
 /* ------------------------------------------------------------------ */
 
-export const caseStudies: CaseStudy[] = [
-  {
-    brand: 'Brisalia Air',
-    sector: { en: 'Airline', es: 'Aerolínea' },
-    campaign: {
-      en: 'Launch of a new Málaga route: travel-day vlog and destination guide.',
-      es: 'Lanzamiento de una nueva ruta desde Málaga: vlog del viaje y guía del destino.',
-    },
-    deliverables: [
-      { en: '3 TikTok videos', es: '3 vídeos de TikTok' },
-      { en: '1 YouTube integration', es: '1 integración en YouTube' },
-      { en: '6 Instagram Stories with link', es: '6 Stories de Instagram con enlace' },
-    ],
-    results: [
-      { label: { en: 'Views', es: 'Visualizaciones' }, value: 2_900_000 },
-      { label: { en: 'Link clicks', es: 'Clics al enlace' }, value: 41_000 },
-      { label: { en: 'Saves', es: 'Guardados' }, value: 88_000 },
-    ],
-  },
-  {
-    brand: 'Hotel Celindra',
-    sector: { en: 'Boutique hotel, Ronda', es: 'Hotel boutique, Ronda' },
-    campaign: {
-      en: 'Off-season weekend stay for Spanish couples.',
-      es: 'Escapada de fin de semana en temporada baja para parejas españolas.',
-    },
-    deliverables: [
-      { en: '2 Instagram Reels', es: '2 Reels de Instagram' },
-      { en: '1 TikTok video', es: '1 vídeo de TikTok' },
-      { en: '20 photos with usage rights', es: '20 fotos con derechos de uso' },
-    ],
-    results: [
-      { label: { en: 'Views', es: 'Visualizaciones' }, value: 1_100_000 },
-      { label: { en: 'Bookings with code', es: 'Reservas con código' }, value: 126 },
-      { label: { en: 'Code', es: 'Código' }, value: 'DIAN10' },
-    ],
-  },
-  {
-    brand: 'Nácar Cosmetics',
-    sector: { en: 'Skincare', es: 'Cosmética' },
-    campaign: {
-      en: 'Summer SPF launch for warm and olive skin tones.',
-      es: 'Lanzamiento de un SPF de verano para pieles cálidas y oliva.',
-    },
-    deliverables: [
-      { en: '2 TikTok videos', es: '2 vídeos de TikTok' },
-      { en: '3 UGC ads for paid media', es: '3 anuncios UGC para publicidad' },
-    ],
-    results: [
-      { label: { en: 'Views', es: 'Visualizaciones' }, value: 1_800_000 },
-      { label: { en: 'Sales with code', es: 'Ventas con código' }, value: 2_340 },
-      { label: { en: 'Code', es: 'Código' }, value: 'DIANSUN' },
-    ],
-  },
-]
+export const caseStudies: CaseStudy[] = []
 
 /* ------------------------------------------------------------------ */
 /* Services (section 9) and skills (section 10)                        */
@@ -651,8 +653,8 @@ export const services: { title: Localized; text: Localized }[] = [
   {
     title: { en: 'TikTok video', es: 'Vídeo de TikTok' },
     text: {
-      en: 'Concept, script, filming and editing, posted on my account.',
-      es: 'Idea, guion, grabación y edición, publicado en mi cuenta.',
+      en: 'Concept, filming and editing, posted on my account.',
+      es: 'Idea, grabación y edición, publicado en mi cuenta.',
     },
   },
   {
@@ -663,13 +665,6 @@ export const services: { title: Localized; text: Localized }[] = [
     },
   },
   {
-    title: { en: 'YouTube integration', es: 'Integración en YouTube' },
-    text: {
-      en: 'A 60–90 second segment inside a travel or lifestyle vlog.',
-      es: 'Un bloque de 60–90 segundos dentro de un vlog de viajes o lifestyle.',
-    },
-  },
-  {
     title: { en: 'UGC content', es: 'Contenido UGC' },
     text: {
       en: 'Videos for your own channels and ads, with usage rights.',
@@ -677,24 +672,24 @@ export const services: { title: Localized; text: Localized }[] = [
     },
   },
   {
-    title: { en: 'Place features', es: 'Lugares y experiencias' },
+    title: { en: 'Product reviews', es: 'Reseñas de producto' },
+    text: {
+      en: 'An honest, real-life test of your product, filmed my way.',
+      es: 'Una prueba sincera y real de tu producto, grabada a mi manera.',
+    },
+  },
+  {
+    title: { en: 'On-location features', es: 'Colaboraciones en el lugar' },
     text: {
       en: 'A mini-vlog from your hotel, restaurant or destination, filmed on site.',
       es: 'Un mini-vlog de tu hotel, restaurante o destino, grabado allí.',
     },
   },
   {
-    title: { en: 'Brand ambassador', es: 'Embajadora de marca' },
+    title: { en: 'Content in 2 languages', es: 'Contenido en 2 idiomas' },
     text: {
-      en: 'A long-term partnership with a monthly content plan.',
-      es: 'Una relación a largo plazo con un plan de contenido mensual.',
-    },
-  },
-  {
-    title: { en: 'English & Indonesian', es: 'Inglés e indonesio' },
-    text: {
-      en: 'Content in two languages: one creator for Europe and Southeast Asia.',
-      es: 'Contenido en dos idiomas: una creadora para Europa y el Sudeste Asiático.',
+      en: 'English and Indonesian: one creator for Europe and Southeast Asia.',
+      es: 'Inglés e indonesio: una creadora para Europa y el Sudeste Asiático.',
     },
   },
 ]
@@ -704,94 +699,70 @@ export const skills = {
     {
       title: { en: 'Production', es: 'Producción' },
       items: [
-        { en: 'Filming on phone & mirrorless', es: 'Grabación con móvil y cámara' },
-        { en: 'Editing: CapCut, Premiere Pro', es: 'Edición: CapCut, Premiere Pro' },
-        { en: 'Photography & colour grading', es: 'Fotografía y color' },
-        { en: 'Scriptwriting & storytelling', es: 'Guion y storytelling' },
+        { en: 'Filming on phone', es: 'Grabación con móvil' },
+        { en: 'Video editing', es: 'Edición de vídeo' },
+        { en: 'Photography', es: 'Fotografía' },
+        { en: 'Storytelling', es: 'Storytelling' },
       ],
     },
     {
       title: { en: 'Markets', es: 'Mercados' },
       items: [
-        { en: 'Spain & Southern Europe', es: 'España y sur de Europa' },
-        { en: 'Southeast Asia (Indonesia, Malaysia)', es: 'Sudeste Asiático (Indonesia, Malasia)' },
+        { en: 'Indonesia & Southeast Asia', es: 'Indonesia y Sudeste Asiático' },
+        { en: 'Spain & Europe', es: 'España y Europa' },
       ],
     },
   ],
   languages: [
     { name: { en: 'Indonesian', es: 'Indonesio' }, level: { en: 'Native', es: 'Nativo' }, value: 100 },
     { name: { en: 'English', es: 'Inglés' }, level: { en: 'Fluent', es: 'Fluido' }, value: 90 },
-    { name: { en: 'Spanish', es: 'Español' }, level: { en: 'Learning', es: 'Aprendiendo' }, value: 35 },
+    { name: { en: 'Spanish', es: 'Español' }, level: { en: 'Beginner', es: 'Principiante' }, value: 20 },
   ],
 }
 
 /* ------------------------------------------------------------------ */
-/* Timeline (section 11)                                               */
+/* Timeline (section 11): hidden at Dian's request.                    */
 /* ------------------------------------------------------------------ */
 
-export const timeline: { year: string; title: Localized; text: Localized }[] = [
-  {
-    year: '2020',
-    title: { en: 'First videos', es: 'Primeros vídeos' },
-    text: { en: 'Started posting street food and markets from Indonesia.', es: 'Empecé a publicar comida callejera y mercados desde Indonesia.' },
-  },
-  {
-    year: '2021',
-    title: { en: 'First viral video', es: 'Primer vídeo viral' },
-    text: { en: '1.1M views on a hidden waterfall guide.', es: '1,1 M de visualizaciones con una guía de una cascada escondida.' },
-  },
-  {
-    year: '2021',
-    title: { en: '100K followers', es: '100 mil seguidores' },
-    text: { en: 'Reached 100K on TikTok.', es: 'Llegué a 100 mil en TikTok.' },
-  },
-  {
-    year: '2022',
-    title: { en: 'First brand partnership', es: 'Primera colaboración' },
-    text: { en: 'A travel campaign with a regional tourism board.', es: 'Una campaña de viajes con una oficina de turismo regional.' },
-  },
-  {
-    year: '2024',
-    title: { en: '1M on TikTok', es: '1 millón en TikTok' },
-    text: { en: 'One million followers and a YouTube channel launch.', es: 'Un millón de seguidores y estreno del canal de YouTube.' },
-  },
-  {
-    year: '2026',
-    title: { en: '2M across platforms', es: '2 millones entre todas las redes' },
-    text: { en: 'Focused on long-term partnerships with European brands.', es: 'Enfocada en colaboraciones a largo plazo con marcas europeas.' },
-  },
-]
+export const timeline: { year: string; title: Localized; text: Localized }[] = []
 
 /* ------------------------------------------------------------------ */
-/* Testimonials (section 12). DEMO: brands and quotes are invented.     */
+/* Why work with me (section 12), instead of brand testimonials.       */
 /* ------------------------------------------------------------------ */
 
-export const testimonials: Testimonial[] = [
-  {
-    quote: {
-      en: 'Dian understood our hotel better than some of our staff. The bookings with her code paid for the campaign in three weeks.',
-      es: 'Dian entendió nuestro hotel mejor que parte del equipo. Las reservas con su código pagaron la campaña en tres semanas.',
+export const why = {
+  title: { en: 'Why work with me', es: 'Por qué trabajar conmigo' } satisfies Localized,
+  items: [
+    {
+      title: { en: 'Authentic storytelling', es: 'Historias auténticas' },
+      text: {
+        en: 'I only share places and products I have really tried, in my own voice, so every recommendation feels real.',
+        es: 'Solo comparto lugares y productos que he probado de verdad, con mi propia voz, para que cada recomendación se sienta real.',
+      },
     },
-    role: { en: 'Marketing lead', es: 'Responsable de marketing' },
-    brand: 'Hotel Celindra',
-  },
-  {
-    quote: {
-      en: 'Professional, on time and with ideas we had not thought of. Her audience in Spain and Indonesia gave us two markets in one.',
-      es: 'Profesional, puntual y con ideas que no se nos habían ocurrido. Su audiencia en España e Indonesia nos dio dos mercados en uno.',
+    {
+      title: { en: 'Content that stops the scroll', es: 'Contenido que frena el scroll' },
+      text: {
+        en: 'Cinematic mini-vlogs, clean edits and photos made for TikTok and Instagram.',
+        es: 'Mini-vlogs cinematográficos, edición cuidada y fotos pensadas para TikTok e Instagram.',
+      },
     },
-    role: { en: 'Brand manager', es: 'Brand manager' },
-    brand: 'Lino & Sal',
-  },
-  {
-    quote: {
-      en: 'The UGC videos she made for us still are our best-performing ads.',
-      es: 'Los vídeos UGC que nos hizo siguen siendo nuestros anuncios con mejores resultados.',
+    {
+      title: { en: 'Spain, seen by Indonesia', es: 'España vista desde Indonesia' },
+      text: {
+        en: 'Most of my audience is in Indonesia: a direct line from your Spanish destination or product to Southeast Asia.',
+        es: 'La mayor parte de mi audiencia está en Indonesia: una conexión directa entre tu destino o producto en España y el Sudeste Asiático.',
+      },
     },
-    role: { en: 'Growth manager', es: 'Growth manager' },
-    brand: 'Kopi Sur Coffee',
-  },
-]
+    {
+      title: { en: 'Easy to work with', es: 'Fácil trabajar conmigo' },
+      text: {
+        en: 'Clear communication, creative direction from day one and one revision included.',
+        es: 'Comunicación clara, dirección creativa desde el primer día y una revisión incluida.',
+      },
+    },
+  ],
+}
 
 /* ------------------------------------------------------------------ */
 /* Rates (section 13)                                                  */
@@ -799,16 +770,36 @@ export const testimonials: Testimonial[] = [
 
 export const rates = {
   /** false shows "Rates on request" instead of prices. */
-  showPrices: true,
+  showPrices: false,
   currency: 'EUR',
   items: [
-    { service: { en: 'TikTok video', es: 'Vídeo de TikTok' }, detail: { en: '30–60 s, 1 revision', es: '30–60 s, 1 revisión' }, price: 1800 },
-    { service: { en: 'Reel + 3 Stories', es: 'Reel + 3 Stories' }, detail: { en: 'Instagram, with link sticker', es: 'Instagram, con enlace' }, price: 1400 },
-    { service: { en: 'YouTube integration', es: 'Integración en YouTube' }, detail: { en: '60–90 s segment', es: 'Bloque de 60–90 s' }, price: 2200 },
-    { service: { en: 'UGC pack', es: 'Pack UGC' }, detail: { en: '3 videos, 6 months of usage rights', es: '3 vídeos, 6 meses de derechos' }, price: 950 },
-    { service: { en: 'Place feature', es: 'Lugar o experiencia' }, detail: { en: '2 days on site', es: '2 días en el lugar' }, price: 3500, from: true },
-    { service: { en: 'Brand ambassador', es: 'Embajadora de marca' }, detail: { en: 'Monthly plan, 3+ months', es: 'Plan mensual, 3+ meses' }, price: 4500, from: true },
-  ] satisfies Rate[],
+    { service: { en: 'TikTok video', es: 'Vídeo de TikTok' }, detail: { en: '30–60 s, 1 revision', es: '30–60 s, 1 revisión' }, price: 0 },
+    { service: { en: 'Reel + 3 Stories', es: 'Reel + 3 Stories' }, detail: { en: 'Instagram, with link sticker', es: 'Instagram, con enlace' }, price: 0 },
+    { service: { en: 'UGC pack', es: 'Pack UGC' }, detail: { en: '3 videos with usage rights', es: '3 vídeos con derechos de uso' }, price: 0 },
+    { service: { en: 'On-location feature', es: 'Colaboración en el lugar' }, detail: { en: 'Hotel, restaurant or destination', es: 'Hotel, restaurante o destino' }, price: 0 },
+  ] as Rate[],
+  /** Dian's note under the rates. */
+  onLocation: {
+    title: { en: 'On-location collaborations', es: 'Colaboraciones en el lugar' } satisfies Localized,
+    subtitle: {
+      en: 'Travel, restaurant, hotel & lifestyle experiences.',
+      es: 'Experiencias de viaje, restaurantes, hoteles y lifestyle.',
+    } satisfies Localized,
+    points: [
+      {
+        en: 'Rates include creative direction, on-site content production, professional editing and one revision.',
+        es: 'Las tarifas incluyen dirección creativa, producción de contenido en el lugar, edición profesional y una revisión.',
+      },
+      {
+        en: 'Local travel within 15 km is included. Additional transportation, accommodation and travel-related expenses are quoted separately.',
+        es: 'Los desplazamientos locales de hasta 15 km están incluidos. El transporte adicional, el alojamiento y otros gastos del viaje se presupuestan aparte.',
+      },
+      {
+        en: 'Custom packages available for international collaborations.',
+        es: 'Paquetes a medida para colaboraciones internacionales.',
+      },
+    ] satisfies Localized[],
+  },
 }
 
 /* ------------------------------------------------------------------ */
@@ -817,17 +808,18 @@ export const rates = {
 
 export const contact = {
   budgets: [
-    { en: 'Under €1,000', es: 'Menos de 1.000 €' },
-    { en: '€1,000 – €3,000', es: '1.000 – 3.000 €' },
-    { en: '€3,000 – €10,000', es: '3.000 – 10.000 €' },
-    { en: 'Over €10,000', es: 'Más de 10.000 €' },
+    { en: 'Under €500', es: 'Menos de 500 €' },
+    { en: '€500 – €1,500', es: '500 – 1.500 €' },
+    { en: 'Over €1,500', es: 'Más de 1.500 €' },
+    { en: 'Product exchange', es: 'Intercambio de producto' },
     { en: 'Not sure yet', es: 'Aún no lo sé' },
   ] satisfies Localized[],
   types: [
-    { en: 'Sponsored video', es: 'Vídeo patrocinado' },
     { en: 'UGC content', es: 'Contenido UGC' },
-    { en: 'Travel or event', es: 'Viaje o evento' },
-    { en: 'Brand ambassador', es: 'Embajadora de marca' },
+    { en: 'Product review', es: 'Reseña de producto' },
+    { en: 'On-location collaboration', es: 'Colaboración en el lugar' },
+    { en: 'Sponsored post', es: 'Publicación patrocinada' },
+    { en: 'Long-term partnership', es: 'Colaboración a largo plazo' },
     { en: 'Something else', es: 'Otra cosa' },
   ] satisfies Localized[],
 }
@@ -837,7 +829,7 @@ export const contact = {
 /* ------------------------------------------------------------------ */
 
 export const ui = {
-  demoBand: { en: 'Demo prototype · numbers and brands are fictional', es: 'Prototipo demo · cifras y marcas ficticias' },
+  demoBand: { en: 'Demo prototype', es: 'Prototipo demo' },
   skipToContent: { en: 'Skip to content', es: 'Saltar al contenido' },
   menu: { en: 'Menu', es: 'Menú' },
   close: { en: 'Close', es: 'Cerrar' },
@@ -850,45 +842,50 @@ export const ui = {
   },
   heroStats: {
     followers: { en: 'followers', es: 'seguidores' },
-    views: { en: 'views in 90 days', es: 'views en 90 días' },
+    views: { en: 'views in October', es: 'views en octubre' },
     engagement: { en: 'engagement', es: 'engagement' },
   },
   downloadKit: { en: 'Download media kit', es: 'Descargar media kit' },
   stats: {
     title: { en: 'The numbers', es: 'Las cifras' },
     followers: { en: 'Total followers', es: 'Seguidores totales' },
-    views90: { en: 'Views, last 90 days', es: 'Visualizaciones, últimos 90 días' },
-    avgViews: { en: 'Average views per video', es: 'Media de visualizaciones por vídeo' },
-    engagement: { en: 'Average engagement rate', es: 'Engagement medio' },
-    growth6m: { en: 'Follower growth, last 6 months', es: 'Crecimiento, últimos 6 meses' },
+    views: { en: 'Views in October', es: 'Visualizaciones en octubre' },
+    likes: { en: 'Likes in October', es: 'Likes en octubre' },
+    shares: { en: 'Shares in October', es: 'Compartidos en octubre' },
+    engagement: { en: 'Engagement rate', es: 'Tasa de engagement' },
   },
   platforms: {
     title: { en: 'Where my audience is', es: 'Dónde está mi audiencia' },
     followers: { en: 'Followers', es: 'Seguidores' },
-    avgViews: { en: 'Avg. views', es: 'Media de views' },
+    views: { en: 'Views', es: 'Views' },
+    likes: { en: 'Likes', es: 'Likes' },
+    comments: { en: 'Comments', es: 'Comentarios' },
+    shares: { en: 'Shares', es: 'Compartidos' },
     engagement: { en: 'Engagement', es: 'Engagement' },
-    growth: { en: 'Growth 90 d', es: 'Crecimiento 90 d' },
+    month: { en: 'In October', es: 'En octubre' },
     share: { en: 'of total followers', es: 'del total de seguidores' },
     visit: { en: 'View profile', es: 'Ver perfil' },
   },
   audience: {
     title: { en: 'Who watches', es: 'Quién me ve' },
+    choose: { en: 'Choose a platform', es: 'Elige una red' },
     age: { en: 'Age', es: 'Edad' },
     gender: { en: 'Gender', es: 'Género' },
     countries: { en: 'Top countries', es: 'Países principales' },
-    cities: { en: 'Top cities', es: 'Ciudades principales' },
     languages: { en: 'Languages', es: 'Idiomas' },
-    hours: { en: 'Most active hours', es: 'Horas de más actividad' },
+    hours: { en: 'Active hours', es: 'Horas de actividad' },
+    spanishTime: { en: 'Spanish time', es: 'hora española' },
   },
   videos: {
-    title: { en: 'Best performing videos', es: 'Vídeos con mejores resultados' },
-    all: { en: 'All', es: 'Todos' },
+    title: { en: 'My best content', es: 'Mi mejor contenido' },
+    all: { en: 'All', es: 'Todo' },
     views: { en: 'Views', es: 'Views' },
     likes: { en: 'Likes', es: 'Likes' },
     saves: { en: 'Saves', es: 'Guardados' },
     shares: { en: 'Shares', es: 'Compartidos' },
     watch: { en: 'Watch', es: 'Ver vídeo' },
-    filterLabel: { en: 'Filter videos by category', es: 'Filtrar vídeos por categoría' },
+    view: { en: 'View post', es: 'Ver publicación' },
+    filterLabel: { en: 'Filter by category', es: 'Filtrar por categoría' },
   },
   cases: {
     title: { en: 'Brand partnerships', es: 'Colaboraciones con marcas' },
@@ -902,22 +899,27 @@ export const ui = {
     languages: { en: 'Languages', es: 'Idiomas' },
   },
   timeline: { title: { en: 'My journey', es: 'Mi trayectoria' } },
-  testimonials: { title: { en: 'What brands say', es: 'Lo que dicen las marcas' } },
   rates: {
     title: { en: 'Rates', es: 'Tarifas' },
     from: { en: 'from', es: 'desde' },
     onRequest: { en: 'Rates on request', es: 'Tarifas bajo petición' },
     note: {
-      en: 'Indicative prices, VAT not included. Packages and usage rights are quoted per project.',
-      es: 'Precios orientativos, IVA no incluido. Los paquetes y derechos de uso se presupuestan por proyecto.',
+      en: 'Every project is quoted individually. VAT not included.',
+      es: 'Cada proyecto se presupuesta por separado. IVA no incluido.',
     },
   },
   contact: {
-    title: { en: 'Let’s create together', es: 'Creemos algo juntos' },
-    intro: {
-      en: 'Tell me about your brand and your idea. I usually reply within two working days.',
-      es: 'Cuéntame sobre tu marca y tu idea. Suelo responder en dos días laborables.',
-    },
+    title: { en: 'Let’s create something together', es: 'Creemos algo juntos' },
+    intro: [
+      {
+        en: 'Every brand has a unique story to tell. Whether you’re looking for engaging UGC, authentic product reviews, or travel and lifestyle collaborations, I’d love to bring your vision to life.',
+        es: 'Cada marca tiene una historia única que contar. Tanto si buscas UGC que enganche, reseñas de producto auténticas o colaboraciones de viajes y lifestyle, me encantará dar vida a tu idea.',
+      },
+      {
+        en: 'For custom packages and long-term partnerships, let’s connect!',
+        es: 'Para paquetes a medida y colaboraciones a largo plazo, ¡hablemos!',
+      },
+    ] satisfies Localized[],
     name: { en: 'Name', es: 'Nombre' },
     company: { en: 'Company', es: 'Empresa' },
     email: { en: 'Work email', es: 'Email de trabajo' },
@@ -927,8 +929,8 @@ export const ui = {
     choose: { en: 'Choose one', es: 'Elige una opción' },
     send: { en: 'Send message', es: 'Enviar mensaje' },
     demoSent: {
-      en: 'This is a demo: nothing was sent. In the real website your message would reach Dian.',
-      es: 'Esto es una demo: no se ha enviado nada. En la web real tu mensaje le llegaría a Dian.',
+      en: 'The form is not connected yet, so nothing was sent. For now, please message me on Instagram or TikTok.',
+      es: 'El formulario aún no está conectado, así que no se ha enviado nada. De momento, escríbeme por Instagram o TikTok.',
     },
     required: { en: 'Please fill in this field.', es: 'Rellena este campo.' },
     invalidEmail: { en: 'Please enter a valid email.', es: 'Introduce un email válido.' },
@@ -941,6 +943,6 @@ export const ui = {
   review: {
     note: { es: 'Nota para Dian', id: 'Catatan untuk Dian' },
     photo: { es: 'Foto', id: 'Foto' },
-    demoLink: { en: 'Link added with real data', es: 'Enlace cuando haya datos reales' },
+    demoLink: { en: 'Link coming soon', es: 'Enlace próximamente' },
   },
 }

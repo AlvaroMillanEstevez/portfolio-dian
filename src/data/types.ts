@@ -8,8 +8,8 @@ export type Localized = Record<Lang, string>
 /** Review-mode notes for Dian: Spanish and Indonesian, never shown with review mode off. */
 export type ReviewNote = { es: string; id: string }
 
-export type PlatformId = 'tiktok' | 'instagram' | 'youtube' | 'facebook'
-export type Category = 'travel' | 'food' | 'vlog'
+export type PlatformId = 'tiktok' | 'instagram'
+export type Category = 'travel' | 'food' | 'vlog' | 'fashion'
 
 export type SectionId =
   | 'hero'
@@ -23,7 +23,7 @@ export type SectionId =
   | 'services'
   | 'skills'
   | 'timeline'
-  | 'testimonials'
+  | 'why'
   | 'rates'
   | 'contact'
   | 'footer'
@@ -41,7 +41,7 @@ export type SectionConfig = {
 
 /**
  * A photo slot. `src` is relative to public/ (e.g. "images/hero-portrait.svg").
- * `ratio` is the exact aspect ratio the real photo must have.
+ * `ratio` is the aspect ratio of the frame; the image is cropped to fill it.
  */
 export type Photo = {
   src: string
@@ -55,31 +55,27 @@ export type Platform = {
   id: PlatformId
   name: string
   handle: string
-  /** Leave empty in the demo: a made-up handle could belong to a real person. */
   url: string
   followers: number
-  /** Videos published in the last 90 days. */
-  videos90d: number
-  /** Total views in the last 90 days. Average views = views90d / videos90d. */
-  views90d: number
-  /** Engagement rate in %, (likes + comments + saves + shares) / views. */
-  engagementRate: number
-  /** Follower growth in the last 90 days, in %. */
-  growth90d: number
+  /** Totals for the month in site.dataAsOf, from the platform's own analytics. */
+  viewsMonth: number
+  likes: number
+  comments: number
+  shares: number
   label: Localized
 }
 
+/** A piece of work in the portfolio: a video or a photo post. */
 export type Video = {
   id: string
   category: Category
   platform: PlatformId
+  kind: 'video' | 'photo'
   title: Localized
   thumbnail: Photo
-  views: number
-  likes: number
-  saves: number
-  shares: number
   url: string
+  /** Public numbers, when the platform shows them. */
+  stats?: { views: number; likes: number; saves: number; shares: number }
 }
 
 export type CaseStudy = {
@@ -91,12 +87,6 @@ export type CaseStudy = {
   results: { label: Localized; value: number | string }[]
 }
 
-export type Testimonial = {
-  quote: Localized
-  role: Localized
-  brand: string
-}
-
 export type Rate = {
   service: Localized
   detail: Localized
@@ -106,3 +96,16 @@ export type Rate = {
 }
 
 export type Share = { label: Localized; value: number }
+
+/** Audience insights of one platform. Charts without data are not shown. */
+export type AudienceSet = {
+  platform: PlatformId
+  period: Localized
+  gender: Share[]
+  age?: Share[]
+  countries: Share[]
+  languages?: Share[]
+  /** Relative activity (0–100) per time slot on one day. */
+  activeHours?: { day: Localized; slots: { label: string; value: number }[] }
+  peak: Localized
+}

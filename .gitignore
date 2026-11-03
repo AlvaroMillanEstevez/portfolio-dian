@@ -30,3 +30,6 @@ dist-ssr
 
 # Private checklist of data that must never be published (kept outside git)
 private/
+
+# Dian's source documents (real analytics, notes): never committed
+*.docx

@@ -1,10 +1,10 @@
 # Feedback de Dian · Masukan dari Dian
 
-Web demo · Web demo: https://alvaromillanestevez.github.io/portfolio-dian/
+Web: https://alvaromillanestevez.github.io/portfolio-dian/
 
-**ES:** Todo lo que ves es inventado: las cifras, las marcas y el usuario. Tu nombre y la ciudad sí son reales. Mira la web en el móvil. Cada sección tiene un número morado grande y una nota que explica qué va ahí. Responde aquí abajo por número, por ejemplo "la 7 me encanta, la 11 fuera".
+**ES:** Ya están tus datos reales: cifras de octubre, audiencia, perfiles y tus mejores publicaciones. Faltan tus fotos, los precios y el email profesional. Mira la web en el móvil. Cada sección tiene un número morado grande y una nota que explica qué va ahí. Responde aquí abajo por número, por ejemplo "la 7 me encanta, la 11 fuera".
 
-**ID:** Semua yang kamu lihat adalah contoh: angka, brand dan username. Nama dan kotamu asli. Lihat web-nya di HP. Setiap bagian punya nomor ungu besar dan catatan yang menjelaskan isinya. Jawab di bawah sesuai nomor, misalnya "nomor 7 suka banget, nomor 11 hapus".
+**ID:** Data aslimu sudah masuk: angka bulan Oktober, audiens, profil dan postingan terbaikmu. Yang kurang: fotomu, harga dan email profesional. Lihat web-nya di HP. Setiap bagian punya nomor ungu besar dan catatan yang menjelaskan isinya. Jawab di bawah sesuai nomor, misalnya "nomor 7 suka banget, nomor 11 hapus".
 
 ---
 
@@ -40,7 +40,7 @@ Untuk setiap bagian: suka?, mau ubah apa?, dihapus?
 | 9 | Servicios · Layanan | | | |
 | 10 | Habilidades · Keahlian | | | |
 | 11 | Trayectoria · Perjalanan | | | |
-| 12 | Testimonios · Testimoni | | | |
+| 12 | Por qué trabajar conmigo · Kenapa kerja sama denganku | | | |
 | 13 | Tarifas · Tarif | | | |
 | 14 | Contacto · Kontak | | | |
 | 15 | Pie de página · Footer | | | |

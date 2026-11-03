@@ -1,7 +1,7 @@
 # Dian · media kit (prototipo)
 
 Prototipo del portfolio / media kit web de Dian, creadora de contenido en Málaga.
-**Todos los datos son ficticios** (cifras, marcas, usuario `@dian.demo` y testimonios); solo el nombre completo y la ciudad son reales. Sirve para que Dian elija qué secciones y qué estilo quiere antes de poner los datos reales.
+Las cifras, la audiencia, los perfiles y el portfolio son **reales** (analíticas de TikTok e Instagram de octubre de 2026). Faltan las fotos propias (placeholders), los precios y el email profesional. El modo revisión sigue activo para que Dian comente por número de sección.
 
 - Web: https://alvaromillanestevez.github.io/portfolio-dian/
 - Feedback de Dian: [FEEDBACK_DIAN.md](FEEDBACK_DIAN.md)
@@ -32,7 +32,7 @@ Todo el contenido vive en **un único archivo: [`src/data/profile.ts`](src/data/
 | Temas ("Content focus") y porcentajes   | `pillars` (los porcentajes deben sumar 100; `icon` elige el dibujo) |
 | Audiencia                               | `audience`                                            |
 | Mejores vídeos                          | `videos` (y `categories` para los filtros)             |
-| Colaboraciones, testimonios             | `caseStudies`, `testimonials`                          |
+| Colaboraciones, "Why work with me"     | `caseStudies` (vacío: sección 8 oculta), `why`         |
 | Servicios, habilidades, trayectoria     | `services`, `skills`, `timeline`                       |
 | Tarifas                                 | `rates` (`showPrices: false` muestra "Rates on request") |
 | Opciones del formulario                 | `contact`                                             |
@@ -41,7 +41,7 @@ Todo el contenido vive en **un único archivo: [`src/data/profile.ts`](src/data/
 
 ### Enlaces
 
-En la demo los campos `url` están vacíos y los enlaces se ven pero no se pueden pulsar: un usuario inventado podría ser la cuenta de otra persona. Con los datos reales basta con rellenar `url`.
+Un `url` vacío muestra el enlace desactivado. Los enlaces de perfiles y publicaciones van sin parámetros de seguimiento (`?_t=`, `igsh=`…).
 
 ### Activar o quitar secciones
 
@@ -52,7 +52,7 @@ En `sections`, cada sección tiene `enabled: true/false`. Con `false` desaparece
 En `site`:
 
 - `reviewMode: true` muestra los números de sección, las notas para Dian (en español e indonesio) y las etiquetas de foto.
-- `demo: true` muestra la banda fija "Demo prototype · numbers and brands are fictional" y la etiqueta "Marca ficticia".
+- `demo: true` muestra la banda fija "Demo prototype" (ahora está en `false`).
 
 Para la versión real, los dos van a `false`.
 
@@ -67,6 +67,12 @@ El diseño sigue el tablero de marca de Dian: burdeos `#6B0F2A`, azul cielo `#CD
 Los elementos de marca están en [`src/components/Brand.tsx`](src/components/Brand.tsx): monograma, ruta del avión con corazón, buganvilla y sello redondo. El dibujo de Málaga es [`public/images/malaga-sketch.svg`](public/images/malaga-sketch.svg). El favicon (`public/favicon.svg`) es un archivo fijo con "DN": si cambia el nombre, hay que retocarlo a mano.
 
 Los colores de los gráficos (`--c-chart-*`) están comprobados para daltonismo; si se cambian, hay que volver a validarlos.
+
+## Documentos de Dian y portadas
+
+Los `.docx` con las analíticas y las indicaciones de Dian viven en `private/` (ignorado por git, junto con `*.docx`). Nunca en `public/`: todo lo que hay ahí se publica.
+
+Las portadas del portfolio (`public/images/portfolio/*.webp`) salen de sus publicaciones públicas, convertidas a WebP sin metadatos. Las cifras de cada TikTok son las públicas del vídeo; Instagram no las muestra sin iniciar sesión.
 
 ## Fotos
 
@@ -96,7 +102,7 @@ Revisar cada foto antes: reflejos, pantallas, matrículas, portal o vistas recon
 
 ## Media kit en PDF
 
-`public/media-kit-demo.pdf` se genera a partir de `profile.ts`, así nunca se desincroniza de la web:
+`public/media-kit.pdf` se genera a partir de `profile.ts`, así nunca se desincroniza de la web:
 
 ```bash
 npx playwright-core install chromium   # solo la primera vez
@@ -108,7 +114,7 @@ Antes de publicarlo, comprobar con `pdftotext` y `exiftool` que no lleva datos p
 
 ## Formulario de contacto
 
-En el prototipo valida los campos pero **no envía nada**: muestra un aviso de demo. Ya incluye honeypot anti-bots, longitudes máximas y validación. Para la versión real se conectará a un servicio (por ejemplo EmailJS) con un email profesional dedicado. Las claves irán como variables de GitHub Actions, nunca en un `.env` dentro del repo.
+De momento valida los campos pero **no envía nada**: pide escribir por Instagram o TikTok. Ya incluye honeypot anti-bots, longitudes máximas y validación. Para la versión real se conectará a un servicio (por ejemplo EmailJS) con un email profesional dedicado. Las claves irán como variables de GitHub Actions, nunca en un `.env` dentro del repo.
 
 ## Privacidad y seguridad
 

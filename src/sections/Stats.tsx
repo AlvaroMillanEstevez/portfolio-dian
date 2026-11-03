@@ -9,10 +9,10 @@ export function Stats({ config }: { config: SectionConfig }) {
   const { t, lang } = useSettings()
   const items = [
     { label: ui.stats.followers, value: compact(totals.followers, lang) },
-    { label: ui.stats.views90, value: compact(totals.views90d, lang) },
-    { label: ui.stats.avgViews, value: compact(totals.avgViews, lang) },
+    { label: ui.stats.views, value: compact(totals.viewsMonth, lang) },
+    { label: ui.stats.likes, value: compact(totals.likes, lang) },
+    { label: ui.stats.shares, value: compact(totals.shares, lang) },
     { label: ui.stats.engagement, value: percent(totals.engagementRate, lang) },
-    { label: ui.stats.growth6m, value: percent(totals.growth6m, lang, true) },
   ]
   return (
     <Section config={config} className="py-20 sm:py-28">

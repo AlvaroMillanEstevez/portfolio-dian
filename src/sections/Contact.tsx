@@ -63,7 +63,11 @@ export function Contact({ config }: { config: SectionConfig }) {
       <div data-reveal className="mx-auto grid max-w-6xl gap-12 px-4 sm:px-6 md:grid-cols-[0.8fr_1.2fr]">
         <div>
           <Heading title={t(ui.contact.title)} />
-          <p className="text-lg leading-relaxed text-ink/85">{t(ui.contact.intro)}</p>
+          <div className="space-y-4 text-lg leading-relaxed text-ink/85">
+            {ui.contact.intro.map((p, i) => (
+              <p key={i}>{t(p)}</p>
+            ))}
+          </div>
           <p className="mt-8 text-sm text-muted">{t(ui.contact.elsewhere)}</p>
           <ul className="mt-3 flex gap-2">
             {platforms.map((p) => (
