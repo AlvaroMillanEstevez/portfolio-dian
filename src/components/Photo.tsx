@@ -21,6 +21,7 @@ export function Photo({ photo, className = '', eager = false }: Props) {
           decoding="async"
           onError={() => setFailed(true)}
           className="absolute inset-0 size-full object-cover"
+          style={photo.focus ? { objectPosition: photo.focus } : undefined}
         />
       )}
       {/* Only placeholders say which photo goes there; real photos stay clean. */}

@@ -42,8 +42,6 @@ const motifs = {
 }
 
 const images = [
-  ['hero-portrait', '4/5', 'sea', 'sun'],
-  ['about-malaga-old-town', '4/5', 'butter', 'arches'],
   ['about-beach-golden-hour', '3/2', 'sunset', 'sun'],
   ['about-morning-ritual', '1/1', 'bloom', 'kawung'],
   ['portfolio-placeholder', '4/5', 'sea', 'sun'],

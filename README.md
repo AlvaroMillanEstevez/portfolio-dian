@@ -80,11 +80,13 @@ Cada hueco de foto es un placeholder SVG en `public/images/` con la proporción 
 
 | Archivo                               | Proporción | Qué foto va                                  |
 | ------------------------------------- | ---------- | -------------------------------------------- |
-| `hero-portrait.svg`                   | 4:5        | Retrato vertical, luz natural, fondo de Málaga |
-| `about-malaga-old-town.svg`           | 4:5        | Paseando por el centro histórico              |
+| `hero-portrait.webp` ✅               | 4:5        | Retrato (jardín de El Retiro)                 |
+| `about-malaga-marina.webp` ✅         | 4:5        | Polaroid de "Sobre mí" (Puerto Marina)        |
 | `about-beach-golden-hour.svg`         | 3:2        | Playa al atardecer, sin personas de fondo     |
 | `about-morning-ritual.svg`            | 1:1        | Detalle de café o skincare                    |
 | `video-*.svg` (6)                     | 9:16       | Portada de cada vídeo destacado               |
+
+Si una foto se recorta mal, `focus` (por ejemplo `'50% 80%'`) elige qué parte queda a la vista.
 
 Para poner una foto real:
 

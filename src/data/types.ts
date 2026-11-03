@@ -46,6 +46,8 @@ export type SectionConfig = {
 export type Photo = {
   src: string
   ratio: '4/5' | '9/16' | '3/2' | '1/1'
+  /** Which part of the photo stays in view when it is cropped (CSS object-position). */
+  focus?: string
   alt: Localized
   /** What photo goes here: shown on the placeholder in review mode. */
   brief: ReviewNote

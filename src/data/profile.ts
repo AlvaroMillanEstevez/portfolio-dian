@@ -32,8 +32,8 @@ export const sections: SectionConfig[] = [
     enabled: true,
     nav: { en: 'Home', es: 'Inicio' },
     note: {
-      es: 'Nombre, tu frase y botones. Falta: un retrato vertical 4:5 con fondo de Málaga. La foto se funde con el fondo, así que queda mejor con cielo o mar a la izquierda.',
-      id: 'Nama, tagline dan tombol. Yang kurang: potret vertikal 4:5 berlatar Málaga. Fotonya menyatu dengan latar, jadi lebih bagus kalau ada langit atau laut di sebelah kiri.',
+      es: 'Nombre, tu frase, botones y tu foto.',
+      id: 'Nama, tagline, tombol dan fotomu.',
     },
   },
   {
@@ -51,8 +51,8 @@ export const sections: SectionConfig[] = [
     enabled: true,
     nav: { en: 'About', es: 'Sobre mí' },
     note: {
-      es: 'Tu texto. Faltan: 2–3 fotos de estilo de vida (vertical 4:5, horizontal 3:2 y cuadrada 1:1).',
-      id: 'Teksmu. Yang kurang: 2–3 foto lifestyle (vertikal 4:5, horizontal 3:2 dan persegi 1:1).',
+      es: 'Tu texto y la polaroid. Faltan: una foto horizontal 3:2 (playa o paisaje) y una cuadrada 1:1 (detalle: café, comida, producto).',
+      id: 'Teksmu dan polaroid. Yang kurang: satu foto horizontal 3:2 (pantai atau pemandangan) dan satu persegi 1:1 (detail: kopi, makanan, produk).',
     },
   },
   {
@@ -196,9 +196,10 @@ export const identity = {
   /** Handwritten signature line. */
   motto: { en: 'Travel · Create · Review · Share', es: 'Viaja · Crea · Opina · Comparte' } satisfies Localized,
   portrait: {
-    src: 'images/hero-portrait.svg',
+    src: 'images/hero-portrait.webp',
     ratio: '4/5',
-    alt: { en: 'Portrait of Dian in Málaga', es: 'Retrato de Dian en Málaga' },
+    focus: '50% 80%',
+    alt: { en: 'Dian in a flower garden in Madrid', es: 'Dian en un jardín de flores en Madrid' },
     brief: {
       es: 'Retrato vertical 4:5, luz natural, fondo de Málaga',
       id: 'Potret vertikal 4:5, cahaya alami, latar Málaga',
@@ -257,9 +258,10 @@ export const about = {
   ] satisfies Localized[],
   photos: [
     {
-      src: 'images/about-malaga-old-town.svg',
+      src: 'images/about-malaga-marina.webp',
       ratio: '4/5',
-      alt: { en: 'Dian walking in Málaga old town', es: 'Dian paseando por el centro de Málaga' },
+      focus: '50% 85%',
+      alt: { en: 'Dian at Puerto Marina, Benalmádena', es: 'Dian en Puerto Marina, Benalmádena' },
       brief: {
         es: 'Vertical 4:5, paseando por el centro histórico',
         id: 'Vertikal 4:5, jalan-jalan di kota tua',
