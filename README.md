@@ -1,7 +1,7 @@
 # Dian · media kit (prototipo)
 
 Prototipo del portfolio / media kit web de Dian, creadora de contenido en Málaga.
-Las cifras, la audiencia, los perfiles y el portfolio son **reales** (analíticas de TikTok e Instagram de octubre de 2026). Faltan las fotos propias (placeholders), los precios y el email profesional. El modo revisión sigue activo para que Dian comente por número de sección.
+Las cifras, la audiencia, los perfiles y el portfolio son **reales** (analíticas de TikTok e Instagram de octubre de 2026). Las fotos son de Dian y los precios se dan por privado. El modo revisión sigue activo para que Dian comente por número de sección.
 
 - Web: https://alvaromillanestevez.github.io/portfolio-dian/
 - Feedback de Dian: [FEEDBACK_DIAN.md](FEEDBACK_DIAN.md)
@@ -96,7 +96,7 @@ Para poner una foto real:
    exiftool -all= -overwrite_original public/images/hero-portrait.webp
    exiftool -a -G1 public/images/hero-portrait.webp
    ```
-3. Guardarla en `public/images/` y cambiar la extensión de su `src` en `profile.ts` (por ejemplo `images/hero-portrait.webp`). Después se puede borrar el `.svg`.
+3. Guardarla en `public/images/` (WebP) y apuntar a ella con su `src` en `profile.ts`.
 
 Revisar cada foto antes: reflejos, pantallas, matrículas, portal o vistas reconocibles de casa, personas de fondo.
 
