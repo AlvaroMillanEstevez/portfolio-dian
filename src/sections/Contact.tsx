@@ -1,10 +1,11 @@
 import { useState, type FormEvent } from 'react'
-import { Info } from 'lucide-react'
+import { CircleAlert, CircleCheck, Info, Mail } from 'lucide-react'
 import { contact, platforms, ui } from '../data/profile'
 import type { SectionConfig } from '../data/types'
 import { ExternalLink } from '../components/ExternalLink'
 import { Heading, Section } from '../components/Section'
 import { SocialIcon } from '../components/SocialIcon'
+import { email as dianEmail } from '../lib/email'
 import { useSettings } from '../lib/settings'
 
 type Field = 'name' | 'company' | 'email' | 'budget' | 'type' | 'message'
@@ -12,15 +13,17 @@ const maxLength: Record<Field, number> = { name: 80, company: 100, email: 120, b
 const required: Field[] = ['name', 'email', 'type', 'message']
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/
 
+type Status = 'idle' | 'sending' | 'sent' | 'failed' | 'notConnected'
+
 export function Contact({ config }: { config: SectionConfig }) {
   const { t } = useSettings()
   const [errors, setErrors] = useState<Partial<Record<Field, string>>>({})
-  const [sent, setSent] = useState(false)
+  const [status, setStatus] = useState<Status>('idle')
 
-  // Demo: validates like the real form but sends nothing.
-  function onSubmit(e: FormEvent<HTMLFormElement>) {
+  async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
-    const data = new FormData(e.currentTarget)
+    const form = e.currentTarget
+    const data = new FormData(form)
     if (data.get('website')) return // honeypot filled: a bot
     const next: Partial<Record<Field, string>> = {}
     for (const field of required) {
@@ -29,11 +32,37 @@ export function Contact({ config }: { config: SectionConfig }) {
     const email = String(data.get('email') ?? '').trim()
     if (email && !emailPattern.test(email)) next.email = t(ui.contact.invalidEmail)
     setErrors(next)
-    if (Object.keys(next).length === 0) {
-      setSent(true)
-      e.currentTarget.reset()
+    if (Object.keys(next).length > 0) return
+    if (!contact.formKey) return setStatus('notConnected')
+
+    // Web3Forms forwards the message to Dian's inbox; replies go to the sender's email.
+    setStatus('sending')
+    const fields = Object.fromEntries((['name', 'company', 'email', 'budget', 'type', 'message'] as Field[]).map((f) => [f, String(data.get(f) ?? '').trim()]))
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          access_key: contact.formKey,
+          subject: `${t(ui.contact.subject)}: ${fields.name}${fields.company ? ` (${fields.company})` : ''}`,
+          from_name: 'Portfolio Dian Novitasari',
+          ...fields,
+        }),
+      })
+      const result = (await response.json()) as { success?: boolean }
+      if (!response.ok || !result.success) throw new Error('not sent')
+      setStatus('sent')
+      form.reset()
+    } catch {
+      setStatus('failed')
     }
   }
+
+  const mailLink = (
+    <a href={`mailto:${dianEmail}`} className="font-semibold text-accent underline underline-offset-2">
+      {dianEmail}
+    </a>
+  )
 
   const field = (name: Field) => ({
     id: `f-${name}`,
@@ -68,6 +97,11 @@ export function Contact({ config }: { config: SectionConfig }) {
               <p key={i}>{t(p)}</p>
             ))}
           </div>
+          <p className="mt-8 text-sm text-muted">{t(ui.contact.emailMe)}</p>
+          <a href={`mailto:${dianEmail}`} className="mt-2 inline-flex max-w-full items-center gap-2.5 text-lg font-semibold break-all text-accent hover:underline sm:text-xl">
+            <Mail className="size-5 shrink-0" aria-hidden="true" />
+            {dianEmail}
+          </a>
           <p className="mt-8 text-sm text-muted">{t(ui.contact.elsewhere)}</p>
           <ul className="mt-3 flex gap-2">
             {platforms.map((p) => (
@@ -125,14 +159,26 @@ export function Contact({ config }: { config: SectionConfig }) {
             </label>
           </div>
           <div className="sm:col-span-2">
-            <button type="submit" className="btn btn-primary w-full sm:w-auto">
-              {t(ui.contact.send)}
+            <button type="submit" disabled={status === 'sending'} className="btn btn-primary w-full disabled:opacity-60 sm:w-auto">
+              {t(status === 'sending' ? ui.contact.sending : ui.contact.send)}
             </button>
             <p role="status" className="mt-4 empty:hidden">
-              {sent && (
+              {status === 'sent' && (
+                <span className="flex items-start gap-2 rounded-lg bg-sky/60 p-3 text-sm">
+                  <CircleCheck className="mt-0.5 size-4 shrink-0 text-accent" aria-hidden="true" />
+                  {t(ui.contact.sent)}
+                </span>
+              )}
+              {(status === 'failed' || status === 'notConnected') && (
                 <span className="flex items-start gap-2 rounded-lg bg-sand p-3 text-sm">
-                  <Info className="mt-0.5 size-4 shrink-0 text-accent" aria-hidden="true" />
-                  {t(ui.contact.demoSent)}
+                  {status === 'failed' ? (
+                    <CircleAlert className="mt-0.5 size-4 shrink-0 text-error" aria-hidden="true" />
+                  ) : (
+                    <Info className="mt-0.5 size-4 shrink-0 text-accent" aria-hidden="true" />
+                  )}
+                  <span>
+                    {t(status === 'failed' ? ui.contact.failed : ui.contact.notConnected)} {mailLink}.
+                  </span>
                 </span>
               )}
             </p>

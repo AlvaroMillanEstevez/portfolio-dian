@@ -153,8 +153,8 @@ export const sections: SectionConfig[] = [
     enabled: true,
     nav: { en: 'Contact', es: 'Contacto' },
     note: {
-      es: 'Tu texto. El formulario aún no envía nada. Falta: un email profesional nuevo (no el personal) para recibir los mensajes.',
-      id: 'Teksmu. Formulirnya belum mengirim apa pun. Yang kurang: email profesional baru (bukan pribadi) untuk menerima pesan.',
+      es: 'Tu texto, tu email visible y el formulario, que envía los mensajes a ese mismo email.',
+      id: 'Teksmu, email-mu yang terlihat dan formulir yang mengirim pesan ke email yang sama.',
     },
   },
   {
@@ -803,6 +803,13 @@ export const rates = {
 /* ------------------------------------------------------------------ */
 
 export const contact = {
+  /** Public contact email, kept in two parts so the full address is not a plain string in the code. */
+  email: { user: 'dian.novitasari.info', domain: 'gmail.com' },
+  /**
+   * Web3Forms access key (web3forms.com). It is public by design: it can only send to Dian's inbox.
+   * Empty = the form is not connected and asks visitors to use the email instead.
+   */
+  formKey: '',
   budgets: [
     { en: 'Under €500', es: 'Menos de 500 €' },
     { en: '€500 – €1,500', es: '500 – 1.500 €' },
@@ -925,10 +932,21 @@ export const ui = {
     message: { en: 'Message', es: 'Mensaje' },
     choose: { en: 'Choose one', es: 'Elige una opción' },
     send: { en: 'Send message', es: 'Enviar mensaje' },
-    demoSent: {
-      en: 'The form is not connected yet, so nothing was sent. For now, please message me on Instagram or TikTok.',
-      es: 'El formulario aún no está conectado, así que no se ha enviado nada. De momento, escríbeme por Instagram o TikTok.',
+    emailMe: { en: 'Email me directly', es: 'Escríbeme directamente' },
+    sending: { en: 'Sending…', es: 'Enviando…' },
+    sent: {
+      en: 'Thank you! Your message has been sent. I’ll get back to you soon.',
+      es: '¡Gracias! Tu mensaje se ha enviado. Te responderé pronto.',
     },
+    failed: {
+      en: 'Something went wrong and your message was not sent. Please email me at',
+      es: 'Algo ha fallado y tu mensaje no se ha enviado. Escríbeme a',
+    },
+    notConnected: {
+      en: 'The form is not connected yet, so nothing was sent. Please email me at',
+      es: 'El formulario aún no está conectado, así que no se ha enviado nada. Escríbeme a',
+    },
+    subject: { en: 'New enquiry from your portfolio', es: 'Nueva consulta desde tu portfolio' },
     required: { en: 'Please fill in this field.', es: 'Rellena este campo.' },
     invalidEmail: { en: 'Please enter a valid email.', es: 'Introduce un email válido.' },
     elsewhere: { en: 'Or find me on', es: 'O encuéntrame en' },

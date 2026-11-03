@@ -2,9 +2,10 @@
 // Usage: npm run media-kit   (needs the Playwright Chromium: npx playwright-core install chromium)
 import { readFileSync } from 'node:fs'
 import { chromium } from 'playwright-core'
-import { audience, caseStudies, identity, platforms, services, site, why } from '../src/data/profile.ts'
+import { audience, caseStudies, contact, identity, platforms, services, site, why } from '../src/data/profile.ts'
 
 const insights = audience.find((a) => a.age) ?? audience[0]
+const email = `${contact.email.user}@${contact.email.domain}`
 
 const lang = process.argv[2] === 'es' ? 'es' : 'en'
 const t = (text) => text[lang]
@@ -85,7 +86,7 @@ table{width:100%;border-collapse:collapse}td,th{padding:2.6mm 0;border-bottom:1p
   <table><tr><th></th><th class="n">${L.followers}</th><th class="n">${L.views}</th><th class="n">${L.er}</th></tr>
   ${platforms.map((p) => `<tr><td><b>${p.name}</b> <span class="muted">${esc(p.handle)}</span></td><td class="n">${fmt(p.followers)}</td><td class="n">${fmt(p.viewsMonth)}</td><td class="n">${pct(er(p))}</td></tr>`).join('')}
   </table>
-  <div class="foot"><span>${esc(t(site.dataAsOf))}</span><span>1 / 2</span></div>
+  <div class="foot"><span>${esc(t(site.dataAsOf))}</span><span class="accent">${esc(email)}</span><span>1 / 2</span></div>
 </section>
 <section class="page">
   ${site.demo ? `<div class="demo">${L.demo}</div>` : ''}
@@ -99,7 +100,7 @@ table{width:100%;border-collapse:collapse}td,th{padding:2.6mm 0;border-bottom:1p
   ${caseStudies.map((c) => `<div class="case"><b>${esc(c.brand)}</b> <span class="muted">· ${esc(t(c.sector))}</span><p>${esc(t(c.campaign))}</p><p class="muted">${c.results.map((r) => `${esc(t(r.label))}: <b>${esc(typeof r.value === 'number' ? fmt(r.value) : r.value)}</b>`).join(' · ')}</p></div>`).join('')}
   <h2 style="margin-top:6mm">${L.services}</h2>
   <div class="svc">${services.map((s) => `<div><b>${esc(t(s.title))}</b><span class="muted">${esc(t(s.text))}</span></div>`).join('')}</div>
-  <div class="foot"><span>${L.contact}</span><span>2 / 2</span></div>
+  <div class="foot"><span>${L.contact} · <b class="accent">${esc(email)}</b></span><span>2 / 2</span></div>
 </section>
 </body></html>`
 

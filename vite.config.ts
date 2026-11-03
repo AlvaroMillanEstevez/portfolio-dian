@@ -5,7 +5,7 @@ import { defineConfig, type Plugin } from 'vite'
 /*
  * GitHub Pages cannot send headers, so the Content Security Policy goes in a <meta>.
  * It is added only to the production build: the dev server needs an inline script for hot reload.
- * Everything is self-hosted (fonts included), so no external domain is allowed.
+ * Everything is self-hosted (fonts included). The only external domain is the contact form service.
  * style-src needs 'unsafe-inline' for React style attributes (bar widths, aspect ratios).
  */
 const csp = [
@@ -15,7 +15,7 @@ const csp = [
   "img-src 'self' data:",
   "font-src 'self'",
   "media-src 'self'",
-  "connect-src 'self'",
+  "connect-src 'self' https://api.web3forms.com",
   "manifest-src 'self'",
   "worker-src 'none'",
   "frame-src 'none'",

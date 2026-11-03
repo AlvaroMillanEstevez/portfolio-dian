@@ -114,18 +114,20 @@ node scripts/media-kit.mjs es          # versión en español
 
 Antes de publicarlo, comprobar con `pdftotext` y `exiftool` que no lleva datos privados.
 
-## Formulario de contacto
+## Formulario de contacto y email
 
-De momento valida los campos pero **no envía nada**: pide escribir por Instagram o TikTok. Ya incluye honeypot anti-bots, longitudes máximas y validación. Para la versión real se conectará a un servicio (por ejemplo EmailJS) con un email profesional dedicado. Las claves irán como variables de GitHub Actions, nunca en un `.env` dentro del repo.
+- El email público de colaboraciones está en `contact.email` (`profile.ts`), partido en dos para que no aparezca entero en el código. Sale en Contacto y en el PDF.
+- El formulario envía los mensajes a ese email con [Web3Forms](https://web3forms.com) (gratis, sin servidor). La clave va en `contact.formKey`: es pública por diseño, porque solo sirve para enviar al buzón de Dian. Con la clave vacía, el formulario pide escribir al email.
+- Incluye honeypot anti-bots, longitudes máximas y validación. La CSP solo permite conexiones a `https://api.web3forms.com`.
 
 ## Privacidad y seguridad
 
 - `noindex, nofollow` en `index.html`. El `robots.txt` está incluido, pero los buscadores solo lo leen en la raíz del dominio, así que lo que de verdad bloquea la indexación es la meta.
-- Content Security Policy en una `<meta>`, añadida solo en la build (`vite.config.ts`). Todo es del propio dominio, sin dominios externos.
+- Content Security Policy en una `<meta>`, añadida solo en la build (`vite.config.ts`). Todo es del propio dominio; la única excepción es `connect-src` para el formulario (Web3Forms).
 - Sin source maps en producción.
 - Enlaces externos con `rel="noopener noreferrer"`.
 - `.env*` en `.gitignore`.
 - GitHub Actions con las acciones fijadas a un SHA, `permissions: {}` por defecto y `persist-credentials: false`.
-- Nada de dirección, teléfono, email personal, fecha de nacimiento ni datos de familia, ni en el código ni en los commits.
+- Nada de dirección, teléfono, email personal, fecha de nacimiento ni datos de familia, ni en el código ni en los commits. El único email público es el de colaboraciones.
 
 Antes de cada publicación con datos reales, buscar con `grep` la lista privada de datos que no se publican (guardada fuera del repo) en el código, en `dist/` y en `git log --all -p`.
