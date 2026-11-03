@@ -1,4 +1,4 @@
-import { MapPin } from 'lucide-react'
+import { ArrowRight, MapPin } from 'lucide-react'
 import { rates, ui } from '../data/profile'
 import type { SectionConfig } from '../data/types'
 import { Heading, Section } from '../components/Section'
@@ -32,7 +32,6 @@ export function Rates({ config }: { config: SectionConfig }) {
             </tbody>
           </table>
         </div>
-        <p className="mt-4 text-xs text-muted">{t(ui.rates.note)}</p>
 
         <div className="card mt-8 p-6 sm:p-8">
           <div className="flex items-start gap-4">
@@ -52,6 +51,13 @@ export function Rates({ config }: { config: SectionConfig }) {
               </li>
             ))}
           </ul>
+        </div>
+
+        <div className="mt-10 text-center">
+          <p className="mx-auto max-w-xl leading-relaxed text-muted">{t(ui.rates.note)}</p>
+          <a href="#contact" className="btn btn-primary mt-6">
+            {t(ui.rates.cta)} <ArrowRight className="size-4" aria-hidden="true" />
+          </a>
         </div>
       </div>
     </Section>

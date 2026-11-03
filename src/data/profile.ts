@@ -143,8 +143,8 @@ export const sections: SectionConfig[] = [
     number: 13,
     enabled: true,
     note: {
-      es: 'Con tu nota de colaboraciones en el lugar. Sin precios hasta que nos los digas ("bajo petición").',
-      id: 'Dengan catatan kolaborasi di lokasi. Tanpa harga sampai kamu kasih tahu ("on request").',
+      es: 'Servicios sin precios públicos: cada marca pide presupuesto por privado. Con tu nota de colaboraciones en el lugar.',
+      id: 'Layanan tanpa harga publik: setiap brand minta penawaran secara pribadi. Dengan catatan kolaborasi di lokasi.',
     },
   },
   {
@@ -456,13 +456,7 @@ export const videos: Video[] = [
     platform: 'tiktok',
     kind: 'video',
     title: { en: 'Málaga to Madrid, part 2: city views', es: 'De Málaga a Madrid, parte 2: vistas de la ciudad' },
-    // Placeholder: the real cover shows another person; waiting for permission.
-    thumbnail: {
-      src: 'images/portfolio-placeholder.svg',
-      ratio: '4/5',
-      alt: { en: 'Madrid city view', es: 'Vista de Madrid' },
-      brief: { es: 'Portada pendiente: sale otra persona', id: 'Cover menunggu: ada orang lain' },
-    },
+    thumbnail: cover('travel-madrid-malaga-2.webp', { en: 'Setting off from Málaga train station', es: 'Saliendo de la estación de Málaga' }),
     url: tiktok('7701640748705385746'),
     stats: { views: 5_825, likes: 175, saves: 11, shares: 5 },
   },
@@ -900,13 +894,14 @@ export const ui = {
   },
   timeline: { title: { en: 'My journey', es: 'Mi trayectoria' } },
   rates: {
-    title: { en: 'Rates', es: 'Tarifas' },
+    title: { en: 'Collaboration packages', es: 'Paquetes de colaboración' },
     from: { en: 'from', es: 'desde' },
-    onRequest: { en: 'Rates on request', es: 'Tarifas bajo petición' },
+    onRequest: { en: 'Tailored to every brand', es: 'A medida de cada marca' },
     note: {
-      en: 'Every project is quoted individually. VAT not included.',
-      es: 'Cada proyecto se presupuesta por separado. IVA no incluido.',
+      en: 'Every collaboration is different, so I prepare a personalised quote based on your goals, scope and conditions.',
+      es: 'Cada colaboración es distinta, así que preparo un presupuesto personalizado según tus objetivos, el alcance y las condiciones.',
     },
+    cta: { en: 'Request a quote or more information', es: 'Solicitar presupuesto o información' },
   },
   contact: {
     title: { en: 'Let’s create something together', es: 'Creemos algo juntos' },
